@@ -12,35 +12,75 @@
 
 #include "ft_printf.h"
 
-void	ft_print_until_percent(const char **format)
+int	ft_print_until_percent(char **str)
 {
-	char *ptr;
+	char	*ptr;
+	int	str_len;
 
-	ptr = ft_strchr(*format, '%');
+	ptr = ft_strchr(*str, '%');
 	if (ptr == NULL)
-		ft_putstr(*format);
-	else 
-		write(1, *format, ptr - *format);
-	*format = ptr;
+	{
+		ft_putstr(*str);
+		str_len = ft_strlen(*str);
+	}
+	else
+	{
+		write(1, *str, ptr - *str);
+		str_len = ptr - *str;
+	}
+	*str = ptr;
+	return (str_len);
+}
+
+int	ft_call_type_print(char **format_spec, va_list ap)
+{
+	if (**format_spec == 'c')
+	{
+		printf("\nобрабатываю чар: %c\n", va_arg(ap, int));
+		*format_spec += 1;
+		//return (ft_print_char(ap));
+	}
+	//else if (**format_spec == 's')
+	//	return (ft_print_str(ap));
+	//else if (**format_spec == 'p')
+	//	return (ft_print_address(ap));
+	else
+		printf("\nhenlo\n");
+		//return (ft_no_format_spec(ap));
+	return (1);
+}
+
+int	ft_print_format(char **str, va_list ap)
+{
+	*str += 1;
+	if (**str)
+	{
+		//тут нужно обработать флаги
+		if (ft_isalpha(**str) || **str == '%')
+			return (ft_call_type_print(str, ap));
+	}
+	return (0);
 }
 
 int	ft_printf(const char* format, ...)
 {
-	va_list ap_1;
-	char *ptr;
-	va_start(ap_1, format);
-	if (format == NULL)
+	va_list	ap;
+	char	*ptr;
+	int	nbytes;
+	char	*str;
+
+	nbytes = 0;
+	str = (char *)format;
+	va_start(ap, format);
+	if (str == NULL)
 		return (-1);
-	while (format != NULL)
+	while (str != NULL)
 	{
-		if (*format == '%')
-		{
-			printf("GG\n");
-			format += 2;
-		}
+		if (*str == '%')
+			nbytes += ft_print_format(&str, ap);
 		else 
-			ft_print_until_percent(&format);
+			nbytes += ft_print_until_percent(&str);
 	}
-	va_end(ap_1);
-	return (0);
+	va_end(ap);
+	return (nbytes);
 }
