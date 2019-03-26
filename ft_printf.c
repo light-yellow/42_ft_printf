@@ -32,11 +32,11 @@ int	ft_print_until_percent(char **str)
 	return (str_len);
 }
 
-int	ft_call_type_print(char **format_spec, va_list ap)
+int	ft_call_type_print(char **format_spec, va_list *ap)
 {
 	if (**format_spec == 'c')
 	{
-		printf("\nобрабатываю чар: %c\n", va_arg(ap, int));
+		printf("\nобрабатываю чар: %c\n", va_arg(*ap, int));
 		*format_spec += 1;
 		//return (ft_print_char(ap));
 	}
@@ -50,7 +50,7 @@ int	ft_call_type_print(char **format_spec, va_list ap)
 	return (1);
 }
 
-int	ft_print_format(char **str, va_list ap)
+int	ft_print_format(char **str, va_list *ap)
 {
 	*str += 1;
 	if (**str)
@@ -77,7 +77,7 @@ int	ft_printf(const char* format, ...)
 	while (str != NULL)
 	{
 		if (*str == '%')
-			nbytes += ft_print_format(&str, ap);
+			nbytes += ft_print_format(&str, &ap);
 		else 
 			nbytes += ft_print_until_percent(&str);
 	}
