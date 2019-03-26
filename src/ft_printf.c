@@ -6,11 +6,11 @@
 /*   By: bdudley <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 11:55:23 by bdudley           #+#    #+#             */
-/*   Updated: 2019/03/22 14:04:02 by bdudley          ###   ########.fr       */
+/*   Updated: 2019/03/26 16:34:57 by bdudley          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../ft_printf.h"
 
 int	ft_print_until_percent(char **str)
 {
@@ -35,13 +35,9 @@ int	ft_print_until_percent(char **str)
 int	ft_call_type_print(char **format_spec, va_list *ap)
 {
 	if (**format_spec == 'c')
-	{
-		printf("\nобрабатываю чар: %c\n", va_arg(*ap, int));
-		*format_spec += 1;
-		//return (ft_print_char(ap));
-	}
-	//else if (**format_spec == 's')
-	//	return (ft_print_str(ap));
+		return (ft_print_char(format_spec, ap));
+	else if (**format_spec == 's')
+		return (ft_print_str(format_spec, ap));
 	//else if (**format_spec == 'p')
 	//	return (ft_print_address(ap));
 	else
@@ -65,7 +61,7 @@ int	ft_print_format(char **str, va_list *ap)
 int	ft_printf(const char* format, ...)
 {
 	va_list	ap;
-	char	*ptr;
+//	char	*ptr;
 	int	nbytes;
 	char	*str;
 

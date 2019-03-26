@@ -3,7 +3,7 @@
 int main()
 {
 	//printf("%d\n", printf("%c\n", "abcd"));
-	int shit = ft_printf("Katya puk!\n%cVilena puk!%c", '@', '*');
-	printf("\n%d\n", shit);
+	int n_bytes = ft_printf("Katya puk!\n%cVilena puk!%c%s", '@', '*', "KEK");
+	printf("\n%d\n", n_bytes);
 	return (0);
 }

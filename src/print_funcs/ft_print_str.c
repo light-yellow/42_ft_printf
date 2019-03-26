@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_print_str.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bdudley <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/22 11:57:32 by bdudley           #+#    #+#             */
-/*   Updated: 2019/03/26 16:38:01 by bdudley          ###   ########.fr       */
+/*   Created: 2019/03/26 16:36:05 by bdudley           #+#    #+#             */
+/*   Updated: 2019/03/26 16:44:02 by bdudley          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "../../ft_printf.h"
 
-# include <stdarg.h>
-# include <stdio.h>
-# include "libft/libft.h"
+int	ft_print_str(char **str, va_list *ap)
+{
+	char *ptr;
+	int count;
 
-int	ft_printf(const char *format, ...);
-int	ft_print_char(char **str, va_list *ap);
-int	ft_print_str(char **str, va_list *ap);
-
-#endif
+	ptr = va_arg(*ap, char*);
+	ft_putstr(va_arg(*ap, char*));
+	count = ft_strlen(ptr);
+	printf ("count = %d", count);
+	*str += count;	
+	return (count);
+}
