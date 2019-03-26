@@ -6,7 +6,7 @@
 /*   By: bdudley <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 11:55:23 by bdudley           #+#    #+#             */
-/*   Updated: 2019/03/26 16:53:20 by bdudley          ###   ########.fr       */
+/*   Updated: 2019/03/26 17:21:17 by bdudley          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ int	ft_call_type_print(char **format_spec, va_list *ap)
 		return (ft_print_char(format_spec, ap));
 	else if (**format_spec == 's')
 		return (ft_print_str(format_spec, ap));
-	//else if (**format_spec == 'p')
-	//	return (ft_print_address(ap));
+	else if (**format_spec == 'p')
+		return (ft_print_pointer(format_spec, ap));
 	else
 		printf("\nhenlo\n");
 		//return (ft_no_format_spec(ap));
