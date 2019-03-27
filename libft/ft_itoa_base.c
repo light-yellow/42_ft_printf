@@ -21,8 +21,6 @@ char	ft_getchar(int num, char letter_case)
 		return (num - 10 + letter_case);
 }
 
-#include "stdio.h"
-
 char	*ft_itoa_base(int value, int base, char letter_case)
 {
 	int		sign;
@@ -30,20 +28,12 @@ char	*ft_itoa_base(int value, int base, char letter_case)
 	char		*result;
 	int		len;
 
-	sign = 0;
-	if (value < 0)
-	{
-		if (base == 10)
-			sign = 1;
-		num = -value;
-	}
-	else
-		num = value;
+	sign = (value < 0 && base == 10) ? 1 : 0;
+	num = (value < 0) ? -value : value;
 	len = ft_numlen(num, base) + sign;
-	printf("len = %d\n", len);
 	if (result = ft_strnew((size_t)len))
 	{
-		while (len >= 0)
+		while (len > 0)
 		{
 			result[len - 1] = ft_getchar(num % base, letter_case);
 			num /= base;
@@ -52,12 +42,5 @@ char	*ft_itoa_base(int value, int base, char letter_case)
 		if (sign)
 			result[0] = '-';
 	}
-	printf("result: |%s|\n", result);
 	return (result);
-}
-
-int main(void)
-{
-	ft_itoa_base(15, 16, 'a');
-	return (0);
 }
