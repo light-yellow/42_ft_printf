@@ -17,10 +17,20 @@
 # include <stdio.h>
 # include "libft/libft.h"
 
+typedef struct	s_flags
+{
+	int	hash;
+	int	zero;
+	int	minus;
+	int	plus;
+	int	width;
+	int	precision;
+}		t_flags;
+
 int		ft_printf(const char *format, ...);
 int		ft_print_char(char **str, va_list *ap);
 int		ft_print_str(char **str, va_list *ap);
 int		ft_print_pointer(char **str, va_list *ap);
-char	*ft_itoa_base(uintmax_t num, uintmax_t base, char c);
+char		*ft_itoa_base(uintmax_t num, uintmax_t base, char c);
 
 #endif
