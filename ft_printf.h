@@ -6,7 +6,7 @@
 /*   By: bdudley <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 11:57:32 by bdudley           #+#    #+#             */
-/*   Updated: 2019/03/29 19:32:07 by jgoyette         ###   ########.fr       */
+/*   Updated: 2019/03/29 20:16:21 by jgoyette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ typedef struct	s_flags
 	int			zero;
 	int			minus;
 	int			plus;
+	int			space;
 	int			width;
 	int			precision;
 }				t_flags;

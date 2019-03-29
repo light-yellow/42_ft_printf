@@ -6,7 +6,7 @@
 /*   By: jgoyette <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 19:38:35 by jgoyette          #+#    #+#             */
-/*   Updated: 2019/03/29 19:38:44 by jgoyette         ###   ########.fr       */
+/*   Updated: 2019/03/29 20:21:03 by jgoyette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,30 @@ void	ft_init_flags(t_flags *flags)
 	flags->zero = 0;
 	flags->minus = 0;
 	flags->plus = 0;
+	flags->space = 0;
 	flags->width = 0;
 	flags->precision = 0;
 }
 
+int		ft_parse_flags(char **str, t_flags *flags)
+{
+	if (**str == '#')
+		flags->hash = 1;
+	else if (**str == '0')
+		flags->zero = 1;
+	else if (**str == '-')
+		flags->minus = 1;
+	else if (**str == '+')
+		flags->plus = 1;
+	else if (**str == ' ')
+		flags->space = 1;
+	else
+		return (0);
+	*str += 1;
+	return (1);
+}
+
 void	ft_handle_flags(char **str, t_flags *flags)
 {
-	printf("\nздесь я обработаю флаги");
+	printf("%d", flags->length);
 }
