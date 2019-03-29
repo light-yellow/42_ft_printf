@@ -6,7 +6,7 @@
 /*   By: bdudley <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 18:14:23 by bdudley           #+#    #+#             */
-/*   Updated: 2019/03/29 18:15:42 by bdudley          ###   ########.fr       */
+/*   Updated: 2019/03/29 20:38:52 by bdudley          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 int	ft_print_octal(char **str, va_list *ap)
 {
-	long value;
-	char *ptr;
+	unsigned int	value;
+	char			*ptr;
 
-	value = va_arg(*ap, long);
+	value = va_arg(*ap, unsigned int);
 	ptr = ft_itoa_base(value, 8, 'a');
 	ft_putstr(ptr);
 	*str += 1;

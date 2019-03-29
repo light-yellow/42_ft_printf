@@ -6,7 +6,7 @@
 /*   By: bdudley <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 11:55:23 by bdudley           #+#    #+#             */
-/*   Updated: 2019/03/29 19:39:54 by jgoyette         ###   ########.fr       */
+/*   Updated: 2019/03/29 20:37:34 by bdudley          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	ft_print_until_percent(char **str)
 {
 	char	*ptr;
-	int		str_len;
+	int	str_len;
 
 	ptr = ft_strchr(*str, '%');
 	if (ptr == NULL)
@@ -71,10 +71,11 @@ int	ft_print_format(char **str, va_list *ap)
 	return (0);
 }
 
-int	ft_printf(const char *format, ...)
+int	ft_printf(const char* format, ...)
 {
 	va_list	ap;
-	int		nbytes;
+//	char	*ptr;
+	int	nbytes;
 	char	*str;
 
 	nbytes = 0;
@@ -86,7 +87,7 @@ int	ft_printf(const char *format, ...)
 	{
 		if (*str == '%')
 			nbytes += ft_print_format(&str, &ap);
-		else
+		else 
 			nbytes += ft_print_until_percent(&str);
 	}
 	va_end(ap);
