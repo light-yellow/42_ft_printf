@@ -31,8 +31,11 @@ typedef struct	s_flags
 int		ft_printf(const char *format, ...);
 int		ft_print_char(char **str, va_list *ap);
 int		ft_print_str(char **str, va_list *ap);
+int		ft_print_percent(char **str, va_list *ap);
+int		ft_print_binary(char **str, va_list *ap);
+int		ft_print_integer(char **str, va_list *ap);
 int		ft_print_pointer(char **str, va_list *ap);
-void    	ft_init_flags(t_flags *flags);
-void    	ft_handle_flags(char **str, t_flags *flags);
+//void    	ft_init_flags(t_flags *flags);
+//void    	ft_handle_flags(char **str, t_flags *flags);
 
 #endif

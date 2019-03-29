@@ -11,8 +11,8 @@
 # **************************************************************************** #
 
 NAME = ft_printf
-FLAGS = -Wall -Wextra -Werror
-SRCS  = ft_itoa_base.c main.c src/ft_printf.c src/print_funcs/ft_print_char.c src/print_funcs/ft_print_str.c src/print_funcs/ft_print_pointer.c
+FLAGS = #-Wall -Wextra -Werror
+SRCS  = libft/ft_itoa_base.c main.c src/ft_printf.c src/print_funcs/ft_print_char.c src/print_funcs/ft_print_str.c src/print_funcs/ft_print_pointer.c src/print_funcs/ft_print_percent.c src/print_funcs/ft_print_binary.c src/print_funcs/ft_print_integer.c
 OBJS = $(SRCS:.c=.o)
 LIB = ./libft/libft.a
 
