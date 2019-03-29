@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_str.c                                     :+:      :+:    :+:   */
+/*   ft_strsub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bdudley <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: jgoyette <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/26 16:36:05 by bdudley           #+#    #+#             */
-/*   Updated: 2019/03/29 19:33:01 by jgoyette         ###   ########.fr       */
+/*   Created: 2018/12/09 18:42:26 by jgoyette          #+#    #+#             */
+/*   Updated: 2018/12/09 18:42:28 by jgoyette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../ft_printf.h"
+#include "libft.h"
 
-int	ft_print_str(char **str, va_list *ap)
+char	*ft_strsub(char const *s, unsigned int start, size_t len)
 {
 	char *ptr;
 
-	ptr = va_arg(*ap, char*);
-	ft_putstr(ptr);
-	*str += 1;
-	return (ft_strlen(ptr));
+	ptr = (char *)ft_memalloc(sizeof(char) * (size_t)(len + 1));
+	if (s && ptr)
+		ft_strncpy(ptr, s + start, len);
+	return (ptr);
 }

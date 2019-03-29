@@ -1,23 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_str.c                                     :+:      :+:    :+:   */
+/*   ft_strncat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bdudley <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: jgoyette <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/26 16:36:05 by bdudley           #+#    #+#             */
-/*   Updated: 2019/03/29 19:33:01 by jgoyette         ###   ########.fr       */
+/*   Created: 2018/11/29 09:12:24 by jgoyette          #+#    #+#             */
+/*   Updated: 2018/11/29 10:08:16 by jgoyette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../ft_printf.h"
+#include "libft.h"
 
-int	ft_print_str(char **str, va_list *ap)
+char	*ft_strncat(char *s1, const char *s2, size_t n)
 {
-	char *ptr;
+	size_t	i;
+	size_t	j;
 
-	ptr = va_arg(*ap, char*);
-	ft_putstr(ptr);
-	*str += 1;
-	return (ft_strlen(ptr));
+	i = ft_strlen(s1);
+	j = 0;
+	while (s2[j] && j < n)
+	{
+		s1[i] = s2[j];
+		i += 1;
+		j += 1;
+	}
+	s1[i] = '\0';
+	return (s1);
 }

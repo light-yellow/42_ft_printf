@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_str.c                                     :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bdudley <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: jgoyette <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/26 16:36:05 by bdudley           #+#    #+#             */
-/*   Updated: 2019/03/29 19:33:01 by jgoyette         ###   ########.fr       */
+/*   Created: 2018/12/09 18:51:40 by jgoyette          #+#    #+#             */
+/*   Updated: 2018/12/09 18:51:42 by jgoyette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../ft_printf.h"
+#include "libft.h"
 
-int	ft_print_str(char **str, va_list *ap)
+int	ft_strcmp(const char *s1, const char *s2)
 {
-	char *ptr;
-
-	ptr = va_arg(*ap, char*);
-	ft_putstr(ptr);
-	*str += 1;
-	return (ft_strlen(ptr));
+	while ((s1 || s2) && (*s1 || *s2))
+	{
+		if (*s1 != *s2)
+			return ((unsigned char)*s1 - (unsigned char)*s2);
+		s1 += 1;
+		s2 += 1;
+	}
+	return (0);
 }

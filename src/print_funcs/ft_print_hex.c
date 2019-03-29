@@ -6,7 +6,7 @@
 /*   By: bdudley <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 18:14:11 by bdudley           #+#    #+#             */
-/*   Updated: 2019/03/29 18:16:24 by bdudley          ###   ########.fr       */
+/*   Updated: 2019/03/29 19:41:19 by jgoyette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	ft_print_hex(char **str, va_list *ap)
 	char *ptr;
 
 	value = va_arg(*ap, long);
-	if (*str == 'x')
+	if (**str == 'x')
 		ptr = ft_itoa_base(value, 16, 'a');
 	else
 		ptr = ft_itoa_base(value, 16, 'A');

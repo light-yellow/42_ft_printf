@@ -4,7 +4,6 @@ int main()
 {
 	int s;
 	int *p;
-	t_flags *flags;
 
 	s = 5;
 	p = &s;

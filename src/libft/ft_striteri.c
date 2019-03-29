@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_str.c                                     :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bdudley <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: jgoyette <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/26 16:36:05 by bdudley           #+#    #+#             */
-/*   Updated: 2019/03/29 19:33:01 by jgoyette         ###   ########.fr       */
+/*   Created: 2018/12/09 18:50:50 by jgoyette          #+#    #+#             */
+/*   Updated: 2018/12/09 18:51:21 by jgoyette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../ft_printf.h"
-
-int	ft_print_str(char **str, va_list *ap)
+void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
-	char *ptr;
+	unsigned int i;
 
-	ptr = va_arg(*ap, char*);
-	ft_putstr(ptr);
-	*str += 1;
-	return (ft_strlen(ptr));
+	i = 0;
+	if (s && f)
+	{
+		while (s[i])
+		{
+			f(i, &s[i]);
+			i += 1;
+		}
+	}
 }

@@ -1,23 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_str.c                                     :+:      :+:    :+:   */
+/*   ft_lstaddend.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bdudley <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: jgoyette <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/26 16:36:05 by bdudley           #+#    #+#             */
-/*   Updated: 2019/03/29 19:33:01 by jgoyette         ###   ########.fr       */
+/*   Created: 2018/12/11 14:33:13 by jgoyette          #+#    #+#             */
+/*   Updated: 2018/12/11 14:34:46 by jgoyette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../ft_printf.h"
+#include "libft.h"
 
-int	ft_print_str(char **str, va_list *ap)
+void	ft_lstaddend(t_list **alst, t_list *new)
 {
-	char *ptr;
+	t_list	*tmp;
 
-	ptr = va_arg(*ap, char*);
-	ft_putstr(ptr);
-	*str += 1;
-	return (ft_strlen(ptr));
+	if (alst && new)
+	{
+		tmp = *alst;
+		if (tmp)
+		{
+			while (tmp->next)
+				tmp = tmp->next;
+			tmp->next = new;
+		}
+		else
+			*alst = new;
+	}
 }

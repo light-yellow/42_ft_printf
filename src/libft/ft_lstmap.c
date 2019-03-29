@@ -1,29 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_handle_flags.c                                  :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgoyette <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/29 19:38:35 by jgoyette          #+#    #+#             */
-/*   Updated: 2019/03/29 19:38:44 by jgoyette         ###   ########.fr       */
+/*   Created: 2018/12/11 14:29:09 by jgoyette          #+#    #+#             */
+/*   Updated: 2018/12/11 14:29:45 by jgoyette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "libft.h"
 
-void	ft_init_flags(t_flags *flags)
+static void	ft_del(void *content, size_t content_size)
 {
-	flags->length = 0;
-	flags->hash = 0;
-	flags->zero = 0;
-	flags->minus = 0;
-	flags->plus = 0;
-	flags->width = 0;
-	flags->precision = 0;
+	(void)content_size;
+	ft_memdel(content);
 }
 
-void	ft_handle_flags(char **str, t_flags *flags)
+t_list		*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
-	printf("\nздесь я обработаю флаги");
+	t_list	*alst;
+	t_list	*tmp;
+
+	alst = NULL;
+	while (lst && f)
+	{
+		tmp = (*f)(lst);
+		if (tmp)
+			ft_lstaddend(&alst, tmp);
+		else
+		{
+			ft_lstdel(&alst, &ft_del);
+			return (NULL);
+		}
+		lst = lst->next;
+	}
+	return (alst);
 }

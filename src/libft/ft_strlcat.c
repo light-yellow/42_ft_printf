@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_handle_flags.c                                  :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgoyette <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/29 19:38:35 by jgoyette          #+#    #+#             */
-/*   Updated: 2019/03/29 19:38:44 by jgoyette         ###   ########.fr       */
+/*   Created: 2018/11/29 09:12:30 by jgoyette          #+#    #+#             */
+/*   Updated: 2018/11/29 09:33:03 by jgoyette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "libft.h"
 
-void	ft_init_flags(t_flags *flags)
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	flags->length = 0;
-	flags->hash = 0;
-	flags->zero = 0;
-	flags->minus = 0;
-	flags->plus = 0;
-	flags->width = 0;
-	flags->precision = 0;
-}
+	size_t	dst_i;
+	size_t	src_i;
+	size_t	len;
 
-void	ft_handle_flags(char **str, t_flags *flags)
-{
-	printf("\nздесь я обработаю флаги");
+	src_i = 0;
+	dst_i = ft_strlen(dst);
+	len = ft_strlen(src);
+	len += (size <= dst_i) ? size : dst_i;
+	while (src[src_i] && (size_t)(dst_i + 1) < size)
+	{
+		dst[dst_i] = src[src_i];
+		dst_i += 1;
+		src_i += 1;
+	}
+	dst[dst_i] = '\0';
+	return (len);
 }

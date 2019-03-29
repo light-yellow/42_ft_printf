@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_handle_flags.c                                  :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgoyette <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/29 19:38:35 by jgoyette          #+#    #+#             */
-/*   Updated: 2019/03/29 19:38:44 by jgoyette         ###   ########.fr       */
+/*   Created: 2018/12/09 18:48:15 by jgoyette          #+#    #+#             */
+/*   Updated: 2018/12/09 18:48:17 by jgoyette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "libft.h"
 
-void	ft_init_flags(t_flags *flags)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	flags->length = 0;
-	flags->hash = 0;
-	flags->zero = 0;
-	flags->minus = 0;
-	flags->plus = 0;
-	flags->width = 0;
-	flags->precision = 0;
-}
+	size_t	len;
+	char	*result;
 
-void	ft_handle_flags(char **str, t_flags *flags)
-{
-	printf("\nздесь я обработаю флаги");
+	result = NULL;
+	if (s1 && s2)
+	{
+		len = ft_strlen((char *)s1) + ft_strlen((char *)s2);
+		result = ft_strnew(len);
+		if (result)
+		{
+			ft_strcpy(result, s1);
+			ft_strcat(result, s2);
+		}
+	}
+	return (result);
 }

@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_handle_flags.c                                  :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgoyette <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/29 19:38:35 by jgoyette          #+#    #+#             */
-/*   Updated: 2019/03/29 19:38:44 by jgoyette         ###   ########.fr       */
+/*   Created: 2018/12/09 18:54:32 by jgoyette          #+#    #+#             */
+/*   Updated: 2018/12/09 18:54:43 by jgoyette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "libft.h"
 
-void	ft_init_flags(t_flags *flags)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	flags->length = 0;
-	flags->hash = 0;
-	flags->zero = 0;
-	flags->minus = 0;
-	flags->plus = 0;
-	flags->width = 0;
-	flags->precision = 0;
-}
+	size_t			i;
+	unsigned char	*ptr_dst;
+	unsigned char	*ptr_src;
 
-void	ft_handle_flags(char **str, t_flags *flags)
-{
-	printf("\nздесь я обработаю флаги");
+	i = 0;
+	ptr_dst = (unsigned char *)dst;
+	ptr_src = (unsigned char *)src;
+	while (i < n)
+	{
+		ptr_dst[i] = ptr_src[i];
+		i += 1;
+	}
+	return (dst);
 }

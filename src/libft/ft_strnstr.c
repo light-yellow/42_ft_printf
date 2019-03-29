@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_handle_flags.c                                  :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgoyette <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/29 19:38:35 by jgoyette          #+#    #+#             */
-/*   Updated: 2019/03/29 19:38:44 by jgoyette         ###   ########.fr       */
+/*   Created: 2018/11/29 09:11:33 by jgoyette          #+#    #+#             */
+/*   Updated: 2018/11/29 10:12:52 by jgoyette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "libft.h"
 
-void	ft_init_flags(t_flags *flags)
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	flags->length = 0;
-	flags->hash = 0;
-	flags->zero = 0;
-	flags->minus = 0;
-	flags->plus = 0;
-	flags->width = 0;
-	flags->precision = 0;
-}
+	size_t	i;
+	size_t	j;
 
-void	ft_handle_flags(char **str, t_flags *flags)
-{
-	printf("\nздесь я обработаю флаги");
+	i = 0;
+	if (needle[0] == '\0')
+		return ((char *)haystack);
+	while (haystack[i] && i < len)
+	{
+		j = 0;
+		while (needle[j] && haystack[i + j] == needle[j] && i + j < len)
+			j += 1;
+		if (needle[j] == '\0')
+			return ((char *)&haystack[i]);
+		i += 1;
+	}
+	return (NULL);
 }
