@@ -6,7 +6,7 @@
 /*   By: bdudley <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 11:55:23 by bdudley           #+#    #+#             */
-/*   Updated: 2019/03/29 18:16:22 by bdudley          ###   ########.fr       */
+/*   Updated: 2019/03/29 18:31:40 by bdudley          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,26 +56,6 @@ int	ft_call_type_print(char **format_spec, va_list *ap)
 	return (1);
 }
 
-/*int	ft_print_format(char **str, va_list *ap)
-{
-//	t_flags	flags;
-
-	*str += 1;
-//	ft_init_flags(&flags);
-	if (**str)
-	{
-//		ft_handle_flags(str, flags);
-		if (ft_isalpha(**str) || **str == '%')
-			return (ft_call_type_print(str, ap));
-	}
-//	return (0);
-//}
-	else
-		printf("\nhenlo\n");
-		//return (ft_no_format_spec(ap));
-	return (1);
-}
-
 int	ft_print_format(char **str, va_list *ap)
 {
 	t_flags	flags;
@@ -85,26 +65,6 @@ int	ft_print_format(char **str, va_list *ap)
 	if (**str)
 	{
 		ft_handle_flags(str, flags);
-		if (ft_isalpha(**str) || **str == '%')
-			return (ft_call_type_print(str, ap));
-	}
-	return (0);
-}
-	else
-		printf("\nhenlo\n");
-		return (ft_no_format_spec(ap));
-	return (1);
-}*/
-
-int	ft_print_format(char **str, va_list *ap)
-{
-	t_flags	flags;
-
-	*str += 1;
-	//ft_init_flags(&flags);
-	if (**str)
-	{
-	//	ft_handle_flags(str, flags);
 		if (ft_isalpha(**str) || **str == '%')
 			return (ft_call_type_print(str, ap));
 	}
