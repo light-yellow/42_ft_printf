@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_itoa_base.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jgoyette <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/03/29 18:44:57 by jgoyette          #+#    #+#             */
+/*   Updated: 2019/03/29 19:13:54 by jgoyette         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-int	ft_numlen(unsigned int num, int base)
+int		ft_numlen(unsigned int num, unsigned int base)
 {
 	int	len;
 
@@ -23,15 +35,15 @@ char	ft_getchar(int num, char letter_case)
 
 char	*ft_itoa_base(int value, int base, char letter_case)
 {
-	int		sign;
+	int				sign;
 	unsigned int	num;
-	char		*result;
-	int		len;
+	char			*result;
+	int				len;
 
 	sign = (value < 0 && base == 10) ? 1 : 0;
 	num = (value < 0) ? -value : value;
-	len = ft_numlen(num, base) + sign;
-	if (result = ft_strnew((size_t)len))
+	len = ft_numlen(num, (unsigned int)base) + sign;
+	if ((result = ft_strnew((size_t)len)))
 	{
 		while (len > 0)
 		{

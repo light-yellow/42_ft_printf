@@ -6,7 +6,7 @@
 /*   By: bdudley <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 11:55:23 by bdudley           #+#    #+#             */
-/*   Updated: 2019/03/29 18:31:40 by bdudley          ###   ########.fr       */
+/*   Updated: 2019/03/29 18:39:41 by jgoyette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int	ft_print_format(char **str, va_list *ap)
 	ft_init_flags(&flags);
 	if (**str)
 	{
-		ft_handle_flags(str, flags);
+		ft_handle_flags(str, &flags);
 		if (ft_isalpha(**str) || **str == '%')
 			return (ft_call_type_print(str, ap));
 	}
@@ -74,7 +74,6 @@ int	ft_print_format(char **str, va_list *ap)
 int	ft_printf(const char* format, ...)
 {
 	va_list	ap;
-//	char	*ptr;
 	int	nbytes;
 	char	*str;
 
