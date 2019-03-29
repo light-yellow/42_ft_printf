@@ -32,8 +32,7 @@ int		ft_printf(const char *format, ...);
 int		ft_print_char(char **str, va_list *ap);
 int		ft_print_str(char **str, va_list *ap);
 int		ft_print_pointer(char **str, va_list *ap);
-char		*ft_itoa_base(uintmax_t num, uintmax_t base, char c);
 void    	ft_init_flags(t_flags *flags);
-void    	ft_handle_flags(char *str, t_flags *flags);
+void    	ft_handle_flags(char **str, t_flags *flags);
 
 #endif

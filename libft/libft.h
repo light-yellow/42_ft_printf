@@ -91,5 +91,6 @@ int					ft_isupper(int c);
 int					ft_isspace(int c);
 void				*ft_memdup(void const *src, size_t size);
 void				ft_lstaddend(t_list **alst, t_list *new);
+char				*ft_itoa_base(int value, int base, char letter_case);
 
 #endif
