@@ -12,19 +12,6 @@
 
 #include "libft.h"
 
-int		ft_numlen(unsigned int num, unsigned int base)
-{
-	int	len;
-
-	len = 1;
-	while (num >= base)
-	{
-		num /= base;
-		len += 1;
-	}
-	return (len);
-}
-
 char	ft_getchar(int num, char letter_case)
 {
 	if (num < 10)

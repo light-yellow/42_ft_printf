@@ -42,6 +42,27 @@ int		ft_parse_flags(char **str, t_flags *flags)
 	return (1);
 }
 
+int	ft_handle_width(char **str, t_flags *flags)
+{
+	int	width;
+	if (width = ft_atoi(*str) > 0)
+	{
+		flags->width = width;
+		*str += ft_numlen((unsigned int)width, (unsigned int)10); 
+		return (1);
+	}
+	return (0);
+}
+
+int	ft_handle_precision(char **str, t_flags *flags)
+{
+	if (**str == '.')
+	{
+
+	}
+	return (0);
+}
+
 void	ft_handle_flags(char **str, t_flags *flags)
 {
 	printf("%d", flags->length);
