@@ -42,7 +42,7 @@ int		ft_parse_flags(char **str, t_flags *flags)
 	return (1);
 }
 
-int	ft_handle_width(char **str, t_flags *flags)
+int	ft_parse_width(char **str, t_flags *flags)
 {
 	int	width;
 	if (width = ft_atoi(*str) > 0)
@@ -54,11 +54,19 @@ int	ft_handle_width(char **str, t_flags *flags)
 	return (0);
 }
 
-int	ft_handle_precision(char **str, t_flags *flags)
+int	ft_parse_precision(char **str, t_flags *flags)
 {
+	int	precision;
+
 	if (**str == '.')
 	{
-
+		*str += 1;
+		if (precision = ft_atoi(*str) > 0)
+		{
+			flags->precision = precision;
+			*str += ft_numlen((unsigned int)precision, (unsigned int)10);
+		}
+		return (1);
 	}
 	return (0);
 }
