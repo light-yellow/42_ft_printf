@@ -38,6 +38,8 @@ int				ft_print_integer(char **str, va_list *ap);
 int				ft_print_pointer(char **str, va_list *ap);
 int				ft_print_hex(char **str, va_list *ap);
 int				ft_print_octal(char **str, va_list *ap);
+int				ft_print_unsigned(char **str, va_list *ap);
+int				ft_print_double(char **str, va_list *ap);
 void			ft_init_flags(t_flags *flags);
 void			ft_handle_flags(char **str, t_flags *flags);
 
