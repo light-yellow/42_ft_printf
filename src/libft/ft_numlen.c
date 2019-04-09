@@ -6,7 +6,7 @@
 /*   By: jgoyette <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 10:49:26 by jgoyette          #+#    #+#             */
-/*   Updated: 2019/04/08 10:50:55 by jgoyette         ###   ########.fr       */
+/*   Updated: 2019/04/09 17:15:05 by jgoyette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@ int	ft_numlen(unsigned int num, unsigned int base)
 {
 	int len;
 
-	ilen = 1;
+	len = 1;
 	while (num >= base)
 	{
 		num /= base;

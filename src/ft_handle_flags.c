@@ -6,7 +6,7 @@
 /*   By: jgoyette <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 19:38:35 by jgoyette          #+#    #+#             */
-/*   Updated: 2019/03/29 20:38:28 by bdudley          ###   ########.fr       */
+/*   Updated: 2019/04/09 17:17:32 by jgoyette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int		ft_parse_flags(char **str, t_flags *flags)
 int	ft_parse_width(char **str, t_flags *flags)
 {
 	int	width;
-	if (width = ft_atoi(*str) > 0)
+	if ((width = ft_atoi(*str)) > 0)
 	{
 		flags->width = width;
 		*str += ft_numlen((unsigned int)width, (unsigned int)10); 
@@ -61,7 +61,7 @@ int	ft_parse_precision(char **str, t_flags *flags)
 	if (**str == '.')
 	{
 		*str += 1;
-		if (precision = ft_atoi(*str) > 0)
+		if ((precision = ft_atoi(*str)) > 0)
 		{
 			flags->precision = precision;
 			*str += ft_numlen((unsigned int)precision, (unsigned int)10);
