@@ -6,7 +6,7 @@
 /*   By: jgoyette <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 19:38:35 by jgoyette          #+#    #+#             */
-/*   Updated: 2019/04/09 17:17:32 by jgoyette         ###   ########.fr       */
+/*   Updated: 2019/04/09 18:02:34 by jgoyette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,23 +71,22 @@ int	ft_parse_precision(char **str, t_flags *flags)
 	return (0);
 }
 
-/*
 int	ft_parse_length(char **str, t_flags *flags)
 {
 	if (**str == 'h')
 	{
-		if (*(*str + 1) == 'h')
-		{
-			flags->length = LEN_HH;
-		}
+		flags->length = (*(*str + 1) == 'h') ? LEN_HH : LEN_H;
+		*str += (*(*str + 1) == 'h') ? 2 : 1;
 	}
 	else if (**str == 'l')
-	{}
+	{
+		flags->length = (*(*str + 1) == 'l') ? LEN_LL : LEN_L;
+		*str += (*(*str + 1) == 'h') ? 2 : 1;
+	}
 	else
 		return (0);
 	return (1);
 }
-*/
 
 void	ft_handle_flags(char **str, t_flags *flags)
 {
