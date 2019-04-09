@@ -71,6 +71,24 @@ int	ft_parse_precision(char **str, t_flags *flags)
 	return (0);
 }
 
+/*
+int	ft_parse_length(char **str, t_flags *flags)
+{
+	if (**str == 'h')
+	{
+		if (*(*str + 1) == 'h')
+		{
+			flags->length = LEN_HH;
+		}
+	}
+	else if (**str == 'l')
+	{}
+	else
+		return (0);
+	return (1);
+}
+*/
+
 void	ft_handle_flags(char **str, t_flags *flags)
 {
 	printf("%d", flags->length);
