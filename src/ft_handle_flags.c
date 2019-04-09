@@ -6,7 +6,7 @@
 /*   By: jgoyette <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 19:38:35 by jgoyette          #+#    #+#             */
-/*   Updated: 2019/04/09 18:02:34 by jgoyette         ###   ########.fr       */
+/*   Updated: 2019/04/09 18:23:37 by jgoyette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,5 +90,8 @@ int	ft_parse_length(char **str, t_flags *flags)
 
 void	ft_handle_flags(char **str, t_flags *flags)
 {
-	printf("%d", flags->length);
+	int found_flags = 0;
+	while (ft_parse_length(str, flags) || ft_parse_flags(str, flags) ||
+			ft_parse_width(str, flags) || ft_parse_precision(str, flags))
+		found_flags += 1;
 }

@@ -6,7 +6,7 @@
 /*   By: bdudley <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 11:55:23 by bdudley           #+#    #+#             */
-/*   Updated: 2019/03/29 20:37:34 by bdudley          ###   ########.fr       */
+/*   Updated: 2019/04/09 18:11:37 by jgoyette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,10 +71,9 @@ int	ft_print_format(char **str, va_list *ap)
 	return (0);
 }
 
-int	ft_printf(const char* format, ...)
+int	ft_printf(const char *format, ...)
 {
 	va_list	ap;
-//	char	*ptr;
 	int	nbytes;
 	char	*str;
 
