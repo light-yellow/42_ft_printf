@@ -19,7 +19,7 @@ int	ft_print_double(char **str, va_list *ap)
 	char *ptr;
 
 	value = va_arg(*ap, double);
-	ptr = ft_ftoa_base(value, 10, 'a');
+	ptr = ft_itoa_base(value, 10, 'a');
 	counter = ft_strlen(ptr);
 	ft_putstr(ptr);
 	free(ptr);

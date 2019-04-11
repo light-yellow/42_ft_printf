@@ -58,28 +58,28 @@ int	ft_call_type_print(char **format_spec, va_list *ap)
 
 int	ft_print_format(char **str, va_list *ap)
 {
-	t_flags	flags;
+	t_format	format;
 
 	*str += 1;
-	ft_init_flags(&flags);
+	ft_init_format(&format);
 	if (**str)
 	{
-		ft_handle_flags(str, &flags);
+		ft_handle_optionals(str, &format);
 		if (ft_isalpha(**str) || **str == '%')
 			return (ft_call_type_print(str, ap));
 	}
 	return (0);
 }
 
-int	ft_printf(const char *format, ...)
+int	ft_printf(const char *format_string, ...)
 {
 	va_list	ap;
 	int	nbytes;
 	char	*str;
 
 	nbytes = 0;
-	str = (char *)format;
-	va_start(ap, format);
+	str = (char *)format_string;
+	va_start(ap, format_string);
 	if (str == NULL)
 		return (-1);
 	while (str != NULL)

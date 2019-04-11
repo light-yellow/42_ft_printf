@@ -17,35 +17,39 @@
 # include <stdio.h>
 # include "src/libft/libft.h"
 
-# define LEN_H 1
-# define LEN_HH 2
-# define LEN_L 3
-# define LEN_LL 4
+# define LEN_H	1
+# define LEN_HH	2
+# define LEN_L	3
+# define LEN_LL	4
 
-typedef struct	s_flags
+typedef struct	s_format
 {
-	int			length;
-	int			hash;
-	int			zero;
-	int			minus;
-	int			plus;
-	int			space;
-	int			width;
-	int			precision;
-}				t_flags;
+	int	length;
+	int	hash;
+	int	zero;
+	int	minus;
+	int	plus;
+	int	space;
+	int	width;
+	int	precision;
+}		t_format;
 
-int				ft_printf(const char *format, ...);
-int				ft_print_char(char **str, va_list *ap);
-int				ft_print_str(char **str, va_list *ap);
-int				ft_print_percent(char **str, va_list *ap);
-int				ft_print_binary(char **str, va_list *ap);
-int				ft_print_integer(char **str, va_list *ap);
-int				ft_print_pointer(char **str, va_list *ap);
-int				ft_print_hex(char **str, va_list *ap);
-int				ft_print_octal(char **str, va_list *ap);
-int				ft_print_unsigned(char **str, va_list *ap);
-int				ft_print_double(char **str, va_list *ap);
-void			ft_init_flags(t_flags *flags);
-void			ft_handle_flags(char **str, t_flags *flags);
+int		ft_printf(const char *format_string, ...);
+int		ft_print_char(char **str, va_list *ap);
+int		ft_print_str(char **str, va_list *ap);
+int		ft_print_percent(char **str, va_list *ap);
+int		ft_print_binary(char **str, va_list *ap);
+int		ft_print_integer(char **str, va_list *ap);
+int		ft_print_pointer(char **str, va_list *ap);
+int		ft_print_hex(char **str, va_list *ap);
+int		ft_print_octal(char **str, va_list *ap);
+int		ft_print_unsigned(char **str, va_list *ap);
+int		ft_print_double(char **str, va_list *ap);
+void		ft_init_format(t_format *format);
+void		ft_handle_optionals(char **str, t_format *format);
+void		ft_parse_flags(char **str, t_format *format);
+void		ft_parse_width(char **str, t_format *format);
+void		ft_parse_precision(char **str, t_format *format);
+void		ft_parse_length(char **str, t_format *format);
 
 #endif
