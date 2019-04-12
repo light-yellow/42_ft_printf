@@ -32,24 +32,24 @@ int	ft_print_until_percent(char **str)
 	return (str_len);
 }
 
-int	ft_call_type_print(char **format_spec, va_list *ap)
+int	ft_call_type_print(char **format_id, va_list *ap)
 {
-	if (**format_spec == 'c')
-		return (ft_print_char(format_spec, ap));
-	else if (**format_spec == 's')
-		return (ft_print_str(format_spec, ap));
-	else if (**format_spec == 'p')
-		return (ft_print_pointer(format_spec, ap));
-	else if (**format_spec == '%')
-		return (ft_print_percent(format_spec, ap));
-	else if (**format_spec == 'b')
-		return (ft_print_binary(format_spec, ap));
-	else if (**format_spec == 'd' || **format_spec == 'i')
-		return (ft_print_integer(format_spec, ap));
-	else if (**format_spec == 'o')
-		return (ft_print_octal(format_spec, ap));
-	else if (**format_spec == 'x' || **format_spec == 'X')
-		return (ft_print_hex(format_spec, ap));
+	if (**format_id == 'c')
+		return (ft_print_char(format_id, ap));
+	else if (**format_id == 's')
+		return (ft_print_str(format_id, ap));
+	else if (**format_id == 'p')
+		return (ft_print_pointer(format_id, ap));
+	else if (**format_id == '%')
+		return (ft_print_percent(format_id, ap));
+	else if (**format_id == 'b')
+		return (ft_print_binary(format_id, ap));
+	else if (**format_id == 'd' || **format_id == 'i')
+		return (ft_print_integer(format_id, ap));
+	else if (**format_id == 'o')
+		return (ft_print_octal(format_id, ap));
+	else if (**format_id == 'x' || **format_id == 'X')
+		return (ft_print_hex(format_id, ap));
 	else
 		printf("\nhenlo\n");
 		//return (ft_no_format_spec(ap));
@@ -82,7 +82,7 @@ int	ft_printf(const char *format_string, ...)
 	va_start(ap, format_string);
 	if (str == NULL)
 		return (-1);
-	while (str != NULL)
+	while (*str != NULL)
 	{
 		if (*str == '%')
 			nbytes += ft_print_format(&str, &ap);

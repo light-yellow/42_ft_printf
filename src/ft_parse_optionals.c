@@ -30,6 +30,10 @@ void	ft_parse_flags(char **str, t_format *format)
 			break ;
 		*str += 1;
 	}
+	//if (format->minus)
+	//	format->zero = 0;
+	//if (format->plus)
+	//	format->space = 0;
 }
 
 void	ft_parse_width(char **str, t_format *format)
@@ -69,5 +73,13 @@ void	ft_parse_length(char **str, t_format *format)
 	{
 		format->length = (*(*str + 1) == 'l') ? LEN_LL : LEN_L;
 		*str += (*(*str + 1) == 'h') ? 2 : 1;
+	}
+	else if (**str == 'j')
+	{
+		//add code
+	}
+	else if (**str == 'z')
+	{
+		//add code
 	}
 }
