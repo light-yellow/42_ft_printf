@@ -12,7 +12,7 @@
 
 #include "../../ft_printf.h"
 
-int	ft_print_integer(char **str, va_list *ap)
+int	ft_print_unsigned(char **str, va_list *ap)
 {
 	unsigned long value;
 	int		counter;
