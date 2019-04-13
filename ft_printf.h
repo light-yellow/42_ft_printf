@@ -36,8 +36,8 @@ typedef struct	s_format
 
 int		ft_printf(const char *format_string, ...);
 void		ft_putpad(int nspaces);
-int		ft_print_char(char **str, va_list *ap);
-int		ft_print_str(char **str, va_list *ap);
+int		ft_print_char(char **str, va_list *ap, t_format *format);
+int		ft_print_str(char **str, va_list *ap, t_format *format);
 int		ft_print_percent(char **str, va_list *ap);
 int		ft_print_binary(char **str, va_list *ap);
 int		ft_print_integer(char **str, va_list *ap);

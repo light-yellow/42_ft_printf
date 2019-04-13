@@ -34,11 +34,11 @@ int	ft_print_until_percent(char **str)
 
 int	ft_call_type_print(char **format_id, va_list *ap, t_format *format)
 {
-	/*if (**format_id == 'c')
-		return (ft_print_char(format_id, ap));
-	else if (**format_id == 's')
-		return (ft_print_str(format_id, ap));
-	else*/ if (**format_id == 'p')
+	if (**format_id == 'c')
+		return (ft_print_char(format_id, ap, format));
+	/*else if (**format_id == 's')
+		return (ft_print_str(format_id, ap, format));
+	*/else if (**format_id == 'p')
 		return (ft_print_pointer(format_id, ap, format));
 	/*else if (**format_id == '%')
 		return (ft_print_percent(format_id, ap));
