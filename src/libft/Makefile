@@ -24,7 +24,7 @@ SRCS = ft_atoi.c ft_bzero.c ft_isalnum.c ft_isalpha.c ft_isascii.c \
 	   ft_strmap.c ft_strmapi.c ft_strncat.c ft_strncmp.c ft_strncpy.c \
 	   ft_strndup.c ft_strnequ.c ft_strnew.c ft_strnjoin.c ft_strnstr.c \
 	   ft_strrchr.c ft_strsplit.c ft_strstr.c ft_strsub.c ft_strtrim.c \
-	   ft_tolower.c ft_toupper.c ft_itoa_base.c ft_numlen.c
+	   ft_tolower.c ft_toupper.c ft_itoa_base.c ft_numlen.c ft_maxnum.c
 OBJS = $(SRCS:.c=.o)
 CFLAGS = -Wall -Wextra -Werror
 INCLUDES = .

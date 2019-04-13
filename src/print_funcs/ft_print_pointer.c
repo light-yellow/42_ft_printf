@@ -12,15 +12,24 @@
 
 #include "../../ft_printf.h"
 
-int	ft_print_pointer(char **str, va_list *ap)
+int	ft_print_pointer(char **str, va_list *ap, t_format *format)
 {
 	unsigned long	value;
-	char			*ptr;
+	char		*ptr;
+	int		ptr_len;
+	int		padding;
 
 	value = va_arg(*ap, unsigned long);
 	ptr = ft_itoa_base(value, 16, 'a');
+	ptr_len = ft_strlen(ptr) + 2;
+	padding = ft_maxnum(format->min_width - ptr_len, 0);
+	if (padding > 0 && format->minus == 0)
+		ft_putpad(padding);
 	ft_putstr("0x");
 	ft_putstr(ptr);
+	if (padding > 0 && format->minus == 1)
+               ft_putpad(padding);
 	*str += 1;
-	return (2 + ft_strlen(ptr));
+	free(ptr);
+	return (ptr_len + padding);
 }

@@ -8,7 +8,7 @@ void    ft_init_format(t_format *format)
         format->minus = 0;
         format->plus = 0;
         format->space = 0;
-        format->width = 0;
+        format->min_width = 0;
         format->precision = 0;
 }
 

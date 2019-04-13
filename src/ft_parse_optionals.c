@@ -30,10 +30,10 @@ void	ft_parse_flags(char **str, t_format *format)
 			break ;
 		*str += 1;
 	}
-	//if (format->minus)
-	//	format->zero = 0;
-	//if (format->plus)
-	//	format->space = 0;
+	if (format->minus)
+		format->zero = 0;
+	if (format->plus)
+		format->space = 0;
 }
 
 void	ft_parse_width(char **str, t_format *format)
@@ -42,7 +42,7 @@ void	ft_parse_width(char **str, t_format *format)
 
 	if ((width = ft_atoi(*str)) > 0)
 	{
-		format->width = width;
+		format->min_width = width;
 		*str += ft_numlen((unsigned int)width, (unsigned int)10); 
 	}
 }

@@ -93,5 +93,6 @@ void				*ft_memdup(void const *src, size_t size);
 void				ft_lstaddend(t_list **alst, t_list *new);
 char				*ft_itoa_base(int value, int base, char letter_case);
 int				ft_numlen(unsigned int num, unsigned int base);
+int     ft_maxnum(int num1, int num2);
 
 #endif
