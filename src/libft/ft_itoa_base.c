@@ -6,13 +6,13 @@
 /*   By: jgoyette <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 18:44:57 by jgoyette          #+#    #+#             */
-/*   Updated: 2019/03/29 19:13:54 by jgoyette         ###   ########.fr       */
+/*   Updated: 2019/04/14 10:11:55 by jgoyette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	ft_getchar(int num, char letter_case)
+static	char	ft_getchar(int num, char letter_case)
 {
 	if (num < 10)
 		return (num + '0');

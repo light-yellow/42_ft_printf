@@ -6,7 +6,7 @@
 /*   By: bdudley <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 11:57:32 by bdudley           #+#    #+#             */
-/*   Updated: 2019/04/09 18:01:05 by jgoyette         ###   ########.fr       */
+/*   Updated: 2019/04/14 09:37:02 by jgoyette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@
 # define LEN_HH	2
 # define LEN_L	3
 # define LEN_LL	4
+# define LEN_J	5
+# define LEN_Z	6
 
 typedef struct	s_format
 {

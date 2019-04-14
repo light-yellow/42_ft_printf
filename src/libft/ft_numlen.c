@@ -6,11 +6,11 @@
 /*   By: jgoyette <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 10:49:26 by jgoyette          #+#    #+#             */
-/*   Updated: 2019/04/09 17:15:05 by jgoyette         ###   ########.fr       */
+/*   Updated: 2019/04/14 10:01:02 by jgoyette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_numlen(unsigned int num, unsigned int base)
+int	ft_numlen(unsigned long long num, unsigned long long base)
 {
 	int len;
 

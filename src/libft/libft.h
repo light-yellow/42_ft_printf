@@ -6,7 +6,7 @@
 /*   By: jgoyette <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 07:49:28 by jgoyette          #+#    #+#             */
-/*   Updated: 2018/12/11 17:12:43 by jgoyette         ###   ########.fr       */
+/*   Updated: 2019/04/14 10:07:15 by jgoyette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,8 @@ int					ft_isspace(int c);
 void				*ft_memdup(void const *src, size_t size);
 void				ft_lstaddend(t_list **alst, t_list *new);
 char				*ft_itoa_base(int value, int base, char letter_case);
-int				ft_numlen(unsigned int num, unsigned int base);
-int     ft_maxnum(int num1, int num2);
+int					ft_numlen(unsigned long long  num, unsigned long long base);
+int					ft_maxnum(int num1, int num2);
+char				*ft_ultoa_base(unsigned long long num, unsigned long long base, char letter_case);
 
 #endif

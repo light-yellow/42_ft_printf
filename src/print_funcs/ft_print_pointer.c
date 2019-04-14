@@ -6,7 +6,7 @@
 /*   By: bdudley <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/26 17:02:14 by bdudley           #+#    #+#             */
-/*   Updated: 2019/03/29 19:34:07 by jgoyette         ###   ########.fr       */
+/*   Updated: 2019/04/14 10:05:47 by jgoyette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	ft_print_pointer(char **str, va_list *ap, t_format *format)
 	int		padding;
 
 	value = va_arg(*ap, unsigned long);
-	ptr = ft_itoa_base(value, 16, 'a');
+	ptr = ft_ultoa_base(value, 16, 'a');
 	ptr_len = ft_strlen(ptr) + 2;
 	padding = ft_maxnum(format->min_width - ptr_len, 0);
 	if (padding > 0 && format->minus == 0)

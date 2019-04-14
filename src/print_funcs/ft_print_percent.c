@@ -6,7 +6,7 @@
 /*   By: bdudley <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 17:53:13 by bdudley           #+#    #+#             */
-/*   Updated: 2019/03/29 20:28:53 by bdudley          ###   ########.fr       */
+/*   Updated: 2019/04/14 09:32:23 by jgoyette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	ft_print_percent(char **str, va_list *ap)
 {
-//	ft_putchar(va_arg(*ap, int));
 	ft_putchar('%');
 	*str += 1;
 	return (1);
