@@ -29,8 +29,8 @@ char	*ft_itoa_base(int value, int base, char letter_case)
 
 	sign = (value < 0 && base == 10) ? 1 : 0;
 	num = (value < 0) ? -value : value;
-	len = ft_numlen(num, (unsigned int)base) + sign;
-	if ((result = ft_strnew((size_t)len)))
+	len = ft_numlen(num, base) + sign;
+	if ((result = ft_strnew(len)))
 	{
 		while (len > 0)
 		{

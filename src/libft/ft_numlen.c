@@ -10,12 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_numlen(unsigned long long num, unsigned long long base)
+int	ft_numlen(unsigned long long num, int base)
 {
 	int len;
 
 	len = 1;
-	while (num >= base)
+	while (num >= (unsigned long long)base)
 	{
 		num /= base;
 		len += 1;

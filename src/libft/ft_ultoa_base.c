@@ -8,13 +8,13 @@ static	char	ft_getchar(int num, char letter_case)
 		return (num - 10 + letter_case);
 }
 
-char	*ft_ultoa_base(unsigned long long num, unsigned long long base, char letter_case)
+char	*ft_ultoa_base(unsigned long num, int base, char letter_case)
 {
 	char	*result;
 	int		len;
 
 	len = ft_numlen(num, base);
-	if ((result = ft_strnew((size_t)len)))
+	if ((result = ft_strnew(len)))
 	{
 		while (len > 0)
 		{
