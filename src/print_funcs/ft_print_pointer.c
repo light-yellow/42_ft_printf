@@ -20,7 +20,7 @@ int	ft_print_pointer(char **str, va_list *ap, t_format *format)
 	int		padding;
 
 	value = va_arg(*ap, unsigned long);
-	ptr = ft_ultoa_base(value, 16, 'a');
+	ptr = ft_ulltoa_base(value, 16, 'a');
 	ptr_len = ft_strlen(ptr) + 2;
 	padding = ft_maxnum(format->min_width - ptr_len, 0);
 	if (padding > 0 && format->minus == 0)

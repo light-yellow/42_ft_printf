@@ -23,5 +23,7 @@ int main()
 	//int n_bytes = ft_printf("henlo fren, |%%|  %x, %X, %d, %i, %o ====\n", 15, 15, 123, -123, 7);
 	//printf("\n%d\n", n_bytes);
 	//printf("\n octal = %s\n", ft_itoa_base(7, 8, 'a'));
+
+
 	return (0);
 }

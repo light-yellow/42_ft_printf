@@ -12,11 +12,11 @@
 
 #include "../../ft_printf.h"
 
-int	ft_print_integer(char **str, va_list *ap)
+int	ft_print_integer(char **str, va_list *ap, t_format *format)
 {
-	long value;
-	int		counter;
-	char *ptr;
+	int	value;
+	int	counter;
+	char	*ptr;
 
 	value = va_arg(*ap, int);
 	ptr = ft_itoa_base(value, 10, 'a');
