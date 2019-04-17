@@ -11,29 +11,33 @@
 /* ************************************************************************** */
 
 #include "../../ft_printf.h"
+#define BASE "0123456789abcdef"
 
-static void ft_print_code(int c)
+static int ft_print_code(int c)
 {
-
+    if (c >= 16)
+        return (ft_print_code(c / 16) + 1);
+    ft_putchar(BASE [c % 16]);
+    return (1);
 }
 
-int	ft_print_double(char **str, va_list *ap)
+int	ft_print_non_printable(char **str, va_list *ap)
 {
     char *ptr;
     int padding;
 
-    padding++:
+    padding++;
     ptr = va_arg(*ap, char*);
     while (*ptr != '\0')
     {
-        if (!(ft_isprint(ptr)))
+        if (!(ft_isprint(*ptr)))
         {
             ft_putchar('\\');
             if (*ptr < 16) {
                 padding++;
                 ft_putchar('0');
             }
-            ft_print_code(*ptr);
+            padding +=  ft_print_code(*ptr);
         }
         else
             ft_putchar(*ptr);
