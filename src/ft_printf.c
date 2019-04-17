@@ -46,9 +46,9 @@ int	ft_call_type_print(char **format_id, va_list *ap, t_format *format)
 		return (ft_print_binary(format_id, ap));
 	*/else if (**format_id == 'd' || **format_id == 'i')
 		return (ft_print_integer(format_id, ap, format));
-	else if (**format_id == 'o')
-		return (ft_print_octal(format_id, ap, format));
-	/*else if (**format_id == 'x' || **format_id == 'X')
+	/*else if (**format_id == 'o')
+		return (ft_print_octal(format_id, ap));
+	else if (**format_id == 'x' || **format_id == 'X')
 		return (ft_print_hex(format_id, ap));
 	*/else
 		printf("\nhenlo\n");
@@ -69,6 +69,18 @@ int	ft_print_format(char **str, va_list *ap)
 			return (ft_call_type_print(str, ap, &format));
 	}
 	return (0);
+}
+
+void	ft_putpad(int nchars, t_format *format)
+{
+	char	*c;
+
+	c = (format->zero == 1 && format->minus == 0) ? "0" : " ";
+	while (nchars > 0)
+	{
+		write(1, c, 1);
+		nchars -= 1;
+	}
 }
 
 int	ft_printf(const char *format_string, ...)
