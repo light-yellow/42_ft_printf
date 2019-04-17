@@ -24,11 +24,11 @@ int	ft_print_pointer(char **str, va_list *ap, t_format *format)
 	ptr_len = ft_strlen(ptr) + 2;
 	padding = ft_maxnum(format->min_width - ptr_len, 0);
 	if (padding > 0 && format->minus == 0)
-		ft_putpad(padding);
+		ft_putpad(padding, format);
 	ft_putstr("0x");
 	ft_putstr(ptr);
 	if (padding > 0 && format->minus == 1)
-               ft_putpad(padding);
+               ft_putpad(padding, format);
 	*str += 1;
 	free(ptr);
 	return (ptr_len + padding);

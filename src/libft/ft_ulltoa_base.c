@@ -8,7 +8,7 @@ static	char	ft_getchar(int num, char letter_case)
 		return (num - 10 + letter_case);
 }
 
-char	*ft_ulltoa_base(unsigned long long num, int base, char letter_case)
+char	*ft_ulltoa_base(uintmax_t num, int base, char letter_case)
 {
 	char	*result;
 	int		len;

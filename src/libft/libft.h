@@ -92,9 +92,9 @@ int				ft_isspace(int c);
 void				*ft_memdup(void const *src, size_t size);
 void				ft_lstaddend(t_list **alst, t_list *new);
 char				*ft_itoa_base(int value, int base, char letter_case);
-int				ft_numlen(unsigned long long  num, int base);
+int				ft_numlen(uintmax_t num, int base);
 int				ft_maxnum(int num1, int num2);
-char				*ft_ulltoa_base(unsigned long long num, int base, char letter_case);
-char				*ft_lltoa_base(long long value, int base, char letter_case);
+char				*ft_ulltoa_base(uintmax_t num, int base, char letter_case);
+char				*ft_lltoa_base(intmax_t value, int base, char letter_case);
 
 #endif

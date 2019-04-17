@@ -37,7 +37,7 @@ typedef struct	s_format
 }		t_format;
 
 int		ft_printf(const char *format_string, ...);
-void		ft_putpad(int nspaces);
+void		ft_putpad(int nchars, t_format *format);
 int		ft_print_char(char **str, va_list *ap, t_format *format);
 int		ft_print_str(char **str, va_list *ap, t_format *format);
 int		ft_print_percent(char **str, va_list *ap);

@@ -10,12 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_numlen(unsigned long long num, int base)
+#include "libft.h"
+
+int	ft_numlen(uintmax_t num, int base)
 {
 	int len;
 
 	len = 1;
-	while (num >= (unsigned long long)base)
+	while (num >= (uintmax_t)base)
 	{
 		num /= base;
 		len += 1;

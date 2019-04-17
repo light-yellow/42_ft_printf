@@ -20,12 +20,12 @@ static	char	ft_getchar(int num, char letter_case)
 		return (num - 10 + letter_case);
 }
 
-char	*ft_lltoa_base(long long value, int base, char letter_case)
+char	*ft_lltoa_base(intmax_t value, int base, char letter_case)
 {
-	int			sign;
-	unsigned long long	num;
-	char			*result;
-	int			len;
+	int		sign;
+	uintmax_t	num;
+	char		*result;
+	int		len;
 
 	sign = (value < 0 && base == 10) ? 1 : 0;
 	num = (value < 0) ? -value : value;
