@@ -37,9 +37,7 @@ typedef struct	s_format
 }		t_format;
 
 int		ft_printf(const char *format_string, ...);
-void		ft_putpad(int nchars, t_format *format, int pad_needed);
-void		ft_putprefix(intmax_t num, t_format *format);
-void		ft_putzeros(int nzeros);
+void		ft_putpad(int nchars, t_format *format);
 int		ft_print_char(char **str, va_list *ap, t_format *format);
 int		ft_print_str(char **str, va_list *ap, t_format *format);
 int		ft_print_percent(char **str, va_list *ap);
@@ -47,7 +45,7 @@ int		ft_print_binary(char **str, va_list *ap);
 int		ft_print_integer(char **str, va_list *ap, t_format *format);
 int		ft_print_pointer(char **str, va_list *ap, t_format *format);
 int		ft_print_hex(char **str, va_list *ap);
-int		ft_print_octal(char **str, va_list *ap, t_format *format);
+int		ft_print_octal(char **str, va_list *ap);
 int		ft_print_unsigned(char **str, va_list *ap);
 int		ft_print_double(char **str, va_list *ap);
 void		ft_init_format(t_format *format);
@@ -56,8 +54,5 @@ void		ft_parse_flags(char **str, t_format *format);
 void		ft_parse_width(char **str, t_format *format);
 void		ft_parse_precision(char **str, t_format *format);
 void		ft_parse_length(char **str, t_format *format);
-intmax_t	ft_cast_int(va_list *ap, t_format *format);
-uintmax_t	ft_cast_uint(va_list *ap, t_format *format);
-
 
 #endif

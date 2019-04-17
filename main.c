@@ -20,13 +20,9 @@ int main()
 //      printf("\nnbytes5: %d, nbytes6: %d\n", nbytes5, nbytes6);
 
 
-//      int nbytes7 = ft_printf("ft_printf - d: |%+010d|\n", 3);
-//      int nbytes8 = printf("printf    - d: |%+010d|\n", 3);
-//      printf("\nnbytes7: %d, nbytes8: %d\n", nbytes7, nbytes8);
-
-      int nbytes9 = ft_printf("ft_printf - o: |%-10.5d|\n", -110);
-      int nbytes10 = printf("printf    - o: |%-10.5d|\n", -110);
-      printf("\nnbytes9: %d, nbytes10: %d\n", nbytes9, nbytes10);
+      int nbytes7 = ft_printf("ft_printf - d: |%+010d|\n", 3);
+      int nbytes8 = printf("printf    - d: |%+010d|\n", 3);
+      printf("\nnbytes7: %d, nbytes8: %d\n", nbytes7, nbytes8);
 
 	//printf(" %.2.2f %f\n", 65.67876, 6.4567);
 	//int n_bytes = ft_printf("henlo fren, |%%|  %x, %X, %d, %i, %o ====\n", 15, 15, 123, -123, 7);
