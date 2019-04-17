@@ -12,27 +12,6 @@
 
 #include "../../ft_printf.h"
 
-intmax_t	ft_cast_int(va_list *ap, t_format *format)
-{
-	intmax_t	result;
-
-	if (format->length == LEN_H)
-		result = (intmax_t)((short)va_arg(*ap, int));
-	else if (format->length == LEN_HH)
-		result = (intmax_t)((char)va_arg(*ap, int));
-	else if (format->length == LEN_L)
-		result = (intmax_t)va_arg(*ap, long);
-	else if (format->length == LEN_LL)
-		result = (intmax_t)va_arg(*ap, long long);
-	else if (format->length == LEN_J)
-		result = va_arg(*ap, intmax_t);
-	else if (format->length == LEN_Z)
-		result = (intmax_t)va_arg(*ap, size_t);
-	else
-		result = (intmax_t)va_arg(*ap, int);
-	return (result);
-}
-
 int	ft_print_integer(char **str, va_list *ap, t_format *format)
 {
 	intmax_t	value;
@@ -42,24 +21,19 @@ int	ft_print_integer(char **str, va_list *ap, t_format *format)
 	int		padding;
 
 	value = ft_cast_int(ap, format);
-	if (format->precision != 0)
-		format->zero = 0;
-	ptr = ft_lltoa_base(value, 10, 'a');
-	ptr_len = ft_strlen(ptr);
-	len = (format->precision == -1) ? 0 : ptr_len;
-	len = (format->precision > 0 && format->precision <= ptr_len) ?
-					format->precision : ptr_len;
-	len += (value >= 0 && (format->plus == 1|| format->space == 1)) ? 1 : 0;
+	(format->precision != 0) ? format->zero = 0: 0;
+	ptr = ft_ulltoa_base((value < 0) ? -value : value, 10, 'a');
+	ptr_len = (value != 0 || format->precision != -1) ? ft_strlen(ptr) : 0;
+	len = (format->precision == -1 && value == 0) ? 0 : ptr_len;
+	len = (format->precision > ptr_len) ? format->precision : len;
+	if ((value >= 0 && (format->plus || format->space)) || value < 0)
+		len += 1;
 	padding = ft_maxnum(format->min_width - len, 0);
-	if (format->plus == 1)
-		write(1, "+", 1);
-	else if (format->space == 1)
-		write(1, " ", 1);
-	if (padding > 0 && format->minus == 0)
-		ft_putpad(padding, format);
-	write(1, ptr, len);
-	if (padding > 0 && format->minus == 1)
-		ft_putpad(padding, format);
+	ft_putpad(padding, format, format->minus == 0);
+	ft_putprefix(value, format);
+	ft_putzeros(format->precision - ptr_len);
+	write(1, ptr, ptr_len);
+	ft_putpad(padding, format, format->minus == 1);
 	*str += 1;
 	free(ptr);
 	return (len + padding);

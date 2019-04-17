@@ -12,17 +12,33 @@
 
 #include "../../ft_printf.h"
 
-int	ft_print_octal(char **str, va_list *ap)
+int	ft_print_octal(char **str, va_list *ap, t_format *format)
 {
-	unsigned int	value;
-	int				counter;
-	char			*ptr;
+	uintmax_t        value;
+        char            *ptr;
+        int             ptr_len;
+        int             len;
+        int             padding;
 
-	value = va_arg(*ap, unsigned int);
-	ptr = ft_itoa_base(value, 8, 'a');
-	counter = ft_strlen(ptr);
-	ft_putstr(ptr);
-	free(ptr);
-	*str += 1;
-	return (counter);
+        value = ft_cast_int(ap, format);
+        if (format->precision != 0)
+                format->zero = 0;
+        ptr = ft_ulltoa_base(value, 8, 'a');
+        ptr_len = ft_strlen(ptr);
+        len = (format->precision == -1) ? 0 : ptr_len;
+        len = (format->precision > 0 && format->precision <= ptr_len) ?
+                                        format->precision : ptr_len;
+        len += (value >= 0 && (format->plus == 1|| format->space == 1)) ? 1 : 0;
+        padding = ft_maxnum(format->min_width - len, 0);
+        if (format->plus == 1)
+                write(1, "+", 1);
+        else if (format->space == 1)
+                write(1, " ", 1);
+        ft_putpad(padding, format, format->minus == 0);
+        write(1, ptr, len);
+        ft_putpad(padding, format, format->minus == 1);
+        *str += 1;
+        free(ptr);
+        return (len + padding);
+
 }

@@ -12,7 +12,12 @@
 
 NAME = ft_printf
 FLAGS = #-Wall -Wextra -Werror
-SRCS  =  main.c src/ft_printf.c src/ft_handle_format.c src/ft_parse_optionals.c src/print_funcs/ft_print_char.c src/print_funcs/ft_print_str.c src/print_funcs/ft_print_pointer.c src/print_funcs/ft_print_percent.c src/print_funcs/ft_print_binary.c src/print_funcs/ft_print_integer.c src/print_funcs/ft_print_hex.c src/print_funcs/ft_print_octal.c
+SRCS  = main.c src/ft_printf.c src/ft_handle_format.c src/ft_parse_optionals.c \
+	src/utils/ft_cast_nums.c
+	src/print_funcs/ft_print_char.c src/print_funcs/ft_print_str.c \
+	src/print_funcs/ft_print_pointer.c src/print_funcs/ft_print_percent.c \
+	src/print_funcs/ft_print_binary.c src/print_funcs/ft_print_integer.c \
+	src/print_funcs/ft_print_hex.c src/print_funcs/ft_print_octal.c
 OBJS = $(SRCS:.c=.o)
 LIB = ./src/libft/libft.a
 

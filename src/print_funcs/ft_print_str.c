@@ -26,11 +26,9 @@ int	ft_print_str(char **str, va_list *ap, t_format *format)
 	len = (format->precision > 0 && format->precision <= ptr_len) ?
 									format->precision : ptr_len;
 	padding = ft_maxnum(format->min_width - len, 0);
-	if (padding > 0 && format->minus == 0)
-		ft_putpad(padding, format);
+	ft_putpad(padding, format, format->minus == 0);
 	write(1, ptr, len);
-	if (padding > 0 && format->minus == 1)
-		ft_putpad(padding, format);
+	ft_putpad(padding, format, format->minus == 1);
 	*str += 1;
 	return (len + padding);
 }
