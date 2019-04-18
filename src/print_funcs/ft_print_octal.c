@@ -12,33 +12,45 @@
 
 #include "../../ft_printf.h"
 
+static int      ft_calc_len(t_format *format, intmax_t num, int num_len)
+{
+        int len;
+
+        if (format->precision == -1 && num == 0)
+                len = 0;
+        else if (format->precision > num_len)
+                len = format->precision;
+        else
+                len = num_len;
+        if (format->hash && (num > 0 || format->precision == -1))
+                len += 1;
+        return (len);
+}
+
 int	ft_print_octal(char **str, va_list *ap, t_format *format)
 {
-	uintmax_t        value;
+	uintmax_t	value;
         char            *ptr;
         int             ptr_len;
         int             len;
         int             padding;
 
-        value = ft_cast_int(ap, format);
-        if (format->precision != 0)
+	if (format->precision != 0)
                 format->zero = 0;
-        ptr = ft_ulltoa_base(value, 8, 'a');
-        ptr_len = ft_strlen(ptr);
-        len = (format->precision == -1) ? 0 : ptr_len;
-        len = (format->precision > 0 && format->precision <= ptr_len) ?
-                                        format->precision : ptr_len;
-        len += (value >= 0 && (format->plus == 1|| format->space == 1)) ? 1 : 0;
+        if (**str == 'O')
+                format->length = LEN_L;
+        value = ft_cast_uint(ap, format);
+        ptr = ft_ulltoa_base((value < 0) ? -value : value, 8, 'a');
+        ptr_len = (value != 0 || format->precision != -1) ? ft_strlen(ptr) : 0;
+        len = ft_calc_len(format, value, ptr_len);
         padding = ft_maxnum(format->min_width - len, 0);
-        if (format->plus == 1)
-                write(1, "+", 1);
-        else if (format->space == 1)
-                write(1, " ", 1);
         ft_putpad(padding, format, format->minus == 0);
-        write(1, ptr, len);
+        ft_putzeros(format->precision - ptr_len);
+	if (format->hash && (value > 0 || format->precision == -1))
+		write(1, "0", 1);
+        write(1, ptr, ptr_len);
         ft_putpad(padding, format, format->minus == 1);
         *str += 1;
         free(ptr);
         return (len + padding);
-
 }
