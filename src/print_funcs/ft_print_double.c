@@ -21,6 +21,7 @@ static char *ft_put_double(double value)
 
     integer = ft_itoa_base((int)value, 10, 'a');
     fractional = ft_strnew(7);
+    value = value > 0 ? value : -value;
     value -= (int)value;
     fractional[0] = '.';
     counter = 1;
