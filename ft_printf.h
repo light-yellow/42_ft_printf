@@ -26,14 +26,14 @@
 
 typedef struct	s_format
 {
-	int	length;
-	int	hash;
-	int	zero;
-	int	minus;
-	int	plus;
-	int	space;
-	int	min_width;
-	int	precision;
+    int	length;
+    int	hash;
+    int	zero;
+    int	minus;
+    int	plus;
+    int	space;
+    int	min_width;
+    int	precision;
 }		t_format;
 
 int		ft_printf(const char *format_string, ...);
@@ -42,7 +42,7 @@ void		ft_putprefix(intmax_t num, t_format *format);
 void		ft_putzeros(int nzeros);
 int		ft_print_char(char **str, va_list *ap, t_format *format);
 int		ft_print_str(char **str, va_list *ap, t_format *format);
-int		ft_print_percent(char **str, va_list *ap);
+int		ft_print_non_printable(char **str, va_list *ap);
 int		ft_print_binary(char **str, va_list *ap);
 int		ft_print_integer(char **str, va_list *ap, t_format *format);
 int		ft_print_pointer(char **str, va_list *ap, t_format *format);

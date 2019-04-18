@@ -27,8 +27,8 @@ int main()
       int nbytes9 = ft_printf("ft_printf - o: |%+10.5o|\n", 110);
       int nbytes10 = printf("printf    - o: |%+10.5o|\n", 110);
       printf("\nnbytes9: %d, nbytes10: %d\n", nbytes9, nbytes10);
-
-	//printf(" %.2.2f %f\n", 65.67876, 6.4567);
+     
+      //printf(" %.2.2f %f\n", 65.67876, 6.4567);
 	//int n_bytes = ft_printf("henlo fren, |%%|  %x, %X, %d, %i, %o ====\n", 15, 15, 123, -123, 7);
 	//printf("\n%d\n", n_bytes);
 	//printf("\n octal = %s\n", ft_itoa_base(7, 8, 'a'));
