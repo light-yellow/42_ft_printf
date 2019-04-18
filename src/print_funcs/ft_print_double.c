@@ -12,6 +12,34 @@
 
 #include "../../ft_printf.h"
 
+static char *ft_put_double(double value)
+{
+    char *str;
+    char *integer;
+    char *fractional;
+    int counter;
+
+    integer = ft_itoa_base((int)value, 10, 'a');
+    fractional = ft_strnew(7);
+    value -= (int)value;
+    fractional[0] = '.';
+    counter = 1;
+    while (counter < 7)
+    {
+        if (counter == 6 && ((int)(value*100)% 10) > 4)
+            value += 0.1;
+        fractional[counter] = (int)(value*10) + '0';
+        value = value*10 - (int)(value*10);
+        counter++;
+    }
+    str = ft_strnew(ft_strlen(integer) + ft_strlen(fractional));
+    ft_strcpy(str, integer);
+    ft_strcpy(str + ft_strlen(integer), fractional);
+    free(integer);
+    free(fractional);
+    return(str);
+}
+
 int	ft_print_double(char **str, va_list *ap)
 {
 	double value;
@@ -19,7 +47,7 @@ int	ft_print_double(char **str, va_list *ap)
 	char *ptr;
 
 	value = va_arg(*ap, double);
-	ptr = ft_itoa_base(value, 10, 'a');
+	ptr = ft_put_double(value);
 	counter = ft_strlen(ptr);
 	ft_putstr(ptr);
 	free(ptr);
