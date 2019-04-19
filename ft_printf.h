@@ -57,6 +57,7 @@ void		ft_parse_flags(char **str, t_format *format);
 void		ft_parse_width(char **str, t_format *format);
 void		ft_parse_precision(char **str, t_format *format);
 void		ft_parse_length(char **str, t_format *format);
+void		ft_update_optionals(char format_id, t_format *format);
 intmax_t	ft_cast_int(va_list *ap, t_format *format);
 uintmax_t	ft_cast_uint(va_list *ap, t_format *format);
 

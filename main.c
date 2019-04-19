@@ -35,6 +35,5 @@ int main()
 	//printf("\n%d\n", n_bytes);
 	//printf("\n octal = %s\n", ft_itoa_base(7, 8, 'a'));
 	
-	
 	return (0);
 }

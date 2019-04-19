@@ -35,11 +35,8 @@ int     ft_print_hex(char **str, va_list *ap, t_format *format)
         int             len;
         int             padding;
 
-        if (format->precision != 0)
-                format->zero = 0;
-        if (**str == 'X')
-                format->length = LEN_L;
-        value = ft_cast_uint(ap, format);
+	ft_update_optionals(**str, format);
+	value = ft_cast_uint(ap, format);
         ptr = ft_ulltoa_base(value, 16, (**str == 'x') ? 'a' : 'A');
         ptr_len = (value != 0 || format->precision != -1) ? ft_strlen(ptr) : 0;
         len = ft_calc_len(format, value, ptr_len);

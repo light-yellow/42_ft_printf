@@ -35,10 +35,7 @@ int	ft_print_integer(char **str, va_list *ap, t_format *format)
 	int		len;
 	int		padding;
 
-	if (format->precision != 0)
-		format->zero = 0;
-	if (**str == 'D')
-		format->length = LEN_L;
+	ft_update_optionals(**str, format);
 	value = ft_cast_int(ap, format);
 	ptr = ft_ulltoa_base((value < 0) ? -value : value, 10, 'a');
 	ptr_len = (value != 0 || format->precision != -1) ? ft_strlen(ptr) : 0;
