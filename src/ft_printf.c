@@ -42,19 +42,19 @@ int	ft_call_type_print(char **str, va_list *ap, t_format *format)
 		return (ft_print_pointer(str, ap, format));
 	else if (**str == '%')
 		return (ft_print_percent(str, ap));
-    else if (**str == 'r')
-        return (ft_print_non_printable(str, ap));
-    else if (**str == 'f')
-        return (ft_print_double(str, ap));
+    	else if (**str == 'r')
+        	return (ft_print_non_printable(str, ap));
+    	else if (**str == 'f')
+        	return (ft_print_double(str, ap));
 	/*else if (**str == 'b')
 		return (ft_print_binary(str, ap));
 	*/else if (**str == 'd' || **str == 'D' || **str == 'i')
 		return (ft_print_integer(str, ap, format));
 	else if (**str == 'o' || **str == 'O')
 		return (ft_print_octal(str, ap, format));
-	/*else if (**str == 'x' || **str == 'X')
-		return (ft_print_hex(str, ap));
-	*/else
+	else if (**str == 'x' || **str == 'X')
+		return (ft_print_hex(str, ap, format));
+	else
 		printf("\nhenlo\n");
 		//return (ft_no_format_spec(ap));
 	return (1);
