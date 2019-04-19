@@ -54,6 +54,8 @@ int	ft_call_type_print(char **str, va_list *ap, t_format *format)
 		return (ft_print_octal(str, ap, format));
 	else if (**str == 'x' || **str == 'X')
 		return (ft_print_hex(str, ap, format));
+	else if (**str == 'u' || **str == 'U')
+		return (ft_print_unsigned(str, ap, format));
 	else
 		printf("\nhenlo\n");
 		//return (ft_no_format_spec(ap));

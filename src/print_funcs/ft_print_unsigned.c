@@ -12,17 +12,44 @@
 
 #include "../../ft_printf.h"
 
-int	ft_print_unsigned(char **str, va_list *ap)
+static int      ft_calc_len(t_format *format, intmax_t num, int num_len)
 {
-	unsigned long value;
-	int		counter;
-	char *ptr;
+        int len;
 
-	value = va_arg(*ap,unsigned int);
-	ptr = ft_itoa_base(value, 10, 'a');
-	counter = ft_strlen(ptr);
-	ft_putstr(ptr);
-	free(ptr);
-	*str += 1;
-	return (counter);
+        if (format->precision == -1 && num == 0)
+                len = 0;
+        else if (format->precision > num_len)
+                len = format->precision;
+        else
+                len = num_len;
+        if ((num >= 0 && (format->plus || format->space)) || num < 0)
+                len += 1;
+        return (len);
+}
+
+int     ft_print_unsigned(char **str, va_list *ap, t_format *format)
+{
+        uintmax_t       value;
+        char            *ptr;
+        int             ptr_len;
+        int             len;
+        int             padding;
+
+        if (format->precision != 0)
+                format->zero = 0;
+        if (**str == 'U')
+                format->length = LEN_L;
+        value = ft_cast_uint(ap, format);
+        ptr = ft_ulltoa_base((value < 0) ? -value : value, 10, 'a');
+        ptr_len = (value != 0 || format->precision != -1) ? ft_strlen(ptr) : 0;
+        len = ft_calc_len(format, value, ptr_len);
+        padding = ft_maxnum(format->min_width - len, 0);
+        ft_putpad(padding, format, format->minus == 0);
+        ft_putprefix(value, format);
+	ft_putzeros(format->precision - ptr_len);
+	write(1, ptr, ptr_len);
+        ft_putpad(padding, format, format->minus == 1);
+        *str += 1;
+        free(ptr);
+        return (len + padding);
 }
