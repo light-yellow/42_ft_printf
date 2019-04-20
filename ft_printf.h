@@ -6,7 +6,7 @@
 /*   By: bdudley <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 11:57:32 by bdudley           #+#    #+#             */
-/*   Updated: 2019/04/14 09:37:02 by jgoyette         ###   ########.fr       */
+/*   Updated: 2019/04/20 15:22:13 by jgoyette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@ typedef struct	s_format
 
 int		ft_printf(const char *format_string, ...);
 void		ft_putpad(int nchars, t_format *format, int pad_needed);
-void		ft_putprefix(intmax_t num, char id, t_format *f);
+void		ft_putprefix(uintmax_t num, char id, t_format *f);
+void		ft_putsign(intmax_t num, t_format *f);
 void		ft_putzeros(int nzeros);
 int		ft_print_char(char **str, va_list *ap, t_format *format);
 int		ft_print_str(char **str, va_list *ap, t_format *format);

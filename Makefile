@@ -6,14 +6,14 @@
 #    By: bdudley <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/26 17:59:10 by bdudley           #+#    #+#              #
-#    Updated: 2019/04/20 14:31:02 by jgoyette         ###   ########.fr        #
+#    Updated: 2019/04/20 14:49:44 by jgoyette         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #NAME = ft_printf
 NAME = libftprintf.a
 FLAGS = #-Wall -Wextra -Werror
-SRCS  =  main.c src/ft_printf.c src/ft_handle_format.c src/ft_parse_optionals.c \
+SRCS  =  src/ft_printf.c src/ft_handle_format.c src/ft_parse_optionals.c \
 	src/utils/ft_cast_nums.c src/utils/ft_num_help.c src/utils/ft_print_help.c \
 	src/print_funcs/ft_print_char.c src/print_funcs/ft_print_str.c \
 	src/print_funcs/ft_print_pointer.c src/print_funcs/ft_print_percent.c \

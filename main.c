@@ -1,4 +1,5 @@
-#include "ft_printf.h"
+//#include "ft_printf.h"
+#include "stdio.h"
 
 int main()
 {
@@ -25,8 +26,6 @@ int main()
 //      printf("\nnbytes7: %d, nbytes8: %d\n", nbytes7, nbytes8);
 //
 	int nbytes9 = ft_printf("%x", -42);
-	printf("\n");
-	int nbytes2 = ft_printf("%X", -42);
 	printf("\n");
 	int nbytes10 = printf("%x", -42);
 	printf("\nnbytes9: %d, nbytes10: %d\n", nbytes9, nbytes10);

@@ -6,7 +6,7 @@
 /*   By: bdudley <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 17:53:01 by bdudley           #+#    #+#             */
-/*   Updated: 2019/04/20 13:38:05 by jgoyette         ###   ########.fr       */
+/*   Updated: 2019/04/20 15:19:31 by jgoyette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,8 @@ int     ft_print_unsigned(char **str, va_list *ap, t_format *format)
         len = ft_calc_len(format, value, ptr_len);
         padding = ft_maxnum(format->min_width - len, 0);
         ft_putpad(padding, format, format->minus == 0);
-        ft_putprefix(value, **str, format);
-	ft_putzeros(format->precision - ptr_len);
-	write(1, ptr, ptr_len);
+		ft_putzeros(format->precision - ptr_len);
+		write(1, ptr, ptr_len);
         ft_putpad(padding, format, format->minus == 1);
         *str += 1;
         free(ptr);
