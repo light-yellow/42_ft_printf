@@ -46,9 +46,9 @@ int	ft_call_type_print(char **str, va_list *ap, t_format *format)
         	return (ft_print_non_printable(str, ap));
     	else if (**str == 'f')
         	return (ft_print_double(str, ap));
-	/*else if (**str == 'b')
-		return (ft_print_binary(str, ap));
-	*/else if (**str == 'd' || **str == 'D' || **str == 'i')
+	else if (**str == 'b' || **str == 'B')
+		return (ft_print_binary(str, ap, format));
+	else if (**str == 'd' || **str == 'D' || **str == 'i')
 		return (ft_print_integer(str, ap, format));
 	else if (**str == 'o' || **str == 'O')
 		return (ft_print_octal(str, ap, format));
