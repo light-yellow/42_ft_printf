@@ -6,7 +6,7 @@
 /*   By: bdudley <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 17:53:01 by bdudley           #+#    #+#             */
-/*   Updated: 2019/03/29 21:02:14 by bdudley          ###   ########.fr       */
+/*   Updated: 2019/04/20 13:38:05 by jgoyette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int     ft_print_unsigned(char **str, va_list *ap, t_format *format)
 
 	ft_update_optionals(**str, format);
         value = ft_cast_uint(ap, format);
-        ptr = ft_ulltoa_base((value < 0) ? -value : value, 10, 'a');
+        ptr = ft_ulltoa_base(value, 10, 'a');
         ptr_len = (value != 0 || format->precision != -1) ? ft_strlen(ptr) : 0;
         len = ft_calc_len(format, value, ptr_len);
         padding = ft_maxnum(format->min_width - len, 0);

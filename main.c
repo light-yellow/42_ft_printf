@@ -2,11 +2,11 @@
 
 int main()
 {
-	int s;
-	int *p;
+//	int s;
+//	int *p;
 
-	s = 554634;
-	p = &s;
+//	s = 554634;
+//	p = &s;
 //	int nbytes1 = printf("printf    - pointer: |%20p|\n", (void *)p);
 //	int nbytes2 = ft_printf("ft_printf - pointer: |%20p|\n", (void *)p);
 //	printf("\nnbytes1: %d, nbytes2: %d\n", nbytes1, nbytes2);
@@ -24,8 +24,11 @@ int main()
 //      int nbytes8 = printf("printf    - d: |%+010d|\n", 3);
 //      printf("\nnbytes7: %d, nbytes8: %d\n", nbytes7, nbytes8);
 //
-	int nbytes9 = ft_printf("ft_printf - o: |%#8o|\n", 19);
-	int nbytes10 = printf("printf    - o: |%#8o|\n", 19);
+	int nbytes9 = ft_printf("%x", -42);
+	printf("\n");
+	int nbytes2 = ft_printf("%X", -42);
+	printf("\n");
+	int nbytes10 = printf("%x", -42);
 	printf("\nnbytes9: %d, nbytes10: %d\n", nbytes9, nbytes10);
 
 //  	printf("%f\n", 5.040404040404404004004040404040400040404040404040404040404040040404040404045);
