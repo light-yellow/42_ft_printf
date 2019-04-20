@@ -12,19 +12,21 @@
 
 #include "../../ft_printf.h"
 
-static int      ft_calc_len(t_format *format, intmax_t num, int num_len)
+static int      ft_calc_len(t_format *f, intmax_t num, int numlen)
 {
         int len;
 
-        if (format->precision == -1 && num == 0)
+        if (f->precision == -1 && num == 0)
                 len = 0;
-        else if (format->precision > num_len)
-                len = format->precision;
+        else if (f->precision > numlen)
+                len = f->precision;
         else
-                len = num_len;
-        if (format->hash && (num > 0 || format->precision == -1))
+                len = numlen;
+        if (f->hash && (num > 0 || f->precision == -1) && numlen >= f->precision)
                 len += 1;
-        return (len);
+        if (f->zero && f->min_width > len)
+		len = f->min_width;	
+	return (len);
 }
 
 int	ft_print_octal(char **str, va_list *ap, t_format *format)
@@ -42,9 +44,9 @@ int	ft_print_octal(char **str, va_list *ap, t_format *format)
         len = ft_calc_len(format, value, ptr_len);
         padding = ft_maxnum(format->min_width - len, 0);
         ft_putpad(padding, format, format->minus == 0);
-        ft_putzeros(format->precision - ptr_len);
 	if (format->hash && (value > 0 || format->precision == -1))
 		write(1, "0", 1);
+	ft_putzeros(len - ptr_len - ((format->hash && value != 0) ? 1 : 0));
         write(1, ptr, ptr_len);
         ft_putpad(padding, format, format->minus == 1);
         *str += 1;

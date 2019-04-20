@@ -24,7 +24,9 @@ static int      ft_calc_len(t_format *format, intmax_t num, int num_len)
                 len = num_len;
         if (format->hash && num != 0)
                 len += 2;
-        return (len);
+        if (format->zero && format->min_width > len)
+		len = format->min_width;
+	return (len);
 }
 
 int     ft_print_binary(char **str, va_list *ap, t_format *format)
@@ -42,10 +44,10 @@ int     ft_print_binary(char **str, va_list *ap, t_format *format)
         len = ft_calc_len(format, value, ptr_len);
         padding = ft_maxnum(format->min_width - len, 0);
         ft_putpad(padding, format, format->minus == 0);
-        ft_putzeros(format->precision - ptr_len);
         if (format->hash && value != 0)
                 (**str == 'b') ? write(1, "0b", 2) : write(1, "0B", 2);
-        write(1, ptr, ptr_len);
+        ft_putzeros(len - ptr_len - ((format->hash && value != 0) ? 2 : 0));
+	write(1, ptr, ptr_len);
         ft_putpad(padding, format, format->minus == 1);
         *str += 1;
         free(ptr);

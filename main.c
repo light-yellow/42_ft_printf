@@ -24,8 +24,8 @@ int main()
 //      int nbytes8 = printf("printf    - d: |%+010d|\n", 3);
 //      printf("\nnbytes7: %d, nbytes8: %d\n", nbytes7, nbytes8);
 //
-	int nbytes9 = ft_printf("ft_printf - o: |%#7.5o|\n", 1270);
-	int nbytes10 = printf("printf    - o: |%#7.5o|\n", 1270);
+	int nbytes9 = ft_printf("ft_printf - o: |%0#8o|\n", 0);
+	int nbytes10 = printf("printf    - o: |%0#8o|\n", 0);
 	printf("\nnbytes9: %d, nbytes10: %d\n", nbytes9, nbytes10);
 
 //  	printf("%f\n", 5.040404040404404004004040404040400040404040404040404040404040040404040404045);
@@ -35,6 +35,5 @@ int main()
 	//printf("\n%d\n", n_bytes);
 	//printf("\n octal = %s\n", ft_itoa_base(7, 8, 'a'));
 
-	
 	return (0);
 }
