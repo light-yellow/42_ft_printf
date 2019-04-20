@@ -38,7 +38,7 @@ typedef struct	s_format
 
 int		ft_printf(const char *format_string, ...);
 void		ft_putpad(int nchars, t_format *format, int pad_needed);
-void		ft_putprefix(intmax_t num, t_format *format);
+void		ft_putprefix(intmax_t num, char id, t_format *f);
 void		ft_putzeros(int nzeros);
 int		ft_print_char(char **str, va_list *ap, t_format *format);
 int		ft_print_str(char **str, va_list *ap, t_format *format);

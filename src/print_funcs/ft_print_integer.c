@@ -42,7 +42,7 @@ int	ft_print_integer(char **str, va_list *ap, t_format *format)
 	len = ft_calc_len(format, value, ptr_len);
 	padding = ft_maxnum(format->min_width - len, 0);
 	ft_putpad(padding, format, format->minus == 0);
-	ft_putprefix(value, format);
+	ft_putprefix(value, **str, format);
 	ft_putzeros(format->precision - ptr_len);
 	write(1, ptr, ptr_len);
 	ft_putpad(padding, format, format->minus == 1);
