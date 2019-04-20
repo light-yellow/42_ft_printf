@@ -6,13 +6,13 @@
 /*   By: bdudley <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 17:53:01 by bdudley           #+#    #+#             */
-/*   Updated: 2019/04/20 15:18:06 by jgoyette         ###   ########.fr       */
+/*   Updated: 2019/04/20 19:37:51 by bdudley          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../ft_printf.h"
 
-static int	ft_calc_len(t_format *format, intmax_t num, int num_len)
+static	int	ft_calc_len(t_format *format, intmax_t num, int num_len)
 {
 	int len;
 
@@ -22,18 +22,18 @@ static int	ft_calc_len(t_format *format, intmax_t num, int num_len)
 		len = format->precision;
 	else
 		len = num_len;
-        if ((num >= 0 && (format->plus || format->space)) || num < 0)
+	if ((num >= 0 && (format->plus || format->space)) || num < 0)
 		len += 1;
 	return (len);
 }
 
-int	ft_print_integer(char **str, va_list *ap, t_format *format)
+int			ft_print_integer(char **str, va_list *ap, t_format *format)
 {
 	intmax_t	value;
 	char		*ptr;
-	int		ptr_len;
-	int		len;
-	int		padding;
+	int			ptr_len;
+	int			len;
+	int			padding;
 
 	ft_update_optionals(**str, format);
 	value = ft_cast_int(ap, format);

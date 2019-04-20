@@ -6,13 +6,13 @@
 /*   By: jgoyette <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 18:44:57 by jgoyette          #+#    #+#             */
-/*   Updated: 2019/04/14 10:11:55 by jgoyette         ###   ########.fr       */
+/*   Updated: 2019/04/20 19:03:26 by bdudley          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static	char	ft_getchar(int num, char letter_case)
+static char	ft_getchar(int num, char letter_case)
 {
 	if (num < 10)
 		return (num + '0');
@@ -20,12 +20,12 @@ static	char	ft_getchar(int num, char letter_case)
 		return (num - 10 + letter_case);
 }
 
-char	*ft_lltoa_base(intmax_t value, int base, char letter_case)
+char		*ft_lltoa_base(intmax_t value, int base, char letter_case)
 {
-	int		sign;
+	int			sign;
 	uintmax_t	num;
 	char		*result;
-	int		len;
+	int			len;
 
 	sign = (value < 0 && base == 10) ? 1 : 0;
 	num = (value < 0) ? -value : value;

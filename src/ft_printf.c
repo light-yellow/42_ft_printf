@@ -6,7 +6,7 @@
 /*   By: bdudley <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 11:55:23 by bdudley           #+#    #+#             */
-/*   Updated: 2019/04/09 18:11:37 by jgoyette         ###   ########.fr       */
+/*   Updated: 2019/04/20 18:58:03 by bdudley          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,22 @@
 
 int	ft_print_until_percent(char **str)
 {
-    char	*ptr;
-    int	str_len;
+	char	*ptr;
+	int		str_len;
 
-    ptr = ft_strchr(*str, '%');
-    if (ptr == NULL)
-    {
-        ft_putstr(*str);
-        str_len = ft_strlen(*str);
-    }
-    else
-    {
-        write(1, *str, ptr - *str);
-        str_len = ptr - *str;
-    }
-    *str = ptr;
-    return (str_len);
+	ptr = ft_strchr(*str, '%');
+	if (ptr == NULL)
+	{
+		ft_putstr(*str);
+		str_len = ft_strlen(*str);
+	}
+	else
+	{
+		write(1, *str, ptr - *str);
+		str_len = ptr - *str;
+	}
+	*str = ptr;
+	return (str_len);
 }
 
 int	ft_call_type_print(char **str, va_list *ap, t_format *format)
@@ -42,10 +42,10 @@ int	ft_call_type_print(char **str, va_list *ap, t_format *format)
 		return (ft_print_pointer(str, ap, format));
 	else if (**str == '%')
 		return (ft_print_percent(str, ap));
-    	else if (**str == 'r')
-        	return (ft_print_non_printable(str, ap));
-    	else if (**str == 'f')
-        	return (ft_print_double(str, ap));
+	else if (**str == 'r')
+		return (ft_print_non_printable(str, ap));
+	else if (**str == 'f')
+		return (ft_print_double(str, ap));
 	else if (**str == 'b' || **str == 'B')
 		return (ft_print_binary(str, ap, format));
 	else if (**str == 'd' || **str == 'D' || **str == 'i')
@@ -57,44 +57,44 @@ int	ft_call_type_print(char **str, va_list *ap, t_format *format)
 	else if (**str == 'u' || **str == 'U')
 		return (ft_print_unsigned(str, ap, format));
 	else
-		printf("\nhenlo\n");
+		printf("\nChmoki-Chmoki\n");
 		//return (ft_no_format_spec(ap));
 	return (1);
-}   
+}
 
 int	ft_print_format(char **str, va_list *ap)
 {
-    t_format	format;
+	t_format	format;
 
-    *str += 1;
-    ft_init_format(&format);
-    if (**str)
-    {
-        ft_handle_optionals(str, &format);
-        if (ft_isalpha(**str) || **str == '%')
-            return (ft_call_type_print(str, ap, &format));
-    }
-    return (0);
+	*str += 1;
+	ft_init_format(&format);
+	if (**str)
+	{
+		ft_handle_optionals(str, &format);
+		if (ft_isalpha(**str) || **str == '%')
+			return (ft_call_type_print(str, ap, &format));
+	}
+	return (0);
 }
 
 int	ft_printf(const char *format_string, ...)
 {
-    va_list	ap;
-    int	nbytes;
-    char	*str;
+	va_list	ap;
+	int		nbytes;
+	char	*str;
 
-    nbytes = 0;
-    str = (char *)format_string;
-    va_start(ap, format_string);
-    if (str == NULL)
-        return (-1);
-    while (str != NULL)
-    {
-        if (*str == '%')
-            nbytes += ft_print_format(&str, &ap);
-        else
-            nbytes += ft_print_until_percent(&str);
-    }
-    va_end(ap);
-    return (nbytes);
+	nbytes = 0;
+	str = (char *)format_string;
+	va_start(ap, format_string);
+	if (str == NULL)
+		return (-1);
+	while (str != NULL)
+	{
+		if (*str == '%')
+			nbytes += ft_print_format(&str, &ap);
+		else
+			nbytes += ft_print_until_percent(&str);
+	}
+	va_end(ap);
+	return (nbytes);
 }

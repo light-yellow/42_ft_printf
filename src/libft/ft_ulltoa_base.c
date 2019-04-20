@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_ulltoa_base.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bdudley <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/04/20 19:03:40 by bdudley           #+#    #+#             */
+/*   Updated: 2019/04/20 19:04:28 by bdudley          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-static	char	ft_getchar(int num, char letter_case)
+static char	ft_getchar(int num, char letter_case)
 {
 	if (num < 10)
 		return (num + '0');
@@ -8,7 +20,7 @@ static	char	ft_getchar(int num, char letter_case)
 		return (num - 10 + letter_case);
 }
 
-char	*ft_ulltoa_base(uintmax_t num, int base, char letter_case)
+char		*ft_ulltoa_base(uintmax_t num, int base, char letter_case)
 {
 	char	*result;
 	int		len;

@@ -6,7 +6,7 @@
 /*   By: jgoyette <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 07:49:28 by jgoyette          #+#    #+#             */
-/*   Updated: 2019/04/14 10:07:15 by jgoyette         ###   ########.fr       */
+/*   Updated: 2019/04/20 19:07:31 by bdudley          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,14 +86,14 @@ t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 void				*ft_memrcpy(void *dst, const void *src, size_t n);
 char				*ft_strndup(const char *s, size_t n);
 void				ft_strarr_del(char **tab, size_t tab_size);
-int				ft_islower(int c);
-int				ft_isupper(int c);
-int				ft_isspace(int c);
+int					ft_islower(int c);
+int					ft_isupper(int c);
+int					ft_isspace(int c);
 void				*ft_memdup(void const *src, size_t size);
 void				ft_lstaddend(t_list **alst, t_list *new);
 char				*ft_itoa_base(int value, int base, char letter_case);
-int				ft_numlen(uintmax_t num, int base);
-int				ft_maxnum(int num1, int num2);
+int					ft_numlen(uintmax_t num, int base);
+int					ft_maxnum(int num1, int num2);
 char				*ft_ulltoa_base(uintmax_t num, int base, char letter_case);
 char				*ft_lltoa_base(intmax_t value, int base, char letter_case);
 
