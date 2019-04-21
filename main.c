@@ -1,5 +1,6 @@
-//#include "ft_printf.h"
+#include "ft_printf.h"
 #include "stdio.h"
+#include <limits.h>
 
 int main()
 {
@@ -25,10 +26,12 @@ int main()
 //      int nbytes8 = printf("printf    - d: |%+010d|\n", 3);
 //      printf("\nnbytes7: %d, nbytes8: %d\n", nbytes7, nbytes8);
 //
-	int nbytes9 = ft_printf("%x", -42);
+	int nbytes9 = ft_printf("{%010d}", -42);
 	printf("\n");
-	int nbytes10 = printf("%x", -42);
+	int nbytes10 = printf("{%010d}", -42);
 	printf("\nnbytes9: %d, nbytes10: %d\n", nbytes9, nbytes10);
+
+
 
 //  	printf("%f\n", 5.040404040404404004004040404040400040404040404040404040404040040404040404045);
 //  	ft_printf("%f\n", 5.040404040404404004004040404040400040404040404040404040404040040404040404045);

@@ -18,4 +18,6 @@ void	ft_update_optionals(char id, t_format *format)
 		format->zero = 0;
 	if (id == 'O' || id == 'U' || id == 'D' || id == 'B')
 		format->length = LEN_L;
+	if (format->zero && (id == 'd' || id == 'D' || id == 'i'))
+		format->precision = format->min_width;
 }

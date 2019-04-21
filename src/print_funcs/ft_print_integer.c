@@ -22,7 +22,7 @@ static	int	ft_calc_len(t_format *format, intmax_t num, int num_len)
 		len = format->precision;
 	else
 		len = num_len;
-	if ((num >= 0 && (format->plus || format->space)) || num < 0)
+	if (format->plus || format->space || num < 0)
 		len += 1;
 	return (len);
 }
@@ -37,6 +37,8 @@ int			ft_print_integer(char **str, va_list *ap, t_format *format)
 
 	ft_update_optionals(**str, format);
 	value = ft_cast_int(ap, format);
+	if ((format->plus || format->space || value < 0) && format->zero)
+		format->precision -= 1;
 	ptr = ft_ulltoa_base((value < 0) ? -value : value, 10, 'a');
 	ptr_len = (value != 0 || format->precision != -1) ? ft_strlen(ptr) : 0;
 	len = ft_calc_len(format, value, ptr_len);

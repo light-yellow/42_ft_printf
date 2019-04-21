@@ -22,8 +22,6 @@ static int	ft_calc_len(t_format *format, intmax_t num, int num_len)
 		len = format->precision;
 	else
 		len = num_len;
-	if ((num >= 0 && (format->plus || format->space)) || num < 0)
-		len += 1;
 	return (len);
 }
 
