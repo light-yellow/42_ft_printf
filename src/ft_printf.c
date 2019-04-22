@@ -41,7 +41,7 @@ int	ft_call_type_print(char **str, va_list *ap, t_format *format)
 	else if (**str == 'p')
 		return (ft_print_pointer(str, ap, format));
 	else if (**str == '%')
-		return (ft_print_percent(str, ap));
+		return (ft_print_percent(str, format));
 	else if (**str == 'r')
 		return (ft_print_non_printable(str, ap));
 	else if (**str == 'f')
@@ -57,9 +57,7 @@ int	ft_call_type_print(char **str, va_list *ap, t_format *format)
 	else if (**str == 'u' || **str == 'U')
 		return (ft_print_unsigned(str, ap, format));
 	else
-		printf("\nChmoki-Chmoki\n");
-		//return (ft_no_format_spec(ap));
-	return (1);
+		return (0);//(ft_no_format_spec(ap));
 }
 
 int	ft_print_format(char **str, va_list *ap)

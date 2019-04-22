@@ -26,9 +26,9 @@ int main()
 //      int nbytes8 = printf("printf    - d: |%+010d|\n", 3);
 //      printf("\nnbytes7: %d, nbytes8: %d\n", nbytes7, nbytes8);
 //
-	int nbytes9 = ft_printf("%4.s", "42");
+	int nbytes9 = ft_printf("|%-5%|");
 	printf("\n");
-	int nbytes10 = printf("%4.s", "42");
+	int nbytes10 = printf("|%-5%|");
 	printf("\nnbytes9: %d, nbytes10: %d\n", nbytes9, nbytes10);
 
 
