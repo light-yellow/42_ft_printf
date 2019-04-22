@@ -30,4 +30,5 @@ void	ft_handle_optionals(char **str, t_format *format)
 	ft_parse_width(str, format);
 	ft_parse_precision(str, format);
 	ft_parse_length(str, format);
+	ft_parse_flags(str, format);
 }

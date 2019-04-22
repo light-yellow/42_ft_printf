@@ -58,3 +58,10 @@ void	ft_putzeros(int nzeros)
 		nzeros -= 1;
 	}
 }
+
+int	ft_no_format_spec(char **str, va_list *ap)
+{
+	write(1, *str, 1);
+	*str += 1;
+	return (1);
+}

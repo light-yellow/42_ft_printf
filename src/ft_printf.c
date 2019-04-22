@@ -57,7 +57,7 @@ int	ft_call_type_print(char **str, va_list *ap, t_format *format)
 	else if (**str == 'u' || **str == 'U')
 		return (ft_print_unsigned(str, ap, format));
 	else
-		return (0);//(ft_no_format_spec(ap));
+		return (ft_no_format_spec(str, ap));
 }
 
 int	ft_print_format(char **str, va_list *ap)
