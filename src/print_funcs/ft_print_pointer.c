@@ -24,7 +24,7 @@ int	ft_print_pointer(char **str, va_list *ap, t_format *format)
 	ptr_len = ft_strlen(ptr) + 2;
 	padding = ft_maxnum(format->min_width - ptr_len, 0);
 	ft_putpad(padding, format, format->minus == 0);
-	ft_putstr("0x");
+	ft_putprefix(value, **str, format);
 	ft_putstr(ptr);
 	ft_putpad(padding, format, format->minus == 1);
 	*str += 1;

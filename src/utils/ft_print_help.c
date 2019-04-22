@@ -29,7 +29,9 @@ void	ft_putpad(int nchars, t_format *format, int pad_needed)
 
 void	ft_putprefix(uintmax_t num, char id, t_format *f)
 {
-	if (f->hash)
+	if (id == 'p' && num > 0)
+		write(1, "0x", 2);
+	else if (f->hash)
 	{
 		if ((num > 0 || f->precision == -1) && (id == 'o' || id == 'O'))
 			write(1, "0", 1);
