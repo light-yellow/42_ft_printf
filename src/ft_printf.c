@@ -40,8 +40,8 @@ int	ft_call_type_print(char **str, va_list *ap, t_format *format)
 		return (ft_print_str(str, ap, format));
 	else if (**str == 'p')
 		return (ft_print_pointer(str, ap, format));
-	else if (**str == '%')
-		return (ft_print_percent(str, format));
+	//else if (**str == '%')
+	//	return (ft_print_percent(str, format));
 	else if (**str == 'r')
 		return (ft_print_non_printable(str, ap));
 	else if (**str == 'f')
