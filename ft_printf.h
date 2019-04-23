@@ -6,7 +6,7 @@
 /*   By: bdudley <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 11:57:32 by bdudley           #+#    #+#             */
-/*   Updated: 2019/04/20 18:10:11 by bdudley          ###   ########.fr       */
+/*   Updated: 2019/04/23 17:32:33 by jgoyette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int				ft_print_hex(char **str, va_list *ap, t_format *format);
 int				ft_print_octal(char **str, va_list *ap, t_format *format);
 int				ft_print_unsigned(char **str, va_list *ap, t_format *format);
 int				ft_print_double(char **str, va_list *ap);
-int			ft_no_format_spec(char **str, va_list *ap);
+int				ft_no_format_spec(char **str, va_list *ap, t_format *format);
 void			ft_init_format(t_format *format);
 void			ft_handle_optionals(char **str, t_format *format);
 void			ft_parse_flags(char **str, t_format *format);

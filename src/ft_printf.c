@@ -6,7 +6,7 @@
 /*   By: bdudley <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 11:55:23 by bdudley           #+#    #+#             */
-/*   Updated: 2019/04/20 18:58:03 by bdudley          ###   ########.fr       */
+/*   Updated: 2019/04/23 17:33:01 by jgoyette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ int	ft_print_until_percent(char **str)
 
 int	ft_call_type_print(char **str, va_list *ap, t_format *format)
 {
-	if (**str == 'c')
+	if (**str == 'c' || **str == 'C')
 		return (ft_print_char(str, ap, format));
-	else if (**str == 's')
+	else if (**str == 's' || **str == 'S')
 		return (ft_print_str(str, ap, format));
 	else if (**str == 'p')
 		return (ft_print_pointer(str, ap, format));
@@ -57,7 +57,7 @@ int	ft_call_type_print(char **str, va_list *ap, t_format *format)
 	else if (**str == 'u' || **str == 'U')
 		return (ft_print_unsigned(str, ap, format));
 	else
-		return (ft_no_format_spec(str, ap));
+		return (ft_no_format_spec(str, ap, format));
 }
 
 int	ft_print_format(char **str, va_list *ap)

@@ -6,7 +6,7 @@
 /*   By: bdudley <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/20 19:14:05 by bdudley           #+#    #+#             */
-/*   Updated: 2019/04/23 17:19:19 by jgoyette         ###   ########.fr       */
+/*   Updated: 2019/04/23 17:35:55 by jgoyette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,14 @@ void	ft_putzeros(int nzeros)
 	}
 }
 
-int	ft_no_format_spec(char **str, va_list *ap)
+int	ft_no_format_spec(char **str, va_list *ap, t_format *format)
 {
+	int padding;
+
+	padding = ft_maxnum(format->min_width - 1, 0);
+	ft_putpad(padding, format, format->minus == 0);
 	write(1, *str, 1);
+	ft_putpad(padding, format, format->minus == 1);
 	*str += 1;
-	return (1);
+	return (1 + padding);
 }
