@@ -6,13 +6,13 @@
 /*   By: bdudley <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 18:14:23 by bdudley           #+#    #+#             */
-/*   Updated: 2019/04/20 19:51:20 by bdudley          ###   ########.fr       */
+/*   Updated: 2019/04/23 20:22:44 by jgoyette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../ft_printf.h"
 
-static	int	ft_calc_len(t_format *f, intmax_t num, int numlen)
+static	int	ft_calc_len(t_format *f, uintmax_t num, int numlen)
 {
 	int len;
 
@@ -40,7 +40,7 @@ int			ft_print_octal(char **str, va_list *ap, t_format *format)
 	ft_update_optionals(**str, format);
 	value = ft_cast_uint(ap, format);
 	ptr = ft_ulltoa_base(value, 8, 'a');
-	ptr_len = (value != 0 || format->precision != -1) ? ft_strlen(ptr) : 0;
+	ptr_len = (value > 0 || format->precision != -1) ? ft_strlen(ptr) : 0;
 	len = ft_calc_len(format, value, ptr_len);
 	padding = ft_maxnum(format->min_width - len, 0);
 	ft_putpad(padding, format, format->minus == 0);

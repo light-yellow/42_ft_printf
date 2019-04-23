@@ -6,7 +6,7 @@
 /*   By: bdudley <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 17:53:01 by bdudley           #+#    #+#             */
-/*   Updated: 2019/04/20 19:37:51 by bdudley          ###   ########.fr       */
+/*   Updated: 2019/04/23 19:47:35 by jgoyette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ static	int	ft_calc_len(t_format *format, intmax_t num, int num_len)
 		len = num_len;
 	if (format->plus || format->space || num < 0)
 		len += 1;
+//	printf("|len: %d|\n|precision: %d|", len, format->precision);
 	return (len);
 }
 
@@ -38,7 +39,7 @@ int			ft_print_integer(char **str, va_list *ap, t_format *format)
 	ft_update_optionals(**str, format);
 	value = ft_cast_int(ap, format);
 	if ((format->plus || format->space || value < 0) && format->zero)
-		format->precision -= 1;
+		format->precision -= (format->precision > 0) ? 1 : 0;
 	ptr = ft_ulltoa_base((value < 0) ? -value : value, 10, 'a');
 	ptr_len = (value != 0 || format->precision != -1) ? ft_strlen(ptr) : 0;
 	len = ft_calc_len(format, value, ptr_len);
