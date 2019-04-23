@@ -6,28 +6,47 @@
 /*   By: bdudley <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/26 17:02:14 by bdudley           #+#    #+#             */
-/*   Updated: 2019/04/23 17:14:57 by jgoyette         ###   ########.fr       */
+/*   Updated: 2019/04/23 18:21:13 by jgoyette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../ft_printf.h"
 
+static int	ft_calc_len(t_format *format, uintmax_t num, int num_len)
+{
+	int	len;
+
+	if (format->precision == -1 && num == 0)
+		len = 0;
+	else if (format->precision > num_len)
+		len = format->precision;
+	else
+		len = num_len;
+	if (format->zero && format->min_width > len)
+		len = format->min_width;
+	return (len);
+}
+
 int	ft_print_pointer(char **str, va_list *ap, t_format *format)
 {
-	unsigned long	value;
+	uintmax_t		value;
 	char			*ptr;
 	int				ptr_len;
+	int				len;
 	int				padding;
 
+	ft_update_optionals(**str, format);
 	value = va_arg(*ap, unsigned long);
 	ptr = ft_ulltoa_base(value, 16, 'a');
-	ptr_len = ft_strlen(ptr) + 2;
-	padding = ft_maxnum(format->min_width - ptr_len, 0);
+	ptr_len = (format->precision != -1) ? ft_strlen(ptr) : 0;
+	len = ft_calc_len(format, value, ptr_len) + 2;
+	padding = ft_maxnum(format->min_width - len, 0);
 	ft_putpad(padding, format, format->minus == 0);
-	ft_putstr("0x");
-	ft_putstr(ptr);
+	write(1, "0x", 2);
+	ft_putzeros(len - ptr_len - 2);
+	write(1, ptr, ptr_len);
 	ft_putpad(padding, format, format->minus == 1);
 	*str += 1;
 	free(ptr);
-	return (ptr_len + padding);
+	return (len + padding);
 }

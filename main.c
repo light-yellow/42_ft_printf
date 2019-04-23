@@ -4,10 +4,10 @@
 
 int main()
 {
-//	int s;
+	int s;
 //	int *p;
 
-//	s = 554634;
+	s = 554634;
 //	p = &s;
 //	int nbytes1 = printf("printf    - pointer: |%20p|\n", (void *)p);
 //	int nbytes2 = ft_printf("ft_printf - pointer: |%20p|\n", (void *)p);
@@ -27,9 +27,9 @@ int main()
 //      printf("\nnbytes7: %d, nbytes8: %d\n", nbytes7, nbytes8);
 //
 
-	int nbytes9 = ft_printf("{%10R}");
+	int nbytes9 = ft_printf("{% S}", "(null)");
 	printf("\n");
-	int nbytes10 = printf("{%10R}");
+	int nbytes10 = printf("{% S}", "(null)");
 	printf("\nnbytes9: %d, nbytes10: %d\n", nbytes9, nbytes10);
 
 
