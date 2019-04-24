@@ -6,7 +6,7 @@
 /*   By: bdudley <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 11:57:32 by bdudley           #+#    #+#             */
-/*   Updated: 2019/04/23 17:32:33 by jgoyette         ###   ########.fr       */
+/*   Updated: 2019/04/24 12:09:33 by jgoyette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ void			ft_putzeros(int nzeros);
 int				ft_print_char(char **str, va_list *ap, t_format *format);
 int				ft_print_str(char **str, va_list *ap, t_format *format);
 int				ft_print_non_printable(char **str, va_list *ap);
-int				ft_print_percent(char **str, t_format *format);
 int				ft_print_binary(char **str, va_list *ap, t_format *format);
 int				ft_print_integer(char **str, va_list *ap, t_format *format);
 int				ft_print_pointer(char **str, va_list *ap, t_format *format);

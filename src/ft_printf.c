@@ -6,7 +6,7 @@
 /*   By: bdudley <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 11:55:23 by bdudley           #+#    #+#             */
-/*   Updated: 2019/04/23 17:33:01 by jgoyette         ###   ########.fr       */
+/*   Updated: 2019/04/24 12:09:13 by jgoyette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,6 @@ int	ft_call_type_print(char **str, va_list *ap, t_format *format)
 		return (ft_print_str(str, ap, format));
 	else if (**str == 'p')
 		return (ft_print_pointer(str, ap, format));
-	//else if (**str == '%')
-	//	return (ft_print_percent(str, format));
 	else if (**str == 'r')
 		return (ft_print_non_printable(str, ap));
 	else if (**str == 'f')
