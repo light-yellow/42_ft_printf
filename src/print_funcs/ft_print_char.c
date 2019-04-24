@@ -33,5 +33,5 @@ void	ft_print_char(char **str, va_list *ap, t_format *f)
 	(c == '\0') ? ft_putbuff(f, padding) : ft_fill_buffer(f, (char *)&c, 1);
 	ft_putpad(padding, f, f->minus == 1);
 	*str += 1;
-	f->size = (c == '\0') ? 0 : 1 + padding;
+	f->size += (c == '\0') ? 0 : (1 + padding);
 }

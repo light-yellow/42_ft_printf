@@ -50,5 +50,5 @@ void			ft_print_binary(char **str, va_list *ap, t_format *format)
 	ft_putpad(padding, format, format->minus == 1);
 	*str += 1;
 	free(ptr);
-	format->size = len + padding;
+	format->size += (len + padding);
 }

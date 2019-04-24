@@ -29,7 +29,7 @@ static	int	ft_calc_len(t_format *f, uintmax_t num, int numlen)
 	return (len);
 }
 
-void			ft_print_octal(char **str, va_list *ap, t_format *format)
+void	ft_print_octal(char **str, va_list *ap, t_format *format)
 {
 	uintmax_t	value;
 	char		*ptr;
@@ -37,12 +37,14 @@ void			ft_print_octal(char **str, va_list *ap, t_format *format)
 	int			len;
 	int			padding;
 
+
 	ft_update_optionals(**str, format);
 	value = ft_cast_uint(ap, format);
 	ptr = ft_ulltoa_base(value, 8, 'a');
 	ptr_len = (value > 0 || format->precision != -1) ? ft_strlen(ptr) : 0;
 	len = ft_calc_len(format, value, ptr_len);
 	padding = ft_maxnum(format->min_width - len, 0);
+	printf("\n\n\nptr: %s\n\n\n\n\n", ptr);
 	ft_putpad(padding, format, format->minus == 0);
 	ft_putprefix(value, **str, format);
 	ft_putzeros(format, len - ptr_len - ((format->hash &&
@@ -51,5 +53,5 @@ void			ft_print_octal(char **str, va_list *ap, t_format *format)
 	ft_putpad(padding, format, format->minus == 1);
 	*str += 1;
 	free(ptr);
-	format->size = len + padding;
+	format->size += (len + padding);
 }

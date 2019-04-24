@@ -53,5 +53,5 @@ void			ft_print_double(char **str, va_list *ap, t_format *format)
 	ft_putstr(ptr);
 	free(ptr);
 	*str += 1;
-	format->size = counter;
+	format->size += counter;
 }

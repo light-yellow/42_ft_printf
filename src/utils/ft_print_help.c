@@ -82,5 +82,5 @@ void	ft_no_format_spec(char **str, va_list *ap, t_format *format)
 	ft_fill_buffer(format, *str, 1);
 	ft_putpad(padding, format, format->minus == 1);
 	*str += 1;
-	format->size = 1 + padding;
+	format->size += (1 + padding);
 }

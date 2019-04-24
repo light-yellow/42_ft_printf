@@ -30,5 +30,5 @@ void	ft_print_str(char **str, va_list *ap, t_format *format)
 	ft_fill_buffer(format, ptr, len);
 	ft_putpad(padding, format, format->minus == 1);
 	*str += 1;
-	format->size = len + padding;
+	format->size += (len + padding);
 }

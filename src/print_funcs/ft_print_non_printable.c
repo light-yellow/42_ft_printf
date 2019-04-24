@@ -46,5 +46,5 @@ void	ft_print_non_printable(char **str, va_list *ap, t_format *format)
 		padding++;
 	}
 	*str += 1;
-	format->size = 1;
+	format->size += 1;
 }

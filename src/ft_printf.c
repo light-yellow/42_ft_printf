@@ -29,7 +29,7 @@ void	ft_print_until_percent(char **str, t_format *f)
 		str_len = ptr - *str;
 	}
 	*str = ptr;
-	f->size = str_len;
+	f->size += str_len;
 }
 
 void	ft_call_type_print(char **str, va_list *ap, t_format *format)
