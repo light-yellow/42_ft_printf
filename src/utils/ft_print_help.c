@@ -17,23 +17,13 @@ void	ft_fill_buffer(t_format *f, char *str, int size)
 	char *new_buffer;
 	char *s2;
 
-	if (*str == '\0')
-	{
-		write(1, f->buffer, ft_strlen(f->buffer));
-		write(1, "\0", 1);
-		if (ft_strlen(f->buffer) != 0)
-			free(f->buffer);
-		f->buffer = "";
-	}
-	else
-	{s2 = ft_strnew(size);
-	s2 = ft_memcpy(s2, str, size);
+	s2 = ft_strnew(size);
+	s2 = ft_strncpy(s2, str, size);
 	new_buffer = ft_strjoin(f->buffer, s2);
 	if (ft_strlen(f->buffer) != 0)
 		free(f->buffer);
 	free(s2);
 	f->buffer = new_buffer;
-	}
 }
 
 void	ft_putpad(int nchars, t_format *format, int pad_needed)
@@ -83,7 +73,7 @@ void	ft_putzeros(t_format *f, int nzeros)
 	}
 }
 
-int	ft_no_format_spec(char **str, va_list *ap, t_format *format)
+void	ft_no_format_spec(char **str, va_list *ap, t_format *format)
 {
 	int padding;
 
@@ -92,5 +82,5 @@ int	ft_no_format_spec(char **str, va_list *ap, t_format *format)
 	ft_fill_buffer(format, *str, 1);
 	ft_putpad(padding, format, format->minus == 1);
 	*str += 1;
-	return (1 + padding);
+	format->size = 1 + padding;
 }

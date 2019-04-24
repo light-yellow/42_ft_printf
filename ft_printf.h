@@ -35,6 +35,7 @@ typedef struct	s_format
 	int		min_width;
 	int		precision;
 	int		size;
+	int		printed;
 	char	*buffer;
 }				t_format;
 

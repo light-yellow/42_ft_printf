@@ -41,9 +41,9 @@ void	ft_call_type_print(char **str, va_list *ap, t_format *format)
 	else if (**str == 'p')
 		ft_print_pointer(str, ap, format);
 	else if (**str == 'r')
-		ft_print_non_printable(str, ap);
+		ft_print_non_printable(str, ap, format);
 	else if (**str == 'f')
-		ft_print_double(str, ap);
+		ft_print_double(str, ap, format);
 	else if (**str == 'b' || **str == 'B')
 		ft_print_binary(str, ap, format);
 	else if (**str == 'd' || **str == 'D' || **str == 'i')
@@ -78,6 +78,7 @@ int	ft_printf(const char *format_string, ...)
 
 	format.buffer = "";
 	format.size = 0;
+	format.printed = 0;
 	str = (char *)format_string;
 	va_start(ap, format_string);
 	if (str == NULL)
@@ -94,5 +95,5 @@ int	ft_printf(const char *format_string, ...)
 	if (ft_strlen(format.buffer) != 0)
 		free(format.buffer);
 	va_end(ap);
-	return (format.size);
+	return (format.size + format.printed);
 }
