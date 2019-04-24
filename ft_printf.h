@@ -6,7 +6,7 @@
 /*   By: bdudley <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 11:57:32 by bdudley           #+#    #+#             */
-/*   Updated: 2019/04/24 12:47:46 by jgoyette         ###   ########.fr       */
+/*   Updated: 2019/04/24 18:01:17 by jgoyette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct	s_format
 	int		space;
 	int		min_width;
 	int		precision;
+	int		size;
 	char	*buffer;
 }				t_format;
 
@@ -43,17 +44,17 @@ void			ft_putpad(int nchars, t_format *format, int pad_needed);
 void			ft_putprefix(uintmax_t num, char id, t_format *f);
 void			ft_putsign(intmax_t num, t_format *f);
 void			ft_putzeros(t_format *format, int nzeros);
-int				ft_print_char(char **str, va_list *ap, t_format *format);
-int				ft_print_str(char **str, va_list *ap, t_format *format);
-int				ft_print_non_printable(char **str, va_list *ap);
-int				ft_print_binary(char **str, va_list *ap, t_format *format);
-int				ft_print_integer(char **str, va_list *ap, t_format *format);
-int				ft_print_pointer(char **str, va_list *ap, t_format *format);
-int				ft_print_hex(char **str, va_list *ap, t_format *format);
-int				ft_print_octal(char **str, va_list *ap, t_format *format);
-int				ft_print_unsigned(char **str, va_list *ap, t_format *format);
-int				ft_print_double(char **str, va_list *ap);
-int				ft_no_format_spec(char **str, va_list *ap, t_format *format);
+void			ft_print_char(char **str, va_list *ap, t_format *format);
+void			ft_print_str(char **str, va_list *ap, t_format *format);
+void			ft_print_non_printable(char **str, va_list *ap, t_format *format);
+void			ft_print_binary(char **str, va_list *ap, t_format *format);
+void			ft_print_integer(char **str, va_list *ap, t_format *format);
+void			ft_print_pointer(char **str, va_list *ap, t_format *format);
+void			ft_print_hex(char **str, va_list *ap, t_format *format);
+void			ft_print_octal(char **str, va_list *ap, t_format *format);
+void			ft_print_unsigned(char **str, va_list *ap, t_format *format);
+void			ft_print_double(char **str, va_list *ap, t_format *format);
+void			ft_no_format_spec(char **str, va_list *ap, t_format *format);
 void			ft_init_format(t_format *format);
 void			ft_handle_optionals(char **str, t_format *format);
 void			ft_parse_flags(char **str, t_format *format);

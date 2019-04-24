@@ -6,13 +6,13 @@
 /*   By: bdudley <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/26 16:26:23 by bdudley           #+#    #+#             */
-/*   Updated: 2019/04/24 16:38:29 by jgoyette         ###   ########.fr       */
+/*   Updated: 2019/04/24 18:03:38 by jgoyette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../ft_printf.h"
 
-int	ft_print_char(char **str, va_list *ap, t_format *format)
+void	ft_print_char(char **str, va_list *ap, t_format *format)
 {
 	int padding;
 	int c;
@@ -23,5 +23,8 @@ int	ft_print_char(char **str, va_list *ap, t_format *format)
 	ft_fill_buffer(format, (char *)&c, 1);
 	ft_putpad(padding, format, format->minus == 1);
 	*str += 1;
-	return (1 + padding);
+	if (c == '\0')
+		format->size = 0;
+	else
+		format->size = 1 + padding;
 }

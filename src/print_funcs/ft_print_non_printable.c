@@ -6,7 +6,7 @@
 /*   By: bdudley <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/17 17:54:45 by bdudley           #+#    #+#             */
-/*   Updated: 2019/04/20 19:45:46 by bdudley          ###   ########.fr       */
+/*   Updated: 2019/04/24 18:01:36 by jgoyette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	ft_print_code(int c)
 	return (1);
 }
 
-int			ft_print_non_printable(char **str, va_list *ap)
+void	ft_print_non_printable(char **str, va_list *ap, t_format *format)
 {
 	char	*ptr;
 	int		padding;
@@ -46,5 +46,5 @@ int			ft_print_non_printable(char **str, va_list *ap)
 		padding++;
 	}
 	*str += 1;
-	return (1);
+	format->size = 1;
 }

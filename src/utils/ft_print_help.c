@@ -6,7 +6,7 @@
 /*   By: bdudley <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/20 19:14:05 by bdudley           #+#    #+#             */
-/*   Updated: 2019/04/24 15:27:59 by jgoyette         ###   ########.fr       */
+/*   Updated: 2019/04/24 17:46:12 by jgoyette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,23 @@ void	ft_fill_buffer(t_format *f, char *str, int size)
 	char *new_buffer;
 	char *s2;
 
-	s2 = ft_strnew(size);
-	s2 = ft_strncpy(s2, str, size);
+	if (*str == '\0')
+	{
+		write(1, f->buffer, ft_strlen(f->buffer));
+		write(1, "\0", 1);
+		if (ft_strlen(f->buffer) != 0)
+			free(f->buffer);
+		f->buffer = "";
+	}
+	else
+	{s2 = ft_strnew(size);
+	s2 = ft_memcpy(s2, str, size);
 	new_buffer = ft_strjoin(f->buffer, s2);
 	if (ft_strlen(f->buffer) != 0)
 		free(f->buffer);
 	free(s2);
 	f->buffer = new_buffer;
+	}
 }
 
 void	ft_putpad(int nchars, t_format *format, int pad_needed)

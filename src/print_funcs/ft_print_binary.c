@@ -6,7 +6,7 @@
 /*   By: bdudley <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 17:52:18 by bdudley           #+#    #+#             */
-/*   Updated: 2019/04/24 15:09:50 by jgoyette         ###   ########.fr       */
+/*   Updated: 2019/04/24 17:53:55 by jgoyette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static int	ft_calc_len(t_format *format, intmax_t num, int num_len)
 	return (len);
 }
 
-int			ft_print_binary(char **str, va_list *ap, t_format *format)
+void			ft_print_binary(char **str, va_list *ap, t_format *format)
 {
 	uintmax_t	value;
 	char		*ptr;
@@ -50,5 +50,5 @@ int			ft_print_binary(char **str, va_list *ap, t_format *format)
 	ft_putpad(padding, format, format->minus == 1);
 	*str += 1;
 	free(ptr);
-	return (len + padding);
+	format->size = len + padding;
 }

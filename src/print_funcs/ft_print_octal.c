@@ -6,7 +6,7 @@
 /*   By: bdudley <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 18:14:23 by bdudley           #+#    #+#             */
-/*   Updated: 2019/04/24 12:48:52 by jgoyette         ###   ########.fr       */
+/*   Updated: 2019/04/24 17:54:45 by jgoyette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static	int	ft_calc_len(t_format *f, uintmax_t num, int numlen)
 	return (len);
 }
 
-int			ft_print_octal(char **str, va_list *ap, t_format *format)
+void			ft_print_octal(char **str, va_list *ap, t_format *format)
 {
 	uintmax_t	value;
 	char		*ptr;
@@ -51,5 +51,5 @@ int			ft_print_octal(char **str, va_list *ap, t_format *format)
 	ft_putpad(padding, format, format->minus == 1);
 	*str += 1;
 	free(ptr);
-	return (len + padding);
+	format->size = len + padding;
 }
