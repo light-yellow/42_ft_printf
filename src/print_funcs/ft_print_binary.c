@@ -6,7 +6,7 @@
 /*   By: bdudley <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 17:52:18 by bdudley           #+#    #+#             */
-/*   Updated: 2019/04/20 19:21:32 by bdudley          ###   ########.fr       */
+/*   Updated: 2019/04/24 15:09:50 by jgoyette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int			ft_print_binary(char **str, va_list *ap, t_format *format)
 	padding = ft_maxnum(format->min_width - len, 0);
 	ft_putpad(padding, format, format->minus == 0);
 	ft_putprefix(value, **str, format);
-	ft_putzeros(len - ptr_len - ((format->hash && value != 0) ? 2 : 0));
+	ft_putzeros(format, len - ptr_len - ((format->hash && value != 0) ? 2 : 0));
 	write(1, ptr, ptr_len);
 	ft_putpad(padding, format, format->minus == 1);
 	*str += 1;

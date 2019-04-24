@@ -6,7 +6,7 @@
 /*   By: bdudley <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 11:57:32 by bdudley           #+#    #+#             */
-/*   Updated: 2019/04/24 12:09:33 by jgoyette         ###   ########.fr       */
+/*   Updated: 2019/04/24 12:47:46 by jgoyette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,21 +26,23 @@
 
 typedef struct	s_format
 {
-	int	length;
-	int	hash;
-	int	zero;
-	int	minus;
-	int	plus;
-	int	space;
-	int	min_width;
-	int	precision;
+	int		length;
+	int		hash;
+	int		zero;
+	int		minus;
+	int		plus;
+	int		space;
+	int		min_width;
+	int		precision;
+	char	*buffer;
 }				t_format;
 
+void			ft_fill_buffer(t_format *f, char *str, int size);
 int				ft_printf(const char *format_string, ...);
 void			ft_putpad(int nchars, t_format *format, int pad_needed);
 void			ft_putprefix(uintmax_t num, char id, t_format *f);
 void			ft_putsign(intmax_t num, t_format *f);
-void			ft_putzeros(int nzeros);
+void			ft_putzeros(t_format *format, int nzeros);
 int				ft_print_char(char **str, va_list *ap, t_format *format);
 int				ft_print_str(char **str, va_list *ap, t_format *format);
 int				ft_print_non_printable(char **str, va_list *ap);

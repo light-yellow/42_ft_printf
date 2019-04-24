@@ -27,9 +27,9 @@ int main()
 //      printf("\nnbytes7: %d, nbytes8: %d\n", nbytes7, nbytes8);
 //
 
-	int nbytes9 = ft_printf("%#lo", ULLONG_MAX);
+	int nbytes9 = ft_printf("null %c and text", 0);
 	printf("\n");
-	int nbytes10 = printf("%#lo", ULLONG_MAX);
+	int nbytes10 = printf("null %c and text", 0);
 	printf("\nnbytes9: %d, nbytes10: %d\n", nbytes9, nbytes10);
 
 

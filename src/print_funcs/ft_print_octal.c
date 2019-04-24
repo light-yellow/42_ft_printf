@@ -6,7 +6,7 @@
 /*   By: bdudley <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 18:14:23 by bdudley           #+#    #+#             */
-/*   Updated: 2019/04/23 20:22:44 by jgoyette         ###   ########.fr       */
+/*   Updated: 2019/04/24 12:48:52 by jgoyette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,9 @@ int			ft_print_octal(char **str, va_list *ap, t_format *format)
 	padding = ft_maxnum(format->min_width - len, 0);
 	ft_putpad(padding, format, format->minus == 0);
 	ft_putprefix(value, **str, format);
-	ft_putzeros(len - ptr_len - ((format->hash &&
+	ft_putzeros(format, len - ptr_len - ((format->hash &&
 			(value > 0 || format->precision == -1)) ? 1 : 0));
-	write(1, ptr, ptr_len);
+	ft_fill_buffer(format, ptr, ptr_len);
 	ft_putpad(padding, format, format->minus == 1);
 	*str += 1;
 	free(ptr);

@@ -6,13 +6,13 @@
 /*   By: bdudley <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 11:55:23 by bdudley           #+#    #+#             */
-/*   Updated: 2019/04/24 12:09:13 by jgoyette         ###   ########.fr       */
+/*   Updated: 2019/04/24 15:03:38 by jgoyette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-int	ft_print_until_percent(char **str)
+int	ft_print_until_percent(char **str, t_format *f)
 {
 	char	*ptr;
 	int		str_len;
@@ -20,12 +20,12 @@ int	ft_print_until_percent(char **str)
 	ptr = ft_strchr(*str, '%');
 	if (ptr == NULL)
 	{
-		ft_putstr(*str);
+		ft_fill_buffer(f, *str, ft_strlen(*str));
 		str_len = ft_strlen(*str);
 	}
 	else
 	{
-		write(1, *str, ptr - *str);
+		ft_fill_buffer(f, *str, ptr - *str);
 		str_len = ptr - *str;
 	}
 	*str = ptr;
@@ -58,17 +58,15 @@ int	ft_call_type_print(char **str, va_list *ap, t_format *format)
 		return (ft_no_format_spec(str, ap, format));
 }
 
-int	ft_print_format(char **str, va_list *ap)
+int	ft_print_format(char **str, va_list *ap, t_format *format)
 {
-	t_format	format;
 
 	*str += 1;
-	ft_init_format(&format);
 	if (**str)
 	{
-		ft_handle_optionals(str, &format);
+		ft_handle_optionals(str, format);
 		if (ft_isalpha(**str) || **str == '%')
-			return (ft_call_type_print(str, ap, &format));
+			return (ft_call_type_print(str, ap, format));
 	}
 	return (0);
 }
@@ -78,7 +76,9 @@ int	ft_printf(const char *format_string, ...)
 	va_list	ap;
 	int		nbytes;
 	char	*str;
+	t_format    format;
 
+	format.buffer = "";
 	nbytes = 0;
 	str = (char *)format_string;
 	va_start(ap, format_string);
@@ -86,11 +86,15 @@ int	ft_printf(const char *format_string, ...)
 		return (-1);
 	while (str != NULL)
 	{
+		ft_init_format(&format);
 		if (*str == '%')
-			nbytes += ft_print_format(&str, &ap);
+			nbytes += ft_print_format(&str, &ap, &format);
 		else
-			nbytes += ft_print_until_percent(&str);
+			nbytes += ft_print_until_percent(&str, &format);
 	}
+	write(1, format.buffer, nbytes);
+	if (ft_strlen(format.buffer) != 0)
+		free(format.buffer);
 	va_end(ap);
 	return (nbytes);
 }

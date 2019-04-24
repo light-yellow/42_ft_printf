@@ -6,7 +6,7 @@
 /*   By: bdudley <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 17:53:01 by bdudley           #+#    #+#             */
-/*   Updated: 2019/04/23 19:47:35 by jgoyette         ###   ########.fr       */
+/*   Updated: 2019/04/24 15:10:09 by jgoyette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ static	int	ft_calc_len(t_format *format, intmax_t num, int num_len)
 		len = num_len;
 	if (format->plus || format->space || num < 0)
 		len += 1;
-//	printf("|len: %d|\n|precision: %d|", len, format->precision);
 	return (len);
 }
 
@@ -46,8 +45,8 @@ int			ft_print_integer(char **str, va_list *ap, t_format *format)
 	padding = ft_maxnum(format->min_width - len, 0);
 	ft_putpad(padding, format, format->minus == 0);
 	ft_putsign(value, format);
-	ft_putzeros(format->precision - ptr_len);
-	write(1, ptr, ptr_len);
+	ft_putzeros(format, format->precision - ptr_len);
+	ft_fill_buffer(format, ptr, ptr_len);
 	ft_putpad(padding, format, format->minus == 1);
 	*str += 1;
 	free(ptr);
