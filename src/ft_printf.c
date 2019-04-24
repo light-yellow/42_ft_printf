@@ -91,6 +91,7 @@ int	ft_printf(const char *format_string, ...)
 		else
 			ft_print_until_percent(&str, &format);
 	}
+	//printf("|buff: [%s], size: [%d]|", format.buffer, format.size);
 	write(1, format.buffer, format.size);
 	if (ft_strlen(format.buffer) != 0)
 		free(format.buffer);

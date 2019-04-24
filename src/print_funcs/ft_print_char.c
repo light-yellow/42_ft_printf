@@ -19,7 +19,8 @@ void	ft_putbuff(t_format *f, int padding)
         if (ft_strlen(f->buffer) != 0)
 	        free(f->buffer);
         f->buffer = "";
-	f->printed = f->size + 1 + padding;
+	f->printed += (f->size + 1 + padding);
+	f->size = 0;
 }
 
 void	ft_print_char(char **str, va_list *ap, t_format *f)
@@ -33,5 +34,6 @@ void	ft_print_char(char **str, va_list *ap, t_format *f)
 	(c == '\0') ? ft_putbuff(f, padding) : ft_fill_buffer(f, (char *)&c, 1);
 	ft_putpad(padding, f, f->minus == 1);
 	*str += 1;
-	f->size += (c == '\0') ? 0 : (1 + padding);
+	if (c != '\0')
+		f->size += (1 + padding);
 }
