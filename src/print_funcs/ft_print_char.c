@@ -25,7 +25,7 @@ void	ft_putbuff(t_format *f, int padding)
 
 int	ft_wcharlen(int c)
 {
-	if (c <= 0x7F || MB_CUR_MAX != 4)
+	if (c <= 0x7F)
                 return (1);
         else if (c <= 0x7FF)
 		return (2);
@@ -40,7 +40,7 @@ void	ft_print_wchar(t_format *f, int c, int len)
 {
 	char wc[4];
 
-	if (c <= 0x7F || MB_CUR_MAX != 4)
+	if (c <= 0x7F)
 		wc[0] = (char)c;
 	else if (c <= 0x7FF)
 	{
@@ -78,6 +78,4 @@ void	ft_print_char(char **str, va_list *ap, t_format *f)
 		ft_putbuff(f, padding);
 	ft_putpad(padding, f, f->minus == 1);
 	*str += 1;
-	if (c != '\0')
-		f->size += (1 + padding);
 }
