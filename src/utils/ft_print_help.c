@@ -17,25 +17,30 @@ void	ft_fill_buffer(t_format *f, char *str, int size)
 	char *new_buffer;
 	char *s2;
 
-	s2 = ft_strnew(size);
-	s2 = ft_strncpy(s2, str, size);
-	new_buffer = ft_strjoin(f->buffer, s2);
+	if (ft_strlen(str) != size)
+	{
+		s2 = ft_strnew(size);
+		s2 = ft_strncpy(s2, str, size);
+		new_buffer = ft_strjoin(f->buffer, s2);
+		free(s2);
+	}
+	else
+		new_buffer = ft_strjoin(f->buffer, str);
 	if (ft_strlen(f->buffer) != 0)
 		free(f->buffer);
-	free(s2);
 	f->buffer = new_buffer;
 }
 
-void	ft_putpad(int nchars, t_format *format, int pad_needed)
+void	ft_putpad(int nchars, t_format *f, int pad_needed)
 {
 	char	*c;
 
 	if (pad_needed)
 	{
-		c = (format->zero == 1 && format->minus == 0) ? "0" : " ";
+		c = (f->zero == 1 && f->minus == 0) ? "0" : " ";
 		while (nchars > 0)
 		{
-			ft_fill_buffer(format, c, 1);
+			ft_fill_buffer(f, c, 1);
 			nchars -= 1;
 		}
 	}
@@ -73,14 +78,14 @@ void	ft_putzeros(t_format *f, int nzeros)
 	}
 }
 
-void	ft_no_format_spec(char **str, va_list *ap, t_format *format)
+void	ft_no_format_spec(char **str, va_list *ap, t_format *f)
 {
 	int padding;
 
-	padding = ft_maxnum(format->min_width - 1, 0);
-	ft_putpad(padding, format, format->minus == 0);
-	ft_fill_buffer(format, *str, 1);
-	ft_putpad(padding, format, format->minus == 1);
+	padding = ft_maxnum(f->min_width - 1, 0);
+	ft_putpad(padding, f, f->minus == 0);
+	ft_fill_buffer(f, *str, 1);
+	ft_putpad(padding, f, f->minus == 1);
 	*str += 1;
-	format->size += (1 + padding);
+	f->size += (1 + padding);
 }

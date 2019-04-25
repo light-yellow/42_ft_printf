@@ -15,7 +15,7 @@
 void	ft_print_until_percent(char **str, t_format *f)
 {
 	char	*ptr;
-	int		str_len;
+	int	str_len;
 
 	ptr = ft_strchr(*str, '%');
 	if (ptr == NULL)
@@ -32,69 +32,67 @@ void	ft_print_until_percent(char **str, t_format *f)
 	f->size += str_len;
 }
 
-void	ft_call_type_print(char **str, va_list *ap, t_format *format)
+void	ft_call_type_print(char **str, va_list *ap, t_format *f)
 {
 	if (**str == 'c' || **str == 'C')
-		ft_print_char(str, ap, format);
+		ft_print_char(str, ap, f);
 	else if (**str == 's' || **str == 'S')
-		ft_print_str(str, ap, format);
+		ft_print_str(str, ap, f);
 	else if (**str == 'p')
-		ft_print_pointer(str, ap, format);
+		ft_print_pointer(str, ap, f);
 	else if (**str == 'r')
-		ft_print_non_printable(str, ap, format);
+		ft_print_non_printable(str, ap, f);
 	else if (**str == 'f')
-		ft_print_double(str, ap, format);
+		ft_print_double(str, ap, f);
 	else if (**str == 'b' || **str == 'B')
-		ft_print_binary(str, ap, format);
+		ft_print_binary(str, ap, f);
 	else if (**str == 'd' || **str == 'D' || **str == 'i')
-		ft_print_integer(str, ap, format);
+		ft_print_integer(str, ap, f);
 	else if (**str == 'o' || **str == 'O')
-		ft_print_octal(str, ap, format);
+		ft_print_octal(str, ap, f);
 	else if (**str == 'x' || **str == 'X')
-		ft_print_hex(str, ap, format);
+		ft_print_hex(str, ap, f);
 	else if (**str == 'u' || **str == 'U')
-		ft_print_unsigned(str, ap, format);
+		ft_print_unsigned(str, ap, f);
 	else
-		ft_no_format_spec(str, ap, format);
+		ft_no_format_spec(str, ap, f);
 }
 
-void	ft_print_format(char **str, va_list *ap, t_format *format)
+void	ft_print_format(char **str, va_list *ap, t_format *f)
 {
-
 	*str += 1;
 	if (**str)
 	{
-		ft_handle_optionals(str, format);
+		ft_handle_optionals(str, f);
 		if (ft_isalpha(**str) || **str == '%')
-			ft_call_type_print(str, ap, format);
+			ft_call_type_print(str, ap, f);
 	}
 }
 
-int	ft_printf(const char *format_string, ...)
+int	ft_printf(const char *format, ...)
 {
 	va_list	ap;
 	char	*str;
-	t_format    format;
+	t_format    f;
 
-	format.buffer = "";
-	format.size = 0;
-	format.printed = 0;
-	str = (char *)format_string;
-	va_start(ap, format_string);
+	f.buffer = "";
+	f.size = 0;
+	f.printed = 0;
+	str = (char *)format;
+	va_start(ap, format);
 	if (str == NULL)
 		return (-1);
 	while (str != NULL)
 	{
-		ft_init_format(&format);
+		ft_init_format(&f);
 		if (*str == '%')
-			ft_print_format(&str, &ap, &format);
+			ft_print_format(&str, &ap, &f);
 		else
-			ft_print_until_percent(&str, &format);
+			ft_print_until_percent(&str, &f);
 	}
-	//printf("|buff: [%s], size: [%d]|", format.buffer, format.size);
-	write(1, format.buffer, format.size);
-	if (ft_strlen(format.buffer) != 0)
-		free(format.buffer);
+	write(1, f.buffer, f.size);
+	if (ft_strlen(f.buffer) != 0)
+		free(f.buffer);
 	va_end(ap);
-	return (format.size + format.printed);
+	return (f.size + f.printed);
 }

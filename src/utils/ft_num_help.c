@@ -12,12 +12,12 @@
 
 #include "../../ft_printf.h"
 
-void	ft_update_optionals(char id, t_format *format)
+void	ft_update_optionals(char id, t_format *f)
 {
-	if (format->precision != 0)
-		format->zero = 0;
+	if (f->precision != 0)
+		f->zero = 0;
 	if (id == 'O' || id == 'U' || id == 'D' || id == 'B')
-		format->length = LEN_L;
-	if (format->zero && (id == 'd' || id == 'D' || id == 'i'))
-		format->precision = format->min_width;
+		f->length = LEN_L;
+	if (f->zero && (id == 'd' || id == 'D' || id == 'i'))
+		f->precision = f->min_width;
 }
