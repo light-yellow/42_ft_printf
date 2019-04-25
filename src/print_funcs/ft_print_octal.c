@@ -44,7 +44,6 @@ void	ft_print_octal(char **str, va_list *ap, t_format *format)
 	ptr_len = (value > 0 || format->precision != -1) ? ft_strlen(ptr) : 0;
 	len = ft_calc_len(format, value, ptr_len);
 	padding = ft_maxnum(format->min_width - len, 0);
-	printf("\n\n\nptr: %s\n\n\n\n\n", ptr);
 	ft_putpad(padding, format, format->minus == 0);
 	ft_putprefix(value, **str, format);
 	ft_putzeros(format, len - ptr_len - ((format->hash &&
