@@ -68,28 +68,28 @@ void	ft_parse_precision(char **str, t_format *format)
 	}
 }
 
-void	ft_parse_length(char **str, t_format *format)
+void	ft_parse_length(char **str, t_format *f)
 {
 	while (**str)
 	{
 		if (**str == 'h')
 		{
-			format->length = (*(*str + 1) == 'h') ? LEN_HH : LEN_H;
+			f->length = (*(*str + 1) == 'h') ? LEN_HH : LEN_H;
 			*str += (*(*str + 1) == 'h') ? 2 : 1;
 		}
 		else if (**str == 'l')
 		{
-			format->length = (*(*str + 1) == 'l') ? LEN_LL : LEN_L;
+			f->length = (*(*str + 1) == 'l') ? LEN_LL : LEN_L;
 			*str += (*(*str + 1) == 'l') ? 2 : 1;
 		}
 		else if (**str == 'j')
 		{
-			format->length = LEN_J;
+			f->length = LEN_J;
 			*str += 1;
 		}
 		else if (**str == 'z')
 		{
-			format->length = LEN_Z;
+			f->length = LEN_Z;
 			*str += 1;
 		}
 		else

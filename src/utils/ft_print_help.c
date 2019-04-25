@@ -17,7 +17,7 @@ void	ft_fill_buffer(t_format *f, char *str, int size)
 	char *new_buffer;
 	char *s2;
 
-	if (ft_strlen(str) != size)
+	if ((int)ft_strlen(str) != size)
 	{
 		s2 = ft_strnew(size);
 		s2 = ft_strncpy(s2, str, size);
@@ -78,7 +78,7 @@ void	ft_putzeros(t_format *f, int nzeros)
 	}
 }
 
-void	ft_no_format_spec(char **str, va_list *ap, t_format *f)
+void	ft_no_format_spec(char **str, t_format *f)
 {
 	int padding;
 

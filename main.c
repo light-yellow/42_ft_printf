@@ -1,6 +1,7 @@
 #include "ft_printf.h"
 #include "stdio.h"
 #include <limits.h>
+#include <locale.h>
 
 void	ft_print_result(int mr, int or, int line)
 {
@@ -59,7 +60,7 @@ int main()
 	//int n_bytes = ft_printf("henlo fren, |%%|  %x, %X, %d, %i, %o ====\n", 15, 15, 123, -123, 7);
 	//printf("\n%d\n", n_bytes);
 	//printf("\n octal = %s\n", ft_it	return (0);
-
+/*
 	printf("\n%s\n", "-----------------");
 	printf("\n%s\n", "d tests");
 	printf("\n%s\n", "-----------------");
@@ -190,7 +191,7 @@ int main()
 	or = printf("ORIG>\t[@moulitest: %.10d]\n", -42);
 	ft_print_result(mr, or, __LINE__);
 
-
+*/
 /*
 **  u TESTS
 */ 
@@ -502,13 +503,24 @@ int main()
 ** C TESTS
 */
 
-/*
+	char* l = setlocale(LC_ALL, "");
+
+if (l == NULL)
+{
+    printf("Locale not set\n");
+}
+else
+{
+    printf("Locale set to %s\n", l);
+}
+printf("%s", "");
+
 	printf("\n%s\n", "-----------------");
 	printf("\n%s\n", "C tests");
 	printf("\n%s\n", "-----------------");
 	
-	mr = ft_printf("MINE>\t[%C]\n", L'Å'); 
-	or = printf("ORIG>\t[%C]\n",  L'Å');
+	int mr = ft_printf("MINE>\t[%C]\n", 945); 
+	int or = printf("ORIG>\t[%C]\n",  945);
 	ft_print_result(mr, or, __LINE__);
 	mr = ft_printf("MINE>\t[%C]\n", L'Å');
 	or = printf("ORIG>\t[%C]\n", L'Å');
@@ -567,7 +579,6 @@ int main()
 	mr = ft_printf("MINE>\t[%.10C]\n", L'♥');
 	or = printf("ORIG>\t[%.10C]\n", L'♥');
 	ft_print_result(mr, or, __LINE__);
-*/
 
 /*
 ** S TESTS

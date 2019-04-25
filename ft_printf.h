@@ -55,7 +55,7 @@ void			ft_print_hex(char **str, va_list *ap, t_format *f);
 void			ft_print_octal(char **str, va_list *ap, t_format *f);
 void			ft_print_unsigned(char **str, va_list *ap, t_format *f);
 void			ft_print_double(char **str, va_list *ap, t_format *f);
-void			ft_no_format_spec(char **str, va_list *ap, t_format *f);
+void			ft_no_format_spec(char **str, t_format *f);
 void			ft_init_format(t_format *f);
 void			ft_handle_optionals(char **str, t_format *f);
 void			ft_parse_flags(char **str, t_format *f);
@@ -65,5 +65,7 @@ void			ft_parse_length(char **str, t_format *f);
 void			ft_update_optionals(char format_id, t_format *f);
 intmax_t		ft_cast_int(va_list *ap, t_format *f);
 uintmax_t		ft_cast_uint(va_list *ap, t_format *f);
+void			ft_print_wchar(t_format *f, int c, int len);
+int			ft_wcharlen(int c);
 
 #endif

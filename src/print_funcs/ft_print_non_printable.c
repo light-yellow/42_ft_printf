@@ -26,6 +26,7 @@ void	ft_print_non_printable(char **str, va_list *ap, t_format *format)
 	char	*ptr;
 	int		padding;
 
+	padding = 0;
 	padding++;
 	ptr = va_arg(*ap, char*);
 	while (*ptr != '\0')

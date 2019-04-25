@@ -23,6 +23,47 @@ void	ft_putbuff(t_format *f, int padding)
 	f->size = 0;
 }
 
+int	ft_wcharlen(int c)
+{
+	if (c <= 0x7F || MB_CUR_MAX != 4)
+                return (1);
+        else if (c <= 0x7FF)
+		return (2);
+        else if (c <= 0xFFFF)
+		return (3);
+        else
+		return (4);
+
+}
+
+void	ft_print_wchar(t_format *f, int c, int len)
+{
+	char wc[4];
+
+	if (c <= 0x7F || MB_CUR_MAX != 4)
+		wc[0] = (char)c;
+	else if (c <= 0x7FF)
+	{
+		wc[0] = (char)((c >> 6) | 0xC0);
+		wc[1] = (char)((c & 0x3F) | 0x80);
+	}
+	else if (c <= 0xFFFF)
+	{
+		wc[0] = (char)((c >> 12) | 0xE0);
+		wc[1] = (char)(((c >> 6) & 0x3F) | 0x80);
+		wc[2] = (char)((c & 0x3F) | 0x80);
+	}
+	else
+	{
+		wc[0] = (char)((c >> 18) | 0xF0);
+		wc[1] = (char)(((c >> 12) & 0x3F) | 0x80);
+                wc[2] = (char)(((c >> 6) & 0x3F) | 0x80);
+                wc[3] = (char)((c & 0x3F) | 0x80);
+	}
+	ft_fill_buffer(f, wc, len);
+	f->size += len;
+}
+
 void	ft_print_char(char **str, va_list *ap, t_format *f)
 {
 	int padding;
@@ -31,7 +72,10 @@ void	ft_print_char(char **str, va_list *ap, t_format *f)
 	padding = ft_maxnum(f->min_width - 1, 0);
 	ft_putpad(padding, f, f->minus == 0);
 	c = va_arg(*ap, int);
-	(c == '\0') ? ft_putbuff(f, padding) : ft_fill_buffer(f, (char *)&c, 1);
+	if (c != '\0')
+		ft_print_wchar(f, c, ft_wcharlen(c));
+	else
+		ft_putbuff(f, padding);
 	ft_putpad(padding, f, f->minus == 1);
 	*str += 1;
 	if (c != '\0')

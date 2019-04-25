@@ -12,23 +12,63 @@
 
 #include "../../ft_printf.h"
 
-void	ft_print_str(char **str, va_list *ap, t_format *format)
+int	ft_wstrlen(wchar_t *str)
+{
+	int	len;
+
+	len = 0;
+	while (*str != L'\0')
+	{
+		len += ft_wcharlen(*str); 
+		*str += 1;
+	}
+	return (len);
+}
+
+void    ft_print_wstr(char **str, va_list *ap, t_format *f)
+{
+        wchar_t	*ptr;
+        int	len;
+        int     ptr_len;
+        int     padding;
+
+        if ((ptr = va_arg(*ap, wchar_t *)) == NULL)
+                ptr = L"(null)";
+        ptr_len = ft_wstrlen(ptr);
+        len = (f->precision == -1) ? 0 : ptr_len;
+        len = (f->precision > 0 && f->precision <= ptr_len) ? f->precision : len;
+        padding = ft_maxnum(f->min_width - len, 0);
+        ft_putpad(padding, f, f->minus == 0);
+        while (ptr_len > 0)
+	{
+		ft_print_wchar(f, *ptr, ft_wcharlen(*ptr));
+		*ptr += 1;
+		ptr_len -= 1;
+	}
+        ft_putpad(padding, f, f->minus == 1);
+        *str += 1;
+        f->size += (len + padding);
+}
+
+
+void	ft_print_str(char **str, va_list *ap, t_format *f)
 {
 	char	*ptr;
-	int		len;
-	int		ptr_len;
-	int		padding;
+	int	len;
+	int	ptr_len;
+	int	padding;
 
+	if (**str == 'S' || f->length == LEN_L)
+		ft_print_wstr(str, ap, f);
 	if ((ptr = va_arg(*ap, char *)) == NULL)
 		ptr = "(null)";
 	ptr_len = ft_strlen(ptr);
-	len = (format->precision == -1) ? 0 : ptr_len;
-	len = (format->precision > 0 && format->precision <= ptr_len) ?
-									format->precision : len;
-	padding = ft_maxnum(format->min_width - len, 0);
-	ft_putpad(padding, format, format->minus == 0);
-	ft_fill_buffer(format, ptr, len);
-	ft_putpad(padding, format, format->minus == 1);
+	len = (f->precision == -1) ? 0 : ptr_len;
+	len = (f->precision > 0 && f->precision <= ptr_len) ? f->precision : len;
+	padding = ft_maxnum(f->min_width - len, 0);
+	ft_putpad(padding, f, f->minus == 0);
+	ft_fill_buffer(f, ptr, len);
+	ft_putpad(padding, f, f->minus == 1);
 	*str += 1;
-	format->size += (len + padding);
+	f->size += (len + padding);
 }
