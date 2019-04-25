@@ -497,12 +497,11 @@ int main()
 	mr = ft_printf("MINE>\t[%.10p]\n", (void*)14785478);
 	or = printf("ORIG>\t[%.10p]\n", (void*)14785478);
 	ft_print_result(mr, or, __LINE__);
-
 */
 /*
 ** C TESTS
 */
-
+/*
 	char* l = setlocale(LC_ALL, "");
 
 if (l == NULL)
@@ -579,21 +578,18 @@ printf("%s", "");
 	mr = ft_printf("MINE>\t[%.10C]\n", L'♥');
 	or = printf("ORIG>\t[%.10C]\n", L'♥');
 	ft_print_result(mr, or, __LINE__);
-
+*/
 /*
 ** S TESTS
 */
 
-/*
+
 	printf("\n%s\n", "-----------------");
 	printf("\n%s\n", "S tests");
 	printf("\n%s\n", "-----------------");
 	
-	mr = ft_printf("MINE>\t[%S]\n", L"こんにちは私は月面です"); 
-	or = printf("ORIG>\t[%S]\n",  L"こんにちは私は月面です");
-	ft_print_result(mr, or, __LINE__);
-	mr = ft_printf("MINE>\t[%S]\n", L"Для меня нет полонийного чая, спасибо");
-	or = printf("ORIG>\t[%S]\n", L"Для меня нет полонийного чая, спасибо");
+	int mr = ft_printf("MINE>\t[%S]\n", L"こんにちは私は月面です"); 
+	int or = printf("ORIG>\t[%S]\n",  L"こんにちは私は月面です");
 	ft_print_result(mr, or, __LINE__);
 	mr = ft_printf("MINE>\t[%S]\n", L"هل الجو حار هنا أم هو نظام الأبوية؟");
 	or = printf("ORIG>\t[%S]\n", L"هل الجو حار هنا أم هو نظام الأبوية؟");
@@ -652,7 +648,7 @@ printf("%s", "");
 	mr = ft_printf("MINE>\t[%#-6o]\n", 2500);
 	or = printf("ORIG>\t[%#-6o]\n", 2500);
 	ft_print_result(mr, or, __LINE__);
-*/
+
 /*
 ** c and s TESTS
 */
