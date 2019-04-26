@@ -6,7 +6,7 @@
 /*   By: bdudley <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/20 19:14:05 by bdudley           #+#    #+#             */
-/*   Updated: 2019/04/24 17:46:12 by jgoyette         ###   ########.fr       */
+/*   Updated: 2019/04/26 14:45:51 by jgoyette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	ft_fill_buffer(t_format *f, char *str, int size)
 	}
 	else
 		new_buffer = ft_strjoin(f->buffer, str);
-	if (ft_strlen(f->buffer) != 0)
+	if (*(f->buffer))
 		free(f->buffer);
 	f->buffer = new_buffer;
 }

@@ -48,9 +48,9 @@ int main()
 //      printf("\nnbytes7: %d, nbytes8: %d\n", nbytes7, nbytes8);
 //
 
-	int nbytes9 = ft_printf("%c|%-c|%12c|%-12c", 0, 0, 0, 0);
+	int nbytes9 = ft_printf("|%s|", "0");
 	printf("\n");
-	int nbytes10 = printf("%c|%-c|%12c|%-12c", 0, 0, 0, 0);
+	int nbytes10 = printf("|%s|", "0");
 	printf("\nnbytes9: %d, nbytes10: %d\n", nbytes9, nbytes10);
 
 

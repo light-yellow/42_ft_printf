@@ -6,21 +6,26 @@
 /*   By: bdudley <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/26 16:26:23 by bdudley           #+#    #+#             */
-/*   Updated: 2019/04/26 13:55:14 by jgoyette         ###   ########.fr       */
+/*   Updated: 2019/04/26 14:46:05 by jgoyette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../ft_printf.h"
 
-void	ft_putbuff(t_format *f)
+void	ft_putbuff(t_format *f, int padding)
 {
 	write(1, f->buffer, ft_strlen(f->buffer));
     write(1, "\0", 1);
-    if (ft_strlen(f->buffer) != 0)
+    if ((*f->buffer))
 		free(f->buffer);
     f->buffer = "";
 	f->printed += (f->size + 1);
 	f->size = 0;
+	if (f->minus)
+	{
+		f->printed -= padding;
+		f->size += padding;
+	}
 }
 
 int	ft_wcharlen(int c)
@@ -73,12 +78,12 @@ void	ft_print_char(char **str, va_list *ap, t_format *f)
 	c = va_arg(*ap, int);
 	len = (**str == 'C' || f->length == LEN_L) ? ft_wcharlen(c): 1;
 	padding = ft_maxnum(f->min_width - len, 0);
-	f->size += padding;
 	ft_putpad(padding, f, f->minus == 0);
+	f->size += padding;
 	if (c != '\0')
 		ft_print_wchar(f, c, len);
 	else
-		ft_putbuff(f);
+		ft_putbuff(f, padding);
 	ft_putpad(padding, f, f->minus == 1);
 	*str += 1;
 }
