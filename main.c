@@ -24,10 +24,11 @@ void	ft_print_result(int mr, int or, int line)
 
 int main()
 {
-	int s;
+
+//	int s;
 //	int *p;
 
-	s = 554634;
+//	s = 554634;
 //	p = &s;
 //	int nbytes1 = printf("printf    - pointer: |%20p|\n", (void *)p);
 //	int nbytes2 = ft_printf("ft_printf - pointer: |%20p|\n", (void *)p);
@@ -47,10 +48,10 @@ int main()
 //      printf("\nnbytes7: %d, nbytes8: %d\n", nbytes7, nbytes8);
 //
 
-//	int nbytes9 = ft_printf(NULL);
-//	printf("\n");
-//	int nbytes10 = printf(NULL);
-//	printf("\nnbytes9: %d, nbytes10: %d\n", nbytes9, nbytes10);
+	int nbytes9 = ft_printf("%c|%-c|%12c|%-12c", 0, 0, 0, 0);
+	printf("\n");
+	int nbytes10 = printf("%c|%-c|%12c|%-12c", 0, 0, 0, 0);
+	printf("\nnbytes9: %d, nbytes10: %d\n", nbytes9, nbytes10);
 
 
 
@@ -582,7 +583,7 @@ printf("%s", "");
 /*
 ** S TESTS
 */
-
+/*
 
 	printf("\n%s\n", "-----------------");
 	printf("\n%s\n", "S tests");
@@ -648,7 +649,7 @@ printf("%s", "");
 	mr = ft_printf("MINE>\t[%#-6o]\n", 2500);
 	or = printf("ORIG>\t[%#-6o]\n", 2500);
 	ft_print_result(mr, or, __LINE__);
-
+*/
 /*
 ** c and s TESTS
 */

@@ -6,7 +6,7 @@
 /*   By: bdudley <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 11:57:32 by bdudley           #+#    #+#             */
-/*   Updated: 2019/04/24 18:01:17 by jgoyette         ###   ########.fr       */
+/*   Updated: 2019/04/26 13:40:29 by jgoyette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,6 @@ void			ft_update_optionals(char format_id, t_format *f);
 intmax_t		ft_cast_int(va_list *ap, t_format *f);
 uintmax_t		ft_cast_uint(va_list *ap, t_format *f);
 void			ft_print_wchar(t_format *f, int c, int len);
-int			ft_wcharlen(int c);
+int				ft_wcharlen(int c);
 
 #endif

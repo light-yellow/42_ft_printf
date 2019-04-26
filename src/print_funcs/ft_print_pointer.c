@@ -6,7 +6,7 @@
 /*   By: bdudley <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/26 17:02:14 by bdudley           #+#    #+#             */
-/*   Updated: 2019/04/24 17:56:14 by jgoyette         ###   ########.fr       */
+/*   Updated: 2019/04/26 14:14:34 by jgoyette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ static int	ft_calc_len(t_format *format, uintmax_t num, int num_len)
 		len = num_len;
 	if (format->zero && format->min_width > len)
 		len = format->min_width;
+	else
+		len += 2;
 	return (len);
 }
 
@@ -39,7 +41,7 @@ void	ft_print_pointer(char **str, va_list *ap, t_format *format)
 	value = va_arg(*ap, unsigned long);
 	ptr = ft_ulltoa_base(value, 16, 'a');
 	ptr_len = (format->precision != -1) ? ft_strlen(ptr) : 0;
-	len = ft_calc_len(format, value, ptr_len) + 2;
+	len = ft_calc_len(format, value, ptr_len);
 	padding = ft_maxnum(format->min_width - len, 0);
 	ft_putpad(padding, format, format->minus == 0);
 	ft_fill_buffer(format, "0x", 2);

@@ -6,7 +6,7 @@
 /*   By: bdudley <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/26 16:36:05 by bdudley           #+#    #+#             */
-/*   Updated: 2019/04/24 17:55:53 by jgoyette         ###   ########.fr       */
+/*   Updated: 2019/04/26 14:21:05 by jgoyette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,21 +35,21 @@ void    ft_print_wstr(char **str, va_list *ap, t_format *f)
 
 	if ((ptr = va_arg(*ap, wchar_t *)) == NULL)
 		ptr = L"(null)";
-        ptr_len = ft_wstrlen(ptr);
+	ptr_len = ft_wstrlen(ptr);
 	len = (f->precision == -1) ? 0 : ptr_len;
-        len = (f->precision > 0 && f->precision <= ptr_len) ? f->precision : len;
-        padding = ft_maxnum(f->min_width - len, 0);
-        ft_putpad(padding, f, f->minus == 0);
-	while (*ptr && ptr_len > 0)
+    len = (f->precision > 0 && f->precision <= ptr_len) ? f->precision : len;
+    padding = ft_maxnum(f->min_width - len, 0);
+    ft_putpad(padding, f, f->minus == 0);
+	while (*ptr && len > 0)
 	{
 		wclen = ft_wcharlen(*ptr);
 		ft_print_wchar(f, *ptr, wclen);
 		ptr += 1;
-		ptr_len -= wclen;
+		len -= wclen;
 	}
-        ft_putpad(padding, f, f->minus == 1);
-        *str += 1;
-        f->size += padding;
+    ft_putpad(padding, f, f->minus == 1);
+    *str += 1;
+    f->size += padding;
 }
 
 
