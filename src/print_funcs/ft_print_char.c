@@ -6,7 +6,7 @@
 /*   By: bdudley <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/26 16:26:23 by bdudley           #+#    #+#             */
-/*   Updated: 2019/04/26 14:46:05 by jgoyette         ###   ########.fr       */
+/*   Updated: 2019/04/26 16:19:50 by jgoyette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,13 +69,13 @@ void	ft_print_wchar(t_format *f, int c, int len)
 	f->size += len;
 }
 
-void	ft_print_char(char **str, va_list *ap, t_format *f)
+void	ft_print_char(char **str, t_format *f)
 {
 	int padding;
 	int c;
 	int	len;
 
-	c = va_arg(*ap, int);
+	c = va_arg(f->ap, int);
 	len = (**str == 'C' || f->length == LEN_L) ? ft_wcharlen(c): 1;
 	padding = ft_maxnum(f->min_width - len, 0);
 	ft_putpad(padding, f, f->minus == 0);

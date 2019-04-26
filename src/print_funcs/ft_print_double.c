@@ -6,7 +6,7 @@
 /*   By: bdudley <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 17:53:01 by bdudley           #+#    #+#             */
-/*   Updated: 2019/04/24 18:00:02 by jgoyette         ###   ########.fr       */
+/*   Updated: 2019/04/26 16:27:50 by jgoyette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,17 +41,17 @@ static char	*ft_put_double(double value)
 	return (str);
 }
 
-void			ft_print_double(char **str, va_list *ap, t_format *format)
+void			ft_print_double(char **str, t_format *f)
 {
 	double	value;
 	int		counter;
 	char	*ptr;
 
-	value = va_arg(*ap, double);
+	value = va_arg(f->ap, double);
 	ptr = ft_put_double(value);
 	counter = ft_strlen(ptr);
 	ft_putstr(ptr);
 	free(ptr);
 	*str += 1;
-	format->size += counter;
+	f->size += counter;
 }

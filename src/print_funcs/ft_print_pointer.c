@@ -6,7 +6,7 @@
 /*   By: bdudley <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/26 17:02:14 by bdudley           #+#    #+#             */
-/*   Updated: 2019/04/26 14:14:34 by jgoyette         ###   ########.fr       */
+/*   Updated: 2019/04/26 16:29:40 by jgoyette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static int	ft_calc_len(t_format *format, uintmax_t num, int num_len)
 	return (len);
 }
 
-void	ft_print_pointer(char **str, va_list *ap, t_format *format)
+void	ft_print_pointer(char **str, t_format *format)
 {
 	uintmax_t		value;
 	char			*ptr;
@@ -38,7 +38,7 @@ void	ft_print_pointer(char **str, va_list *ap, t_format *format)
 	int				padding;
 
 	ft_update_optionals(**str, format);
-	value = va_arg(*ap, unsigned long);
+	value = va_arg(format->ap, unsigned long);
 	ptr = ft_ulltoa_base(value, 16, 'a');
 	ptr_len = (format->precision != -1) ? ft_strlen(ptr) : 0;
 	len = ft_calc_len(format, value, ptr_len);

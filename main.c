@@ -47,10 +47,11 @@ int main()
 //      int nbytes8 = printf("printf    - d: |%+010d|\n", 3);
 //      printf("\nnbytes7: %d, nbytes8: %d\n", nbytes7, nbytes8);
 //
-
-	int nbytes9 = ft_printf("|%s|", "0");
+	setlocale(LC_ALL, "en_US.UTF-8");
+//	setlocale(LC_ALL, "");
+	int nbytes9 = ft_printf("|% 0.0c|", 1024);
 	printf("\n");
-	int nbytes10 = printf("|%s|", "0");
+	int nbytes10 = printf("|% 0.0c|", 1024);
 	printf("\nnbytes9: %d, nbytes10: %d\n", nbytes9, nbytes10);
 
 

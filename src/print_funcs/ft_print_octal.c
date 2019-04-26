@@ -6,7 +6,7 @@
 /*   By: bdudley <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 18:14:23 by bdudley           #+#    #+#             */
-/*   Updated: 2019/04/24 17:54:45 by jgoyette         ###   ########.fr       */
+/*   Updated: 2019/04/26 16:22:51 by jgoyette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static	int	ft_calc_len(t_format *f, uintmax_t num, int numlen)
 	return (len);
 }
 
-void	ft_print_octal(char **str, va_list *ap, t_format *format)
+void	ft_print_octal(char **str, t_format *f)
 {
 	uintmax_t	value;
 	char		*ptr;
@@ -37,20 +37,19 @@ void	ft_print_octal(char **str, va_list *ap, t_format *format)
 	int			len;
 	int			padding;
 
-
-	ft_update_optionals(**str, format);
-	value = ft_cast_uint(ap, format);
+	ft_update_optionals(**str, f);
+	value = ft_cast_uint(f);
 	ptr = ft_ulltoa_base(value, 8, 'a');
-	ptr_len = (value > 0 || format->precision != -1) ? ft_strlen(ptr) : 0;
-	len = ft_calc_len(format, value, ptr_len);
-	padding = ft_maxnum(format->min_width - len, 0);
-	ft_putpad(padding, format, format->minus == 0);
-	ft_putprefix(value, **str, format);
-	ft_putzeros(format, len - ptr_len - ((format->hash &&
-			(value > 0 || format->precision == -1)) ? 1 : 0));
-	ft_fill_buffer(format, ptr, ptr_len);
-	ft_putpad(padding, format, format->minus == 1);
+	ptr_len = (value > 0 || f->precision != -1) ? ft_strlen(ptr) : 0;
+	len = ft_calc_len(f, value, ptr_len);
+	padding = ft_maxnum(f->min_width - len, 0);
+	ft_putpad(padding, f, f->minus == 0);
+	ft_putprefix(value, **str, f);
+	ft_putzeros(f, len - ptr_len - ((f->hash &&
+			(value > 0 || f->precision == -1)) ? 1 : 0));
+	ft_fill_buffer(f, ptr, ptr_len);
+	ft_putpad(padding, f, f->minus == 1);
 	*str += 1;
 	free(ptr);
-	format->size += (len + padding);
+	f->size += (len + padding);
 }

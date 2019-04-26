@@ -6,7 +6,7 @@
 /*   By: bdudley <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/26 16:36:05 by bdudley           #+#    #+#             */
-/*   Updated: 2019/04/26 14:21:05 by jgoyette         ###   ########.fr       */
+/*   Updated: 2019/04/26 16:19:15 by jgoyette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	ft_wstrlen(wchar_t *str)
 	return (len);
 }
 
-void    ft_print_wstr(char **str, va_list *ap, t_format *f)
+void    ft_print_wstr(char **str, t_format *f)
 {
         wchar_t	*ptr;
         int	len;
@@ -33,7 +33,7 @@ void    ft_print_wstr(char **str, va_list *ap, t_format *f)
         int     padding;
 	int	wclen;
 
-	if ((ptr = va_arg(*ap, wchar_t *)) == NULL)
+	if ((ptr = va_arg(f->ap, wchar_t *)) == NULL)
 		ptr = L"(null)";
 	ptr_len = ft_wstrlen(ptr);
 	len = (f->precision == -1) ? 0 : ptr_len;
@@ -53,7 +53,7 @@ void    ft_print_wstr(char **str, va_list *ap, t_format *f)
 }
 
 
-void	ft_print_str(char **str, va_list *ap, t_format *f)
+void	ft_print_str(char **str, t_format *f)
 {
 	char	*ptr;
 	int	len;
@@ -61,10 +61,10 @@ void	ft_print_str(char **str, va_list *ap, t_format *f)
 	int	padding;
 
 	if (**str == 'S' || f->length == LEN_L)
-		ft_print_wstr(str, ap, f);
+		ft_print_wstr(str, f);
 	else
 	{
-		if ((ptr = va_arg(*ap, char *)) == NULL)
+		if ((ptr = va_arg(f->ap, char *)) == NULL)
 			ptr = "(null)";
 		ptr_len = ft_strlen(ptr);
 		len = (f->precision == -1) ? 0 : ptr_len;

@@ -6,7 +6,7 @@
 /*   By: bdudley <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/17 17:54:45 by bdudley           #+#    #+#             */
-/*   Updated: 2019/04/24 18:01:36 by jgoyette         ###   ########.fr       */
+/*   Updated: 2019/04/26 16:28:21 by jgoyette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,14 @@ static int	ft_print_code(int c)
 	return (1);
 }
 
-void	ft_print_non_printable(char **str, va_list *ap, t_format *format)
+void	ft_print_non_printable(char **str, t_format *f)
 {
 	char	*ptr;
 	int		padding;
 
 	padding = 0;
 	padding++;
-	ptr = va_arg(*ap, char*);
+	ptr = va_arg(f->ap, char*);
 	while (*ptr != '\0')
 	{
 		if (!(ft_isprint(*ptr)))
@@ -47,5 +47,5 @@ void	ft_print_non_printable(char **str, va_list *ap, t_format *format)
 		padding++;
 	}
 	*str += 1;
-	format->size += 1;
+	f->size += 1;
 }
