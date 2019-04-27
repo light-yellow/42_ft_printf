@@ -50,5 +50,4 @@ void			ft_print_hex(char **str, t_format *f)
 	ft_putpad(padding, f, f->minus == 1);
 	*str += 1;
 	free(ptr);
-	f->size += (len + padding);
 }

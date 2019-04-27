@@ -45,5 +45,4 @@ void			ft_print_unsigned(char **str, t_format *format)
 	ft_putpad(padding, format, format->minus == 1);
 	*str += 1;
 	free(ptr);
-	format->size += (len + padding);
 }

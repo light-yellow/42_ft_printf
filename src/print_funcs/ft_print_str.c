@@ -49,7 +49,6 @@ void    ft_print_wstr(char **str, t_format *f)
 	}
     ft_putpad(padding, f, f->minus == 1);
     *str += 1;
-    f->size += padding;
 }
 
 
@@ -74,6 +73,5 @@ void	ft_print_str(char **str, t_format *f)
 		ft_fill_buffer(f, ptr, len);
 		ft_putpad(padding, f, f->minus == 1);
 		*str += 1;
-		f->size += (len + padding);
 	}
 }

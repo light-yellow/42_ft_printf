@@ -20,16 +20,15 @@ void	ft_print_until_percent(char **str, t_format *f)
 	ptr = ft_strchr(*str, '%');
 	if (ptr == NULL)
 	{
-		ft_fill_buffer(f, *str, ft_strlen(*str));
 		str_len = ft_strlen(*str);
+		ft_fill_buffer(f, *str, str_len);
 	}
 	else
 	{
-		ft_fill_buffer(f, *str, ptr - *str);
 		str_len = ptr - *str;
+		ft_fill_buffer(f, *str, str_len);
 	}
 	*str = ptr;
-	f->size += str_len;
 }
 
 void	ft_call_type_print(char **str, t_format *f)
@@ -74,7 +73,7 @@ int	ft_printf(const char *format, ...)
 	char	*str;
 	t_format    f;
 
-	f.buffer = "";
+	f.buffer_size = 0;
 	f.size = 0;
 	f.printed = 0;
 	str = (char *)format;
@@ -90,8 +89,6 @@ int	ft_printf(const char *format, ...)
 			ft_print_until_percent(&str, &f);
 	}
 	write(1, f.buffer, f.size);
-	if (ft_strlen(f.buffer) != 0)
-		free(f.buffer);
 	va_end(f.ap);
 	return (f.size + f.printed);
 }

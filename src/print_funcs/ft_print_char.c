@@ -12,22 +12,6 @@
 
 #include "../../ft_printf.h"
 
-void	ft_putbuff(t_format *f, int padding)
-{
-	write(1, f->buffer, ft_strlen(f->buffer));
-    write(1, "\0", 1);
-    if ((*f->buffer))
-		free(f->buffer);
-    f->buffer = "";
-	f->printed += (f->size + 1);
-	f->size = 0;
-	if (f->minus)
-	{
-		f->printed -= padding;
-		f->size += padding;
-	}
-}
-
 int	ft_wcharlen(int c)
 {
 	if (c <= 0x7F)
@@ -66,24 +50,19 @@ void	ft_print_wchar(t_format *f, int c, int len)
 		wc[3] = (char)((c & 0x3F) | 0x80);
 	}
 	ft_fill_buffer(f, wc, len);
-	f->size += len;
 }
 
 void	ft_print_char(char **str, t_format *f)
 {
-	int padding;
-	int c;
+	int	padding;
+	int	c;
 	int	len;
 
 	c = va_arg(f->ap, int);
 	len = (**str == 'C' || f->length == LEN_L) ? ft_wcharlen(c): 1;
 	padding = ft_maxnum(f->min_width - len, 0);
 	ft_putpad(padding, f, f->minus == 0);
-	f->size += padding;
-	if (c != '\0')
-		ft_print_wchar(f, c, len);
-	else
-		ft_putbuff(f, padding);
+	ft_print_wchar(f, c, len);
 	ft_putpad(padding, f, f->minus == 1);
 	*str += 1;
 }

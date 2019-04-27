@@ -14,21 +14,20 @@
 
 void	ft_fill_buffer(t_format *f, char *str, int size)
 {
-	char *new_buffer;
-	char *s2;
-
-	if ((int)ft_strlen(str) != size)
+	if (BUFF_SIZE - f->buffer_size < size)
 	{
-		s2 = ft_strnew(size);
-		s2 = ft_strncpy(s2, str, size);
-		new_buffer = ft_strjoin(f->buffer, s2);
-		free(s2);
+		write(1, f->buffer, f->buffer_size);
+		write(1, str, size);
+		f->printed += f->buffer_size + size;
+		f->size = 0;
+		f->buffer_size = 0;
 	}
 	else
-		new_buffer = ft_strjoin(f->buffer, str);
-	if (*(f->buffer))
-		free(f->buffer);
-	f->buffer = new_buffer;
+	{
+		ft_memcpy(&(f->buffer[f->buffer_size]), str, size);
+		f->buffer_size += size;
+		f->size += size;
+	}
 }
 
 void	ft_putpad(int nchars, t_format *f, int pad_needed)
@@ -87,5 +86,4 @@ void	ft_no_format_spec(char **str, t_format *f)
 	ft_fill_buffer(f, *str, 1);
 	ft_putpad(padding, f, f->minus == 1);
 	*str += 1;
-	f->size += (1 + padding);
 }

@@ -17,32 +17,34 @@
 # include <stdio.h>
 # include "src/libft/libft.h"
 
-# define LEN_H	1
-# define LEN_HH	2
-# define LEN_L	3
-# define LEN_LL	4
-# define LEN_J	5
-# define LEN_Z	6
+# define BUFF_SIZE	42
+# define LEN_H		1
+# define LEN_HH		2
+# define LEN_L		3
+# define LEN_LL		4
+# define LEN_J		5
+# define LEN_Z		6
 
 typedef struct		s_format
 {
+	int             precision;
+	unsigned int    length;
+        unsigned int    min_width;
+        unsigned int    size;
+        unsigned int    printed;
+	unsigned int	buffer_size;
+        char            buffer[BUFF_SIZE];
+        va_list         ap;
 	unsigned int	hash : 1;
 	unsigned int	zero : 1;
 	unsigned int 	minus : 1;
 	unsigned int	plus : 1;
 	unsigned int	space : 1;
-	int				length;
-	int				min_width;
-	int				precision;
-	int				size;
-	int				printed;
-	char			*buffer;
-	va_list			ap;
 }					t_format;
 
-int					ft_printf(const char *format, ...);
+int				ft_printf(const char *format, ...);
 void				ft_fill_buffer(t_format *f, char *str, int size);
-int					ft_printf(const char *format, ...);
+int				ft_printf(const char *format, ...);
 void				ft_putpad(int nchars, t_format *f, int pad_needed);
 void				ft_putprefix(uintmax_t num, char id, t_format *f);
 void				ft_putsign(intmax_t num, t_format *f);

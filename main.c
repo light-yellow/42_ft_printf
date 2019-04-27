@@ -47,12 +47,12 @@ int main()
 //      int nbytes8 = printf("printf    - d: |%+010d|\n", 3);
 //      printf("\nnbytes7: %d, nbytes8: %d\n", nbytes7, nbytes8);
 //
-	setlocale(LC_ALL, "en_US.UTF-8");
+//	setlocale(LC_ALL, "en_US.UTF-8");
 //	setlocale(LC_ALL, "");
-	int nbytes9 = ft_printf("|% 0.0c|", 1024);
+//	int nbytes9 = ft_printf("|Hello|");
 	printf("\n");
-	int nbytes10 = printf("|% 0.0c|", 1024);
-	printf("\nnbytes9: %d, nbytes10: %d\n", nbytes9, nbytes10);
+//	int nbytes10 = printf("|Hello|");
+//	printf("\nnbytes9: %d, nbytes10: %d\n", nbytes9, nbytes10);
 
 
 
@@ -332,14 +332,14 @@ int main()
 /*
 ** x TESTS
 */
-/*
+
 	printf("\n%s\n", "-----------------");
 	printf("\n%s\n", "x tests");
 	printf("\n%s\n", "-----------------");
 	
 	
-	mr = ft_printf("MINE>\t[%x]\n", 0);
-	or = printf("ORIG>\t[%x]\n", 0);
+	int mr = ft_printf("MINE>\t[%x]\n", 0);
+	int or = printf("ORIG>\t[%x]\n", 0);
 	ft_print_result(mr, or, __LINE__);
 	mr = ft_printf("MINE>\t[%x]\n", 0xa0ffff);
 	or = printf("ORIG>\t[%x]\n", 0xa0ffff);
@@ -430,7 +430,7 @@ int main()
 	or = printf("ORIG>\t[%#08x]\n", 42);
 	ft_print_result(mr, or, __LINE__);
 
-*/
+
 /*
 ** p TESTS
 */
@@ -503,8 +503,8 @@ int main()
 /*
 ** C TESTS
 */
-/*
-	char* l = setlocale(LC_ALL, "");
+
+/*	char* l = setlocale(LC_ALL, "");
 
 if (l == NULL)
 {
@@ -515,8 +515,8 @@ else
     printf("Locale set to %s\n", l);
 }
 printf("%s", "");
-
-	printf("\n%s\n", "-----------------");
+*/
+/*	printf("\n%s\n", "-----------------");
 	printf("\n%s\n", "C tests");
 	printf("\n%s\n", "-----------------");
 	
@@ -590,8 +590,8 @@ printf("%s", "");
 	printf("\n%s\n", "S tests");
 	printf("\n%s\n", "-----------------");
 	
-	int mr = ft_printf("MINE>\t[%S]\n", L"こんにちは私は月面です"); 
-	int or = printf("ORIG>\t[%S]\n",  L"こんにちは私は月面です");
+	mr = ft_printf("MINE>\t[%S]\n", L"こんにちは私は月面です"); 
+	or = printf("ORIG>\t[%S]\n",  L"こんにちは私は月面です");
 	ft_print_result(mr, or, __LINE__);
 	mr = ft_printf("MINE>\t[%S]\n", L"هل الجو حار هنا أم هو نظام الأبوية؟");
 	or = printf("ORIG>\t[%S]\n", L"هل الجو حار هنا أم هو نظام الأبوية؟");
@@ -670,7 +670,7 @@ printf("%s", "");
 	mr = ft_printf("MINE>\t[%-.2s is a string]\n", "");
 	or = printf("ORIG>\t[%-.2s is a string]\n", "");
 	ft_print_result(mr, or, __LINE__);
-		mr = ft_printf("MINE>\t[%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c \
+	mr = ft_printf("MINE>\t[%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c \
 %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c\
 %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c]\n", ' ', '!', '"', '#', '$', '%', '&', '\'', '(', ')', '*', '+', ',', '-',
 '.', '/', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ':', ';',
