@@ -12,23 +12,30 @@
 
 #include "../ft_printf.h"
 
-void	ft_init_format(t_format *format)
+void	ft_init_format(t_format *f)
 {
-	format->length = 0;
-	format->hash = 0;
-	format->zero = 0;
-	format->minus = 0;
-	format->plus = 0;
-	format->space = 0;
-	format->min_width = 0;
-	format->precision = 0;
+	f->buffer_size = 0;
+        f->size = 0;
+        f->printed = 0;
 }
 
-void	ft_handle_optionals(char **str, t_format *format)
+void	ft_clear_format(t_format *f)
 {
-	ft_parse_flags(str, format);
-	ft_parse_width(str, format);
-	ft_parse_precision(str, format);
-	ft_parse_length(str, format);
-	ft_parse_flags(str, format);
+	f->length = 0;
+	f->hash = 0;
+	f->zero = 0;
+	f->minus = 0;
+	f->plus = 0;
+	f->space = 0;
+	f->min_width = 0;
+	f->precision = 0;
+}
+
+void	ft_handle_optionals(char **str, t_format *f)
+{
+	ft_parse_flags(str, f);
+	ft_parse_width(str, f);
+	ft_parse_precision(str, f);
+	ft_parse_length(str, f);
+	ft_parse_flags(str, f);
 }

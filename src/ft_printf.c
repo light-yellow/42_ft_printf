@@ -73,16 +73,14 @@ int	ft_printf(const char *format, ...)
 	char	*str;
 	t_format    f;
 
-	f.buffer_size = 0;
-	f.size = 0;
-	f.printed = 0;
+	ft_init_format(&f);
 	str = (char *)format;
 	va_start(f.ap, format);
 	if (str == NULL)
 		return (-1);
 	while (str != NULL)
 	{
-		ft_init_format(&f);
+		ft_clear_format(&f);
 		if (*str == '%')
 			ft_print_format(&str, &f);
 		else
