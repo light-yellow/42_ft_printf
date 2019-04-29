@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../ft_printf.h"
+#include "../../inc/ft_printf.h"
 
 intmax_t	ft_cast_int(t_format *f)
 {

@@ -15,7 +15,7 @@
 
 # include <stdarg.h>
 # include <stdio.h>
-# include "src/libft/libft.h"
+# include "../lib/libft/libft.h"
 
 # define BUFF_SIZE	42
 # define LEN_H		1
@@ -25,22 +25,30 @@
 # define LEN_J		5
 # define LEN_Z		6
 
+# define COLOR_EOC	"\033[0m"
+# define COLOR_RED	"\033[31m"
+# define COLOR_GREEN	"\033[32m"
+# define COLOR_YELLOW	"\033[33m"
+# define COLOR_BLUE	"\033[34m"
+# define COLOR_MAGENTA	"\033[35m"
+# define COLOR_CYAN	"\033[36m"
+
 typedef struct		s_format
 {
 	int             precision;
-	unsigned int    length;
         unsigned int    min_width;
         unsigned int    size;
         unsigned int    printed;
 	unsigned int	buffer_size;
-        char            buffer[BUFF_SIZE];
-        va_list         ap;
+	unsigned int    length : 3;
 	unsigned int	hash : 1;
 	unsigned int	zero : 1;
 	unsigned int 	minus : 1;
 	unsigned int	plus : 1;
 	unsigned int	space : 1;
-}					t_format;
+	char            buffer[BUFF_SIZE];
+        va_list         ap;
+}			t_format;
 
 int				ft_printf(const char *format, ...);
 void				ft_fill_buffer(t_format *f, char *str, int size);
@@ -70,6 +78,7 @@ void				ft_update_optionals(char format_id, t_format *f);
 intmax_t			ft_cast_int( t_format *f);
 uintmax_t			ft_cast_uint(t_format *f);
 void				ft_print_wchar(t_format *f, int c, int len);
-int					ft_wcharlen(int c);
+int				ft_wcharlen(int c);
+void				ft_putcolor(char **str, t_format *f);
 
 #endif

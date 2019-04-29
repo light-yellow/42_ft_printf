@@ -20,28 +20,27 @@ SRCS  =  src/ft_printf.c src/ft_handle_format.c src/ft_parse_optionals.c \
 	src/print_funcs/ft_print_binary.c src/print_funcs/ft_print_integer.c \
 	src/print_funcs/ft_print_hex.c src/print_funcs/ft_print_octal.c \
 	src/print_funcs/ft_print_double.c src/print_funcs/ft_print_unsigned.c \
-	src/print_funcs/ft_print_non_printable.c
 OBJS = $(SRCS:.c=.o)
-LIB = ./src/libft/libft.a
+LIB = ./lib/libft/libft.a
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	make -C ./src/libft
+	make -C ./lib/libft
 #	gcc $(FLAGS) $(OBJS) $(LIB) -o $(NAME)
-	cp src/libft/libft.a ./$(NAME)
+	cp lib/libft/libft.a ./$(NAME)
 	ar rc $(NAME) $(OBJS)
 	ranlib $(NAME)
 
 %.o: %.c
-	gcc $(FLAGS) -I./ft_printf.h -c $< -o $@
+	gcc $(FLAGS) -c $< -o $@
 
 clean:
-	make -C ./src/libft clean
+	make -C ./lib/libft clean
 	rm -f $(OBJS)
 
 fclean: clean
-	make -C ./src/libft fclean
+	make -C ./lib/libft fclean
 	rm -f $(NAME)
 
 re: fclean all

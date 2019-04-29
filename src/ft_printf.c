@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "../inc/ft_printf.h"
 
 void	ft_print_until_percent(char **str, t_format *f)
 {
@@ -31,6 +31,19 @@ void	ft_print_until_percent(char **str, t_format *f)
 	*str = ptr;
 }
 
+void	ft_print_until(char **str, t_format *f)
+{
+	char	*percent_ptr;
+	char	*brace_ptr;
+
+	percent_ptr = ft_strchr(*str, '%');
+	brace_ptr = ft_strchr(*str, '{');
+	if ((brace_ptr < percent_ptr) || (percent_ptr == 0 && brace_ptr != 0))
+		ft_putcolor(str, f);
+	else
+		ft_print_until_percent(str, f);
+}
+
 void	ft_call_type_print(char **str, t_format *f)
 {
 	if (**str == 'c' || **str == 'C')
@@ -39,8 +52,6 @@ void	ft_call_type_print(char **str, t_format *f)
 		ft_print_str(str, f);
 	else if (**str == 'p')
 		ft_print_pointer(str, f);
-	else if (**str == 'r')
-		ft_print_non_printable(str, f);
 	else if (**str == 'f')
 		ft_print_double(str, f);
 	else if (**str == 'b' || **str == 'B')
@@ -84,7 +95,7 @@ int	ft_printf(const char *format, ...)
 		if (*str == '%')
 			ft_print_format(&str, &f);
 		else
-			ft_print_until_percent(&str, &f);
+			ft_print_until(&str, &f);
 	}
 	write(1, f.buffer, f.size);
 	va_end(f.ap);

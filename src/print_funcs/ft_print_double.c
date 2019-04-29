@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../ft_printf.h"
+#include "../../inc/ft_printf.h"
 
 static char	*ft_put_double(double value)
 {
@@ -53,5 +53,5 @@ void			ft_print_double(char **str, t_format *f)
 	ft_putstr(ptr);
 	free(ptr);
 	*str += 1;
-	f->size += counter;
+	f->printed += counter;
 }

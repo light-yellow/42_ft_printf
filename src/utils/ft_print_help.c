@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../ft_printf.h"
+#include "../../inc/ft_printf.h"
 
 void	ft_fill_buffer(t_format *f, char *str, int size)
 {
@@ -32,16 +32,20 @@ void	ft_fill_buffer(t_format *f, char *str, int size)
 
 void	ft_putpad(int nchars, t_format *f, int pad_needed)
 {
-	char	*c;
+	char	c;
+	int	i;
+	char	padding[nchars];
 
 	if (pad_needed)
 	{
-		c = (f->zero == 1 && f->minus == 0) ? "0" : " ";
-		while (nchars > 0)
+		c = (f->zero == 1 && f->minus == 0) ? '0' : ' ';
+		i = 0;
+		while (i < nchars)
 		{
-			ft_fill_buffer(f, c, 1);
-			nchars -= 1;
+			padding[i] = c;
+			i += 1;
 		}
+		ft_fill_buffer(f, padding, nchars);
 	}
 }
 
@@ -70,11 +74,16 @@ void	ft_putsign(intmax_t num, t_format *f)
 
 void	ft_putzeros(t_format *f, int nzeros)
 {
-	while (nzeros > 0)
+	int	i;
+	char	zeros[nzeros];
+
+	i = 0;
+	while (i < nzeros)
 	{
-		ft_fill_buffer(f, "0", 1);
-		nzeros -= 1;
+		zeros[i] = '0';
+		i += 1;
 	}
+	ft_fill_buffer(f, zeros, nzeros);
 }
 
 void	ft_no_format_spec(char **str, t_format *f)

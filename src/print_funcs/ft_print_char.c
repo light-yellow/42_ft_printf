@@ -10,11 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../ft_printf.h"
+#include "../../inc/ft_printf.h"
 
 int	ft_wcharlen(int c)
 {
-	if (c <= 0x7F)
+	if (c <= 0xFF)
 		return (1);
 	else if (c <= 0x7FF)
 		return (2);
@@ -29,20 +29,20 @@ void	ft_print_wchar(t_format *f, int c, int len)
 {
 	char wc[4];
 
-	if (c <= 0x7F || len == 1)
+	if (c <= 0xFF || MB_CUR_MAX == 1 || len == 1)
 		wc[0] = (char)c;
-	else if (c <= 0x7FF)
+	else if ((c <= 0x7FF && MB_CUR_MAX > 2) || MB_CUR_MAX == 2)
 	{
 		wc[0] = (char)((c >> 6) | 0xC0);
 		wc[1] = (char)((c & 0x3F) | 0x80);
 	}
-	else if (c <= 0xFFFF)
+	else if ((c <= 0xFFFF && MB_CUR_MAX > 3) || MB_CUR_MAX == 3)
 	{
 		wc[0] = (char)((c >> 12) | 0xE0);
 		wc[1] = (char)(((c >> 6) & 0x3F) | 0x80);
 		wc[2] = (char)((c & 0x3F) | 0x80);
 	}
-	else
+	else if ((c <= 0x10FFFF && MB_CUR_MAX > 4) || MB_CUR_MAX == 4)
 	{
 		wc[0] = (char)((c >> 18) | 0xF0);
 		wc[1] = (char)(((c >> 12) & 0x3F) | 0x80);

@@ -1,4 +1,4 @@
-#include "ft_printf.h"
+#include "inc/ft_printf.h"
 #include "stdio.h"
 #include <limits.h>
 #include <locale.h>
@@ -15,12 +15,6 @@ void	ft_print_result(int mr, int or, int line)
 	printf("\n---------------\n");
 	c++;
 }
-
-#define RED "\E[31m"
-#define GRE "\E[32m"
-#define YEL "\E[33m"
-#define WHI "\E[37m"
-#define EOC "\E[0m"
 
 int main()
 {
@@ -49,10 +43,10 @@ int main()
 //
 //	setlocale(LC_ALL, "en_US.UTF-8");
 //	setlocale(LC_ALL, "");
-//	int nbytes9 = ft_printf("|Hello|");
+	int nbytes9 = ft_printf("{red}Hello, %s!{eoc} I missed {white}you{eoc}!", "fren");
 	printf("\n");
-//	int nbytes10 = printf("|Hello|");
-//	printf("\nnbytes9: %d, nbytes10: %d\n", nbytes9, nbytes10);
+	int nbytes10 = printf("Hello, %s! I missed {white}you!", "fren");
+	printf("\nnbytes9: %d, nbytes10: %d\n", nbytes9, nbytes10);
 
 
 
@@ -332,7 +326,7 @@ int main()
 /*
 ** x TESTS
 */
-
+/*
 	printf("\n%s\n", "-----------------");
 	printf("\n%s\n", "x tests");
 	printf("\n%s\n", "-----------------");
@@ -430,7 +424,7 @@ int main()
 	or = printf("ORIG>\t[%#08x]\n", 42);
 	ft_print_result(mr, or, __LINE__);
 
-
+*/
 /*
 ** p TESTS
 */

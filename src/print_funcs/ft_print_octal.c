@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../ft_printf.h"
+#include "../../inc/ft_printf.h"
 
 static	int	ft_calc_len(t_format *f, uintmax_t num, int numlen)
 {
