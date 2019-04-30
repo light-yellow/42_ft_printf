@@ -6,7 +6,7 @@
 /*   By: bdudley <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 11:57:32 by bdudley           #+#    #+#             */
-/*   Updated: 2019/04/26 16:08:37 by jgoyette         ###   ########.fr       */
+/*   Updated: 2019/04/30 12:43:52 by jgoyette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ void				ft_print_unsigned(char **str, t_format *f);
 void				ft_print_double(char **str, t_format *f);
 void				ft_no_format_spec(char **str, t_format *f);
 void				ft_init_format(t_format *f);
+void    ft_clear_format(t_format *f);
 void				ft_handle_optionals(char **str, t_format *f);
 void				ft_parse_flags(char **str, t_format *f);
 void				ft_parse_width(char **str, t_format *f);

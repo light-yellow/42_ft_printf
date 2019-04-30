@@ -43,9 +43,9 @@ int main()
 //
 //	setlocale(LC_ALL, "en_US.UTF-8");
 //	setlocale(LC_ALL, "");
-	int nbytes9 = ft_printf("{red}Hello, %s!{eoc} I missed {white}you{eoc}!", "fren");
+	int nbytes9 = ft_printf("%d", 1);
 	printf("\n");
-	int nbytes10 = printf("Hello, %s! I missed {white}you!", "fren");
+	int nbytes10 = printf("%d", 1);
 	printf("\nnbytes9: %d, nbytes10: %d\n", nbytes9, nbytes10);
 
 
