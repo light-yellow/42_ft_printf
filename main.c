@@ -17,7 +17,7 @@ void	ft_42printf(const char *str, ...)
 int main()
 {
 
-	ft_42printf("%f", 1 /3);
+	ft_printf("%Lf", 1 /3);
 //	setlocale(LC_ALL, "en_US.UTF-8");
 //setlocale(LC_ALL, "");
 //	int nbytes9 = ft_printf("|%S|", L"(╯°□°)╯︵ ┻━┻ ");

@@ -24,6 +24,7 @@
 # define LEN_LL		4
 # define LEN_J		5
 # define LEN_Z		6
+# define LEN_LD		7
 
 # define COLOR_EOC		"\033[0m"
 # define COLOR_RED		"\033[31m"

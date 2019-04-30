@@ -68,30 +68,30 @@ void	ft_parse_precision(char **str, t_format *format)
 	}
 }
 
+void	ft_put_length(char **str, t_format *f, unsigned int length_type, int size)
+{
+	f->length = length_type;
+	*str += size;
+}
+
 void	ft_parse_length(char **str, t_format *f)
 {
 	while (**str)
 	{
-		if (**str == 'h')
-		{
-			f->length = (*(*str + 1) == 'h') ? LEN_HH : LEN_H;
-			*str += (*(*str + 1) == 'h') ? 2 : 1;
-		}
+		if (**str == 'h' && *(*str + 1) == 'h')
+			ft_put_length(str, f, LEN_HH, 2);
+		else if (**str == 'h')
+			ft_put_length(str, f, LEN_H, 1);
+		else if (**str == 'l' && *(*str + 1) == 'l')
+			ft_put_length(str, f, LEN_LL, 2);
 		else if (**str == 'l')
-		{
-			f->length = (*(*str + 1) == 'l') ? LEN_LL : LEN_L;
-			*str += (*(*str + 1) == 'l') ? 2 : 1;
-		}
+			ft_put_length(str, f, LEN_L, 1);
 		else if (**str == 'j')
-		{
-			f->length = LEN_J;
-			*str += 1;
-		}
+			ft_put_length(str, f, LEN_J, 1);
 		else if (**str == 'z')
-		{
-			f->length = LEN_Z;
-			*str += 1;
-		}
+			ft_put_length(str, f, LEN_Z, 1);
+		else if (**str == 'L')
+			ft_put_length(str, f, LEN_LD, 1);
 		else
 			break ;
 	}
