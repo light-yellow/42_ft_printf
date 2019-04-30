@@ -14,7 +14,7 @@
 
 static int	ft_calc_len(t_format *f, uintmax_t num, int numlen)
 {
-	int	len;
+	unsigned int	len;
 
 	if (f->precision == -1 && num == 0)
 		len = 0;

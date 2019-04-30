@@ -14,7 +14,7 @@
 
 void	ft_putbuffer(t_format *f, char *str, int size)
 {
-	if (BUFF_SIZE - f->buffer_size < size)
+	if (BUFF_SIZE - f->buffer_size < (unsigned int)size)
 	{
 		write(1, f->buffer, f->buffer_size);
 		write(1, str, size);

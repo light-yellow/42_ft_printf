@@ -60,7 +60,6 @@ void				ft_putsign(intmax_t num, t_format *f);
 void				ft_putzeros(t_format *f, int nzeros);
 void				ft_print_char(char **str, t_format *f);
 void				ft_print_str(char **str, t_format *f);
-void				ft_print_non_printable(char **str, t_format *f);
 void				ft_print_binary(char **str, t_format *f);
 void				ft_print_integer(char **str, t_format *f);
 void				ft_print_pointer(char **str, t_format *f);
