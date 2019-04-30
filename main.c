@@ -17,11 +17,10 @@ void	ft_42printf(const char *str, ...)
 int main()
 {
 
-	ft_printf("%Lf", 1 /3);
 //	setlocale(LC_ALL, "en_US.UTF-8");
-//setlocale(LC_ALL, "");
-//	int nbytes9 = ft_printf("|%S|", L"(╯°□°)╯︵ ┻━┻ ");
-//	printf("\n");
-//	int nbytes10 = printf("|%S|", L"(╯°□°)╯︵ ┻━┻ ");
-//	printf("\nnbytes9: %d, nbytes10: %d\n", nbytes9, nbytes10);
+//	setlocale(LC_ALL, "");
+	int nbytes9 = ft_printf("%*.*d", 0, 3, 0);
+	printf("\n");
+	int nbytes10 = printf("%*.*d", 0, 3, 0);
+	printf("\nnbytes9: %d, nbytes10: %d\n", nbytes9, nbytes10);
 }

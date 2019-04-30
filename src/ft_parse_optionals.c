@@ -12,56 +12,72 @@
 
 #include "../inc/ft_printf.h"
 
-void	ft_parse_flags(char **str, t_format *format)
+void	ft_parse_flags(char **str, t_format *f)
 {
 	while (**str)
 	{
 		if (**str == '#')
-			format->hash = 1;
+			f->hash = 1;
 		else if (**str == '0')
-			format->zero = 1;
+			f->zero = 1;
 		else if (**str == '-')
-			format->minus = 1;
+			f->minus = 1;
 		else if (**str == '+')
-			format->plus = 1;
+			f->plus = 1;
 		else if (**str == ' ')
-			format->space = 1;
+			f->space = 1;
 		else
 			break ;
 		*str += 1;
 	}
-	if (format->minus)
-		format->zero = 0;
-	if (format->plus)
-		format->space = 0;
+	if (f->minus)
+		f->zero = 0;
+	if (f->plus)
+		f->space = 0;
 }
 
-void	ft_parse_width(char **str, t_format *format)
+void	ft_parse_width(char **str, t_format *f)
 {
 	int width;
 
-	if ((width = ft_atoi(*str)) > 0)
+	if ((width = ft_atoi(*str)) > 0 || **str == '*')
 	{
-		format->min_width = width;
+		if (**str == '*')
+		{
+			if ((width = va_arg(f->ap, int)) < 0)
+				f->minus = 1;
+			f->min_width = (width < 0 ? -width : width);
+			width = 1;
+		}
+		else
+			f->min_width = width;
 		*str += ft_numlen((unsigned int)width, (unsigned int)10);
 	}
 }
 
-void	ft_parse_precision(char **str, t_format *format)
+void	ft_parse_precision(char **str, t_format *f)
 {
 	int precision;
 
 	while (**str == '.')
 	{
 		*str += 1;
-		if ((precision = ft_atoi(*str)) > 0)
+		if ((precision = ft_atoi(*str)) > 0 || **str == '*')
 		{
-			format->precision = precision;
+			if (**str == '*')
+			{
+				precision = va_arg(f->ap, int);
+				f->precision = (precision == 0) ? -1 : precision;
+				f->precision = (precision < 0) ? 0 : f->precision;
+				precision = 1;
+			}
+			else
+				f->precision = precision;
 			*str += ft_numlen((unsigned int)precision, (unsigned int)10);
 		}
 		else
 		{
-			format->precision = -1;
+			f->precision = -1;
 			while (ft_isdigit(**str))
 				*str += 1;
 		}
