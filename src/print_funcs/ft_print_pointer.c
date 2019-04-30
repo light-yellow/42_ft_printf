@@ -6,7 +6,7 @@
 /*   By: bdudley <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/26 17:02:14 by bdudley           #+#    #+#             */
-/*   Updated: 2019/04/26 16:29:40 by jgoyette         ###   ########.fr       */
+/*   Updated: 2019/04/30 13:03:57 by jgoyette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	ft_print_pointer(char **str, t_format *format)
 	padding = ft_maxnum(format->min_width - len, 0);
 	ft_putpad(padding, format, format->minus == 0);
 	ft_fill_buffer(format, "0x", 2);
-	ft_putzeros(format, len - ptr_len - 2);
+	ft_putzeros(format, ft_maxnum(len - ptr_len - 2, 0));
 	ft_fill_buffer(format, ptr, ptr_len);
 	ft_putpad(padding, format, format->minus == 1);
 	*str += 1;

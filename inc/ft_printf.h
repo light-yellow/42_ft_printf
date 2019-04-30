@@ -6,7 +6,7 @@
 /*   By: bdudley <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 11:57:32 by bdudley           #+#    #+#             */
-/*   Updated: 2019/04/30 12:43:52 by jgoyette         ###   ########.fr       */
+/*   Updated: 2019/04/30 13:10:14 by jgoyette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <stdio.h>
 # include "../lib/libft/libft.h"
 
-# define BUFF_SIZE	42
+# define BUFF_SIZE	128
 # define LEN_H		1
 # define LEN_HH		2
 # define LEN_L		3
