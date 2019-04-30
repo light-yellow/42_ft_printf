@@ -6,7 +6,7 @@
 /*   By: jgoyette <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/14 09:38:44 by jgoyette          #+#    #+#             */
-/*   Updated: 2019/04/24 14:46:49 by jgoyette         ###   ########.fr       */
+/*   Updated: 2019/04/30 17:14:25 by jgoyette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 void	ft_init_format(t_format *f)
 {
 	f->buffer_size = 0;
-        f->size = 0;
-        f->printed = 0;
+	f->size = 0;
+	f->printed = 0;
 }
 
 void	ft_clear_format(t_format *f)

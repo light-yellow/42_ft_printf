@@ -6,48 +6,48 @@
 /*   By: bdudley <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 17:53:01 by bdudley           #+#    #+#             */
-/*   Updated: 2019/04/30 13:01:42 by jgoyette         ###   ########.fr       */
+/*   Updated: 2019/04/30 17:08:32 by jgoyette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/ft_printf.h"
 
-static	int	ft_calc_len(t_format *format, intmax_t num, int num_len)
+static int	ft_calc_len(t_format *f, intmax_t num, int numlen)
 {
 	int len;
 
-	if (format->precision == -1 && num == 0)
+	if (f->precision == -1 && num == 0)
 		len = 0;
-	else if (format->precision > num_len)
-		len = format->precision;
+	else if (f->precision > numlen)
+		len = f->precision;
 	else
-		len = num_len;
-	if (format->plus || format->space || num < 0)
+		len = numlen;
+	if (f->plus || f->space || num < 0)
 		len += 1;
 	return (len);
 }
 
-void			ft_print_integer(char **str, t_format *format)
+void		ft_print_integer(char **str, t_format *f)
 {
-	intmax_t	value;
+	intmax_t	num;
 	char		*ptr;
-	int			ptr_len;
+	int			ptrlen;
 	int			len;
 	int			padding;
 
-	ft_update_optionals(**str, format);
-	value = ft_cast_int(format);
-	if ((format->plus || format->space || value < 0) && format->zero)
-		format->precision -= (format->precision > 0) ? 1 : 0;
-	ptr = ft_ulltoa_base((value < 0) ? -value : value, 10, 'a');
-	ptr_len = (value != 0 || format->precision != -1) ? ft_strlen(ptr) : 0;
-	len = ft_calc_len(format, value, ptr_len);
-	padding = ft_maxnum(format->min_width - len, 0);
-	ft_putpad(padding, format, format->minus == 0);
-	ft_putsign(value, format);
-	ft_putzeros(format, ft_maxnum(format->precision - ptr_len, 0));
-	ft_fill_buffer(format, ptr, ptr_len);
-	ft_putpad(padding, format, format->minus == 1);
+	ft_update_optionals(**str, f);
+	num = ft_cast_int(f);
+	if ((f->plus || f->space || num < 0) && f->zero)
+		f->precision -= (f->precision > 0) ? 1 : 0;
+	ptr = ft_ulltoa_base((num < 0) ? -num : num, 10, 'a');
+	ptrlen = (num != 0 || f->precision != -1) ? ft_strlen(ptr) : 0;
+	len = ft_calc_len(f, num, ptrlen);
+	padding = ft_maxnum(f->min_width - len, 0);
+	ft_putpad(padding, f, f->minus == 0);
+	ft_putsign(num, f);
+	ft_putzeros(f, ft_maxnum(f->precision - ptrlen, 0));
+	ft_putbuffer(f, ptr, ptrlen);
+	ft_putpad(padding, f, f->minus == 1);
 	*str += 1;
 	free(ptr);
 }

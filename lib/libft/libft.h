@@ -6,7 +6,7 @@
 /*   By: jgoyette <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 07:49:28 by jgoyette          #+#    #+#             */
-/*   Updated: 2019/04/20 19:07:31 by bdudley          ###   ########.fr       */
+/*   Updated: 2019/04/30 17:13:37 by jgoyette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,7 @@ void				ft_lstaddend(t_list **alst, t_list *new);
 char				*ft_itoa_base(int value, int base, char letter_case);
 int					ft_numlen(uintmax_t num, int base);
 int					ft_maxnum(int num1, int num2);
+int					ft_minnum(int num1, int num2);
 char				*ft_ulltoa_base(uintmax_t num, int base, char letter_case);
 char				*ft_lltoa_base(intmax_t value, int base, char letter_case);
 

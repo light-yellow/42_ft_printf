@@ -6,7 +6,7 @@
 /*   By: bdudley <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 11:55:23 by bdudley           #+#    #+#             */
-/*   Updated: 2019/04/30 12:50:06 by jgoyette         ###   ########.fr       */
+/*   Updated: 2019/04/30 17:12:14 by jgoyette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,18 @@
 void	ft_print_until_percent(char **str, t_format *f)
 {
 	char	*ptr;
-	int	str_len;
+	int		str_len;
 
 	ptr = ft_strchr(*str, '%');
 	if (ptr == NULL)
 	{
 		str_len = ft_strlen(*str);
-		ft_fill_buffer(f, *str, str_len);
+		ft_putbuffer(f, *str, str_len);
 	}
 	else
 	{
 		str_len = ptr - *str;
-		ft_fill_buffer(f, *str, str_len);
+		ft_putbuffer(f, *str, str_len);
 	}
 	*str = ptr;
 }
@@ -79,10 +79,10 @@ void	ft_print_format(char **str, t_format *f)
 	}
 }
 
-int	ft_printf(const char *format, ...)
+int		ft_printf(const char *format, ...)
 {
-	char	*str;
-	t_format    f;
+	char		*str;
+	t_format	f;
 
 	ft_init_format(&f);
 	str = (char *)format;

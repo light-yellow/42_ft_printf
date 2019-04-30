@@ -43,9 +43,9 @@ int main()
 //
 //	setlocale(LC_ALL, "en_US.UTF-8");
 //	setlocale(LC_ALL, "");
-	int nbytes9 = ft_printf("%.4S", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B");
+	int nbytes9 = ft_printf("%X", 12);
 	printf("\n");
-	int nbytes10 = printf("%.4S", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B");
+	int nbytes10 = printf("%X", 12);
 	printf("\nnbytes9: %d, nbytes10: %d\n", nbytes9, nbytes10);
 
 

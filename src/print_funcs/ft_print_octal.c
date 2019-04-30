@@ -6,13 +6,13 @@
 /*   By: bdudley <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 18:14:23 by bdudley           #+#    #+#             */
-/*   Updated: 2019/04/30 13:03:19 by jgoyette         ###   ########.fr       */
+/*   Updated: 2019/04/30 17:09:58 by jgoyette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/ft_printf.h"
 
-static	int	ft_calc_len(t_format *f, uintmax_t num, int numlen)
+static int	ft_calc_len(t_format *f, uintmax_t num, int numlen)
 {
 	int len;
 
@@ -29,25 +29,26 @@ static	int	ft_calc_len(t_format *f, uintmax_t num, int numlen)
 	return (len);
 }
 
-void	ft_print_octal(char **str, t_format *f)
+void		ft_print_octal(char **str, t_format *f)
 {
-	uintmax_t	value;
+	uintmax_t	num;
 	char		*ptr;
-	int			ptr_len;
+	int			ptrlen;
 	int			len;
 	int			padding;
 
 	ft_update_optionals(**str, f);
-	value = ft_cast_uint(f);
-	ptr = ft_ulltoa_base(value, 8, 'a');
-	ptr_len = (value > 0 || f->precision != -1) ? ft_strlen(ptr) : 0;
-	len = ft_calc_len(f, value, ptr_len);
+	num = ft_cast_uint(f);
+	ptr = ft_ulltoa_base(num, 8, 'a');
+	ptrlen = (num > 0 || f->precision != -1) ? ft_strlen(ptr) : 0;
+	len = ft_calc_len(f, num, ptrlen);
 	padding = ft_maxnum(f->min_width - len, 0);
 	ft_putpad(padding, f, f->minus == 0);
-	ft_putprefix(value, **str, f);
-	ft_putzeros(f, ft_maxnum(len - ptr_len - ((f->hash &&
-			(value > 0 || f->precision == -1)) ? 1 : 0), 0));
-	ft_fill_buffer(f, ptr, ptr_len);
+	if (f->hash && (num > 0 || f->precision == -1))
+		ft_putbuffer(f, "0", 1);
+	ft_putzeros(f, ft_maxnum(len - ptrlen - ((f->hash &&
+			(num > 0 || f->precision == -1)) ? 1 : 0), 0));
+	ft_putbuffer(f, ptr, ptrlen);
 	ft_putpad(padding, f, f->minus == 1);
 	*str += 1;
 	free(ptr);
