@@ -62,10 +62,15 @@ void			ft_print_double(char **str, t_format *f)
 	    s = ft_strnew(f->min_width - counter);
 	    s = (char *)ft_memset((void *)s, ' ', f->min_width - counter);
         counter += ft_strlen(s);
-        ft_putbuffer(f, s, counter);
+        ft_putbuffer(f, s, ft_strlen(s));
 	    free(s);
     }
-    ft_putbuffer(f, ptr, counter);
+	if (f->space == 1 && f->min_width == 0)
+    {
+        ft_putbuffer(f, " ", 1);
+        counter++;
+    }
+    ft_putbuffer(f, ptr, ft_strlen(ptr));
 	*str += 1;
 	f->printed += counter;
 }
