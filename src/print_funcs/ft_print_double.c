@@ -18,6 +18,7 @@ static char	*ft_put_double(long double value, t_format *f)
 	char	*integer;
 	char	*fractional;
 	int		counter;
+	int     i;
 
 	integer = ft_itoa_base(value, 10, 'a'); //ch delat
 //	counter = ft_strlen(integer) + (value > 0) ? counter : counter + 1;
@@ -27,11 +28,17 @@ static char	*ft_put_double(long double value, t_format *f)
 	value -= (int)value;
 	fractional[0] = '.';
 	counter = 1;
-	while (counter <= f->precision)
+    while (counter <= f->precision)
 	{
 		if (counter == f->precision && ((int)(value * 100) % 10) > 4)
 			value += 0.1;
 		fractional[counter] = (int)(value * 10) + '0';
+		i = 0;
+		while (fractional[counter - i] > 57)
+        {
+		    fractional[counter - i] = '0';
+		    fractional[counter - ++i]++;
+        }
 		value = value * 10 - (int)(value * 10);
 		counter++;
 	}
@@ -56,21 +63,21 @@ void			ft_print_double(char **str, t_format *f)
 	else
         value = va_arg(f->ap, double);
 	ptr = ft_put_double(value, f);
-    counter = ft_strlen(ptr);
-	if (f->precision == 6 && f->min_width != 0)
+    counter = (f->plus == 1) ? ft_strlen(ptr) + 1 : ft_strlen(ptr);
+	if (counter < f->min_width)
     {
 	    s = ft_strnew(f->min_width - counter);
-	    s = (char *)ft_memset((void *)s, ' ', f->min_width - counter);
-        counter += ft_strlen(s);
+	    if (f->zero == 0)
+	        s = (char *)ft_memset((void *)s, ' ', f->min_width - counter);
+//	    else
+  //          s = (char *)ft_memset((void *)s, '0', f->min_width - counter);
         ft_putbuffer(f, s, ft_strlen(s));
 	    free(s);
     }
-	if (f->space == 1 && f->min_width == 0)
-    {
+	else if (f->space == 1 && f->plus == 0 && f->minus == 0)
         ft_putbuffer(f, " ", 1);
-        counter++;
-    }
+	if (f->plus == 1 && ptr[0] != '-')
+        ft_putbuffer(f, "+", 1);
     ft_putbuffer(f, ptr, ft_strlen(ptr));
 	*str += 1;
-	f->printed += counter;
 }
