@@ -26,7 +26,8 @@ static char	*ft_put_double(long double value, t_format *f)
 	fractional = ft_strnew(f->precision + 1);
 	value = value > 0 ? value : -value;
 	value -= (int)value;
-	fractional[0] = '.';
+	if ((f->precision == -1 && f->hash == 1) || f->precision != -1)
+	    fractional[0] = '.';
 	counter = 1;
     while (counter <= f->precision)
 	{
