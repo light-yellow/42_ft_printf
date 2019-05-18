@@ -58,6 +58,43 @@ static char		*ft_put_double(long double value, t_format *f)
 	return (str);
 }
 
+static char		*ft_min_width(t_format *f, int counter, long double value)
+{
+	char		*s;
+
+	s = ft_strnew(f->min_width - counter);
+	if (f->zero == 0)
+		s = (char *)ft_memset((void *)s, ' ', f->min_width - counter);
+	else
+	{
+		if (f->space == 1 && f->plus == 0 && value >= 0)
+		{
+			ft_putbuffer(f, " ", 1);
+			counter++;
+		}
+		s = (char *)ft_memset((void *)s, '0', f->min_width - counter);
+		if (value >= 0 && f->plus == 1)
+			ft_putbuffer(f, "+", 1);
+		else if (value < 0)
+			ft_putbuffer(f, "-", 1);
+	}
+	if (f->minus != 1)
+	{
+		ft_putbuffer(f, s, ft_strlen(s));
+		free(s);
+		s = NULL;
+	}
+	return (s);
+}
+
+static void		ft_sign(long double value, t_format *f, int counter)
+{
+	if (value >= 0 && f->plus == 1 && (f->zero == 0 || counter >= f->min_width))
+		ft_putbuffer(f, "+", 1);
+	else if (value < 0 && (f->zero == 0 || counter >= f->min_width))
+		ft_putbuffer(f, "-", 1);
+}
+
 void			ft_print_double(char **str, t_format *f)
 {
 	long double	value;
@@ -67,43 +104,16 @@ void			ft_print_double(char **str, t_format *f)
 
 	s = NULL;
 	f->precision = (f->precision == 0) ? 6 : f->precision;
-	if (f->length == 7)
-		value = va_arg(f->ap, long double);
-	else
-		value = va_arg(f->ap, double);
+	value = (f->length == 7) ? va_arg(f->ap, long double)
+			: va_arg(f->ap, double);
 	ptr = ft_put_double(value, f);
 	counter = ((value >= 0 && f->plus == 1) || value < 0)
 		? ft_strlen(ptr) + 1 : ft_strlen(ptr);
 	if (counter < f->min_width)
-	{
-		s = ft_strnew(f->min_width - counter);
-		if (f->zero == 0)
-			s = (char *)ft_memset((void *)s, ' ', f->min_width - counter);
-		else
-		{
-			if (f->space == 1 && f->plus == 0 && value >= 0)
-			{
-				ft_putbuffer(f, " ", 1);
-				counter++;
-			}
-			s = (char *)ft_memset((void *)s, '0', f->min_width - counter);
-			if (value >= 0 && f->plus == 1)
-				ft_putbuffer(f, "+", 1);
-			else if (value < 0)
-				ft_putbuffer(f, "-", 1);
-		}
-		if (f->minus != 1)
-		{
-			ft_putbuffer(f, s, ft_strlen(s));
-			free(s);
-		}
-	}
+		s = ft_min_width(f, counter, value);
 	else if (f->space == 1 && f->plus == 0 && value >= 0)
 		ft_putbuffer(f, " ", 1);
-	if (value >= 0 && f->plus == 1 && (f->zero == 0 || counter >= f->min_width))
-		ft_putbuffer(f, "+", 1);
-	else if (value < 0 && (f->zero == 0 || counter >= f->min_width))
-		ft_putbuffer(f, "-", 1);
+	ft_sign(value, f, counter);
 	ft_putbuffer(f, ptr, ft_strlen(ptr));
 	if (f->minus == 1 && s)
 	{
