@@ -12,29 +12,13 @@
 
 #include "../../inc/ft_printf.h"
 
-static char		*ft_double(char **integer, char **fractional)
+static char		*ft_fractional(t_format *f, long double value)
 {
-	char	*str;
-
-	str = ft_strnew(ft_strlen(*integer) + ft_strlen(*fractional));
-	ft_strcpy(str, *integer);
-	ft_strcpy(str + ft_strlen(*integer), *fractional);
-	free(*integer);
-	free(*fractional);
-	return (str);
-}
-
-static char		*ft_put_double(long double value, t_format *f)
-{
-	char	*integer;
 	char	*fractional;
 	int		counter;
 	int		i;
 
-	value = value > 0 ? value : -value;
-	integer = ft_ulltoa_base((unsigned long long)value, 10, 'a');
 	fractional = ft_strnew(f->precision + 1);
-	value -= (unsigned long long)value;
 	if ((f->precision == -1 && f->hash == 1) || f->precision != -1)
 		fractional[0] = '.';
 	counter = 1;
@@ -53,7 +37,25 @@ static char		*ft_put_double(long double value, t_format *f)
 		value = value * 10 - (unsigned long long)(value * 10);
 		counter++;
 	}
-	return (ft_double(&integer, &fractional));
+	return (fractional);
+}
+
+static char		*ft_put_double(long double value, t_format *f)
+{
+	char	*str;
+	char	*integer;
+	char	*fractional;
+
+	value = value > 0 ? value : -value;
+	integer = ft_ulltoa_base((unsigned long long)value, 10, 'a');
+	value -= (unsigned long long)value;
+	fractional = ft_fractional(f, value);
+	str = ft_strnew(ft_strlen(integer) + ft_strlen(fractional));
+	ft_strcpy(str, integer);
+	ft_strcpy(str + ft_strlen(integer), fractional);
+	free(integer);
+	free(fractional);
+	return (str);
 }
 
 void			ft_print_double(char **str, t_format *f)
