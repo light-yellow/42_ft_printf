@@ -52,7 +52,7 @@ void	ft_call_type_print(char **str, t_format *f)
 		ft_print_str(str, f);
 	else if (**str == 'p')
 		ft_print_pointer(str, f);
-	else if (**str == 'f')
+	else if (**str == 'f' || **str == 'F')
 		ft_print_double(str, f);
 	else if (**str == 'b' || **str == 'B')
 		ft_print_binary(str, f);

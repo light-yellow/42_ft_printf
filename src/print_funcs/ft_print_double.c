@@ -6,15 +6,26 @@
 /*   By: bdudley <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 17:53:01 by bdudley           #+#    #+#             */
-/*   Updated: 2019/05/18 16:31:36 by bdudley          ###   ########.fr       */
+/*   Updated: 2019/05/18 18:10:14 by bdudley          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/ft_printf.h"
 
-static char		*ft_put_double(long double value, t_format *f)
+static char		*ft_double(char **integer, char **fractional)
 {
 	char	*str;
+
+	str = ft_strnew(ft_strlen(*integer) + ft_strlen(*fractional));
+	ft_strcpy(str, *integer);
+	ft_strcpy(str + ft_strlen(*integer), *fractional);
+	free(*integer);
+	free(*fractional);
+	return (str);
+}
+
+static char		*ft_put_double(long double value, t_format *f)
+{
 	char	*integer;
 	char	*fractional;
 	int		counter;
@@ -37,25 +48,20 @@ static char		*ft_put_double(long double value, t_format *f)
 		while (fractional[counter - i] > 57)
 		{
 			fractional[counter - i] = '0';
-			fractional[counter - ++i]++;
+			fractional[counter - ++i] += 1;
 		}
 		value = value * 10 - (unsigned long long)(value * 10);
 		counter++;
 	}
-	str = ft_strnew(ft_strlen(integer) + ft_strlen(fractional));
-	ft_strcpy(str, integer);
-	ft_strcpy(str + ft_strlen(integer), fractional);
-	free(integer);
-	free(fractional);
-	return (str);
+	return (ft_double(&integer, &fractional));
 }
 
 void			ft_print_double(char **str, t_format *f)
 {
 	long double	value;
-	int		counter;
-	char	*ptr;
-	char    *s;
+	int			counter;
+	char		*ptr;
+	char		*s;
 
 	s = NULL;
 	f->precision = (f->precision == 0) ? 6 : f->precision;
@@ -89,7 +95,6 @@ void			ft_print_double(char **str, t_format *f)
 			ft_putbuffer(f, s, ft_strlen(s));
 			free(s);
 		}
-
 	}
 	else if (f->space == 1 && f->plus == 0 && value >= 0)
 		ft_putbuffer(f, " ", 1);
