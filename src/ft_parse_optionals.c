@@ -6,7 +6,7 @@
 /*   By: jgoyette <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 19:38:35 by jgoyette          #+#    #+#             */
-/*   Updated: 2019/04/14 09:37:34 by jgoyette         ###   ########.fr       */
+/*   Updated: 2019/05/18 18:08:05 by jgoyette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,9 +84,9 @@ void	ft_parse_precision(char **str, t_format *f)
 	}
 }
 
-void	ft_put_length(char **str, t_format *f, unsigned int length_type, int size)
+void	ft_put_length(char **str, t_format *f, unsigned int len_type, int size)
 {
-	f->length = length_type;
+	f->length = len_type;
 	*str += size;
 }
 
